@@ -336,31 +336,37 @@
 
     /* Trail Cards Grid */
     .trails-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 12px;
+      border: 1px solid rgba(13, 27, 42, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
     }
 
     .trail-card {
       background: white;
-      border: 1.5px solid rgba(13, 27, 42, 0.06);
-      border-radius: 12px;
-      padding: 18px;
+      border-bottom: 1px solid rgba(13, 27, 42, 0.06);
+      padding: 10px 14px;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: background 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .trail-card:last-child {
+      border-bottom: none;
     }
 
     .trail-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--navy);
-      box-shadow: 0 8px 20px rgba(13, 27, 42, 0.1);
+      background: rgba(13, 27, 42, 0.02);
     }
 
     .trail-card.selected {
-      border-color: var(--coral);
       background: rgba(228, 90, 59, 0.04);
-      box-shadow: 0 0 0 2px rgba(228, 90, 59, 0.15);
+      box-shadow: inset 3px 0 0 var(--coral);
     }
 
     .flat-run-section {
@@ -468,61 +474,73 @@
       color: var(--navy);
     }
 
+    .trail-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
     .trail-card h3 {
-      font-size: 0.95rem;
-      margin-bottom: 4px;
+      font-size: 0.85rem;
+      margin-bottom: 1px;
       color: var(--navy);
       font-weight: 700;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .trail-location {
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       color: var(--slate-400);
-      margin-bottom: 10px;
+      margin-bottom: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .trail-stats {
       display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 10px;
-      font-size: 0.85rem;
+      gap: 12px;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      align-items: center;
     }
 
     .trail-stat {
-      flex: 1;
+      text-align: right;
     }
 
     .trail-stat-label {
       color: var(--slate-400);
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       font-weight: 600;
     }
 
     .trail-stat-value {
       color: var(--navy);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.8rem;
     }
 
     .trail-sparkline {
-      width: 100%;
-      height: 30px;
-      margin-top: 10px;
+      width: 80px;
+      height: 22px;
+      flex-shrink: 0;
     }
 
     .difficulty-badge {
       display: inline-block;
-      padding: 4px 10px;
+      padding: 2px 8px;
       border-radius: 20px;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-top: 10px;
+      margin-top: 0;
+      flex-shrink: 0;
     }
 
     .difficulty-easy {
@@ -610,9 +628,9 @@
 
     .trail-card-badges {
       display: flex;
-      gap: 6px;
+      gap: 4px;
       align-items: center;
-      margin-bottom: 4px;
+      flex-shrink: 0;
     }
 
     .type-badge {
@@ -661,6 +679,51 @@
       color: var(--slate-400);
       font-size: 0.95rem;
     }
+
+    /* Run Analysis */
+    .run-analysis-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(13,27,42,0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .run-analysis-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: white;
+      border-bottom: 1px solid rgba(13,27,42,0.06);
+      cursor: pointer;
+      transition: background 0.15s;
+      font-size: 0.82rem;
+    }
+    .run-analysis-item:last-child { border-bottom: none; }
+    .run-analysis-item:hover { background: rgba(13,27,42,0.02); }
+    .run-analysis-item.selected { background: rgba(26,158,143,0.05); box-shadow: inset 3px 0 0 var(--teal); }
+    .run-analysis-item .run-name { flex: 1; font-weight: 600; color: var(--navy); }
+    .run-analysis-item .run-meta { font-size: 0.72rem; color: var(--slate-400); }
+
+    .split-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+    .split-table th {
+      text-align: left; padding: 6px 8px; font-size: 0.65rem;
+      text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-400);
+      border-bottom: 2px solid var(--slate-200); font-weight: 600;
+    }
+    .split-table td {
+      padding: 6px 8px; border-bottom: 1px solid rgba(13,27,42,0.04);
+    }
+    .split-table tr:hover { background: rgba(13,27,42,0.01); }
+    .pace-verdict {
+      display: inline-block; padding: 2px 6px; border-radius: 8px;
+      font-size: 0.68rem; font-weight: 600;
+    }
+    .pace-verdict.too-fast { background: rgba(228,90,59,0.1); color: var(--coral); }
+    .pace-verdict.good { background: rgba(26,158,143,0.1); color: var(--teal); }
+    .pace-verdict.too-slow { background: rgba(255,140,66,0.1); color: var(--amber); }
 
     /* Elevation Chart */
     .elevation-chart {
@@ -1208,7 +1271,13 @@
       }
 
       .trails-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+      }
+      .trail-card {
+        flex-wrap: wrap;
+      }
+      .trail-sparkline {
+        display: none;
       }
 
       .spotify-connect {
@@ -1233,7 +1302,153 @@
   <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 
   <script type="text/babel">
-    const { useState, useRef, useCallback, useEffect, useMemo } = React;
+    const { useState, useRef, useCallback, useEffect, useMemo, createContext, useContext } = React;
+
+    // ============ INTERNATIONALIZATION ============
+    const TRANSLATIONS = {
+      en: {
+        tagline: "Every trail has a song.",
+        signIn: "Sign In", signOut: "Sign Out", connections: "Connections",
+        runningProfile: "Your Running Profile", raceLibrary: "Race Library",
+        runAnalysis: "Run Analysis", show: "Show", hide: "Hide",
+        searchRaces: "Search races by name, location, or country...",
+        all: "All", road: "Road", trail: "Trail", upcoming: "Upcoming",
+        importRoute: "Import your own route", remove: "remove",
+        flatRun: "Flat Run — no elevation, just pace", select: "Select", deselect: "Deselect",
+        distance: "Distance", dist: "Dist", gain: "Gain", pace: "Pace",
+        noRacesFound: "No races found matching your search. Try different keywords or adjust your filters.",
+        generatePlaylist: "Generate Playlist", saveToSpotify: "Save to Spotify",
+        share: "Share", targetPace: "Target Pace", targetTime: "Target Time",
+        easy: "Easy", medium: "Medium", hard: "Hard",
+        runsAnalyzed: "runs analyzed", total: "total", dataPoints: "data points", from: "from",
+        addMore: "+ Add more", reset: "Reset",
+        selectRunAnalysis: "Select a run to see segment-by-segment pacing analysis with recommendations.",
+        avgPace: "Avg pace", consistency: "Consistency", tooFast: "Too fast", tooSlow: "Too slow",
+        km: "Km", actual: "Actual", target: "Target", elev: "Elev", hr: "HR",
+        verdict: "Verdict", recommendation: "Recommendation",
+        fast: "Fast", good: "Good", slow: "Slow",
+        easeUp: "Ease up — save energy for later",
+        slightlyFast: "Slightly fast — manageable if intentional",
+        pushHarder: "Push harder here — room to gain time",
+        slightlySlow: "Slightly slow — pick it up if legs allow",
+        rightOnPace: "Right on pace",
+        musicMode: "Music Mode", myTaste: "My Taste", mood: "Mood", random: "Random",
+        bpm: "BPM", segments: "segments",
+        connectStrava: "Connect Strava", connectSpotify: "Connect Spotify",
+        playlistGenerated: "Playlist generated!",
+        uniqueTracks: "unique tracks matched to your trail.",
+        faq: "FAQ", howItWorks: "How it works",
+        howItWorksText: "Import a few of your runs and Canto learns how you move — your pace on hills, your natural cadence, when you fade. Then it builds a plan and a playlist that fit you exactly.",
+      },
+      fr: {
+        tagline: "Chaque sentier a sa chanson.",
+        signIn: "Connexion", signOut: "Déconnexion", connections: "Connexions",
+        runningProfile: "Votre Profil de Course", raceLibrary: "Bibliothèque de Courses",
+        runAnalysis: "Analyse de Course", show: "Afficher", hide: "Masquer",
+        searchRaces: "Rechercher par nom, lieu ou pays...",
+        all: "Tout", road: "Route", trail: "Trail", upcoming: "À venir",
+        importRoute: "Importer votre propre parcours", remove: "retirer",
+        flatRun: "Course plate — pas de dénivelé, juste l'allure", select: "Sélectionner", deselect: "Désélectionner",
+        distance: "Distance", dist: "Dist", gain: "Dénivelé", pace: "Allure",
+        noRacesFound: "Aucune course trouvée. Essayez d'autres mots-clés ou ajustez vos filtres.",
+        generatePlaylist: "Générer la Playlist", saveToSpotify: "Sauvegarder sur Spotify",
+        share: "Partager", targetPace: "Allure cible", targetTime: "Temps cible",
+        easy: "Facile", medium: "Moyen", hard: "Difficile",
+        runsAnalyzed: "courses analysées", total: "total", dataPoints: "points de données", from: "depuis",
+        addMore: "+ Ajouter", reset: "Réinitialiser",
+        selectRunAnalysis: "Sélectionnez une course pour voir l'analyse par segment avec des recommandations.",
+        avgPace: "Allure moy.", consistency: "Régularité", tooFast: "Trop rapide", tooSlow: "Trop lent",
+        km: "Km", actual: "Réel", target: "Cible", elev: "Déniv.", hr: "FC",
+        verdict: "Verdict", recommendation: "Conseil",
+        fast: "Rapide", good: "Bon", slow: "Lent",
+        easeUp: "Ralentissez — gardez de l'énergie pour la suite",
+        slightlyFast: "Un peu rapide — acceptable si intentionnel",
+        pushHarder: "Poussez ici — marge de progression",
+        slightlySlow: "Un peu lent — accélérez si possible",
+        rightOnPace: "Allure parfaite",
+        musicMode: "Mode Musique", myTaste: "Mes Goûts", mood: "Ambiance", random: "Aléatoire",
+        bpm: "BPM", segments: "segments",
+        connectStrava: "Connecter Strava", connectSpotify: "Connecter Spotify",
+        playlistGenerated: "Playlist générée !",
+        uniqueTracks: "morceaux uniques adaptés à votre parcours.",
+        faq: "FAQ", howItWorks: "Comment ça marche",
+        howItWorksText: "Importez quelques courses et Canto apprend votre façon de courir — votre allure en côte, votre cadence naturelle, quand vous ralentissez. Puis il crée un plan et une playlist qui vous correspondent parfaitement.",
+      },
+      de: {
+        tagline: "Jeder Trail hat seinen Song.",
+        signIn: "Anmelden", signOut: "Abmelden", connections: "Verbindungen",
+        runningProfile: "Dein Laufprofil", raceLibrary: "Rennen-Bibliothek",
+        runAnalysis: "Laufanalyse", show: "Anzeigen", hide: "Ausblenden",
+        searchRaces: "Suche nach Name, Ort oder Land...",
+        all: "Alle", road: "Straße", trail: "Trail", upcoming: "Bevorstehend",
+        importRoute: "Eigene Route importieren", remove: "entfernen",
+        flatRun: "Flacher Lauf — kein Höhenunterschied, nur Tempo", select: "Auswählen", deselect: "Abwählen",
+        distance: "Distanz", dist: "Dist", gain: "Anstieg", pace: "Tempo",
+        noRacesFound: "Keine Rennen gefunden. Versuche andere Suchbegriffe oder passe deine Filter an.",
+        generatePlaylist: "Playlist erstellen", saveToSpotify: "Auf Spotify speichern",
+        share: "Teilen", targetPace: "Zieltempo", targetTime: "Zielzeit",
+        easy: "Leicht", medium: "Mittel", hard: "Schwer",
+        runsAnalyzed: "Läufe analysiert", total: "gesamt", dataPoints: "Datenpunkte", from: "von",
+        addMore: "+ Mehr hinzufügen", reset: "Zurücksetzen",
+        selectRunAnalysis: "Wähle einen Lauf für eine segmentweise Tempoanalyse mit Empfehlungen.",
+        avgPace: "Ø Tempo", consistency: "Konstanz", tooFast: "Zu schnell", tooSlow: "Zu langsam",
+        km: "Km", actual: "Ist", target: "Soll", elev: "Höhe", hr: "HF",
+        verdict: "Bewertung", recommendation: "Empfehlung",
+        fast: "Schnell", good: "Gut", slow: "Langsam",
+        easeUp: "Langsamer — Energie für später sparen",
+        slightlyFast: "Etwas schnell — okay wenn beabsichtigt",
+        pushHarder: "Hier mehr geben — Zeitgewinn möglich",
+        slightlySlow: "Etwas langsam — wenn möglich beschleunigen",
+        rightOnPace: "Genau im Tempo",
+        musicMode: "Musik-Modus", myTaste: "Mein Geschmack", mood: "Stimmung", random: "Zufällig",
+        bpm: "BPM", segments: "Segmente",
+        connectStrava: "Strava verbinden", connectSpotify: "Spotify verbinden",
+        playlistGenerated: "Playlist erstellt!",
+        uniqueTracks: "einzigartige Tracks passend zu deiner Strecke.",
+        faq: "FAQ", howItWorks: "So funktioniert's",
+        howItWorksText: "Importiere einige Läufe und Canto lernt wie du läufst — dein Tempo bergauf, deine natürliche Kadenz, wann du nachlässt. Dann erstellt es einen Plan und eine Playlist, die genau zu dir passen.",
+      },
+      es: {
+        tagline: "Cada sendero tiene su canción.",
+        signIn: "Iniciar sesión", signOut: "Cerrar sesión", connections: "Conexiones",
+        runningProfile: "Tu Perfil de Carrera", raceLibrary: "Biblioteca de Carreras",
+        runAnalysis: "Análisis de Carrera", show: "Mostrar", hide: "Ocultar",
+        searchRaces: "Buscar por nombre, lugar o país...",
+        all: "Todo", road: "Ruta", trail: "Trail", upcoming: "Próximas",
+        importRoute: "Importar tu propia ruta", remove: "eliminar",
+        flatRun: "Carrera plana — sin desnivel, solo ritmo", select: "Seleccionar", deselect: "Deseleccionar",
+        distance: "Distancia", dist: "Dist", gain: "Desnivel", pace: "Ritmo",
+        noRacesFound: "No se encontraron carreras. Prueba otras palabras clave o ajusta tus filtros.",
+        generatePlaylist: "Generar Playlist", saveToSpotify: "Guardar en Spotify",
+        share: "Compartir", targetPace: "Ritmo objetivo", targetTime: "Tiempo objetivo",
+        easy: "Fácil", medium: "Medio", hard: "Difícil",
+        runsAnalyzed: "carreras analizadas", total: "total", dataPoints: "puntos de datos", from: "desde",
+        addMore: "+ Añadir más", reset: "Reiniciar",
+        selectRunAnalysis: "Selecciona una carrera para ver el análisis por segmento con recomendaciones.",
+        avgPace: "Ritmo med.", consistency: "Constancia", tooFast: "Muy rápido", tooSlow: "Muy lento",
+        km: "Km", actual: "Real", target: "Objetivo", elev: "Elev.", hr: "FC",
+        verdict: "Veredicto", recommendation: "Recomendación",
+        fast: "Rápido", good: "Bien", slow: "Lento",
+        easeUp: "Más lento — guarda energía para después",
+        slightlyFast: "Un poco rápido — aceptable si es intencional",
+        pushHarder: "Empuja aquí — margen para ganar tiempo",
+        slightlySlow: "Un poco lento — acelera si puedes",
+        rightOnPace: "Ritmo perfecto",
+        musicMode: "Modo Música", myTaste: "Mi Gusto", mood: "Estado", random: "Aleatorio",
+        bpm: "BPM", segments: "segmentos",
+        connectStrava: "Conectar Strava", connectSpotify: "Conectar Spotify",
+        playlistGenerated: "¡Playlist generada!",
+        uniqueTracks: "pistas únicas adaptadas a tu ruta.",
+        faq: "FAQ", howItWorks: "Cómo funciona",
+        howItWorksText: "Importa algunas carreras y Canto aprende cómo corres — tu ritmo en las subidas, tu cadencia natural, cuándo te cansas. Luego crea un plan y una playlist que se ajustan perfectamente a ti.",
+      },
+    };
+
+    const LangContext = createContext("en");
+    function useT() {
+      const lang = useContext(LangContext);
+      return (key) => TRANSLATIONS[lang]?.[key] || TRANSLATIONS.en[key] || key;
+    }
 
     // ============ CONFIGURATION ============
     const SPOTIFY_CLIENT_ID = "5d10f2576ab846f08fab95b686a4d0da";
@@ -3115,6 +3330,12 @@
     }
 
     function CantoApp() {
+      const [lang, setLang] = useState(() => {
+        try { return localStorage.getItem("cantoLang") || "en"; } catch { return "en"; }
+      });
+      const changeLang = (l) => { setLang(l); try { localStorage.setItem("cantoLang", l); } catch {} };
+      const t = (key) => TRANSLATIONS[lang]?.[key] || TRANSLATIONS.en[key] || key;
+
       const [spotifyToken, setSpotifyToken] = useState(null);
       const [spotifyUser, setSpotifyUser] = useState(null);
       const [selectedTrail, setSelectedTrail] = useState(null);
@@ -3144,6 +3365,8 @@
       const [personalModel, setPersonalModel] = useState(null);
       const [racePlan, setRacePlan] = useState(null);
       const [showPerformanceLab, setShowPerformanceLab] = useState(false);
+      const [showRunAnalysis, setShowRunAnalysis] = useState(false);
+      const [selectedRunForAnalysis, setSelectedRunForAnalysis] = useState(null);
       const [garminConnected, setGarminConnected] = useState(false);
       const [stravaApiConnected, setStravaApiConnected] = useState(false);
       const [importSources, setImportSources] = useState([]); // ["file", "strava", "garmin"]
@@ -3514,18 +3737,39 @@
           // ── Dedup & variety state (reset each generation) ──
           const usedTrackIds = new Set();
           const usedArtistCounts = new Map();
-          const OVER_FETCH = 10; // Fetch 10 candidates per segment, pick best 1
+          const OVER_FETCH = 10; // Fetch 10 candidates per slot, pick best 1
+
+          // ── Calculate how many tracks we need total based on estimated run duration ──
+          const AVG_TRACK_DURATION_MIN = 3.5;
+          let runDurationMin;
+          if (targetMode === "time") {
+            runDurationMin = (parseInt(targetTimeHours) || 0) * 60 + (parseInt(targetTimeMinutes) || 0);
+          } else if (targetMode === "distance-time" && targetTime) {
+            runDurationMin = targetTime;
+          } else {
+            runDurationMin = trailDistance * paceMin;
+          }
+          runDurationMin = Math.max(runDurationMin, 10); // minimum 10 min
+          const bufferedDuration = runDurationMin * 1.1; // +10% buffer so music doesn't cut out early
+          const totalTracksNeeded = Math.max(segments.length, Math.ceil(bufferedDuration / AVG_TRACK_DURATION_MIN));
+
+          // ── Distribute tracks across segments proportionally by distance ──
+          const totalDist = segments.reduce((sum, s) => sum + (s.distM || 1), 0);
+          const tracksPerSegment = segments.map((seg) => {
+            const proportion = (seg.distM || 1) / totalDist;
+            return Math.max(1, Math.round(proportion * totalTracksNeeded));
+          });
 
           const totalSegments = segments.length;
           for (let segIdx = 0; segIdx < segments.length; segIdx++) {
             const seg = segments[segIdx];
+            const numTracksForSeg = tracksPerSegment[segIdx];
             // Progressive BPM: start ~12% slower, ramp up to ~5% faster by end
             const progress = totalSegments > 1 ? segIdx / (totalSegments - 1) : 1;
             const progressionFactor = 0.88 + 0.17 * Math.pow(progress, 1.3);
             const rawBpm = gradientToBpm(seg.gradient, baseBpm);
             let bpm;
             if (racePlan && racePlan.segments.length > 0) {
-              // Map elevSegment index to racePlan segments (may have different counts)
               const rpLen = racePlan.segments.length;
               const rpStart = Math.floor((segIdx / totalSegments) * rpLen);
               const rpEnd = Math.min(rpLen, Math.floor(((segIdx + 1) / totalSegments) * rpLen));
@@ -3534,89 +3778,93 @@
             } else {
               bpm = Math.round(Math.max(105, Math.min(185, rawBpm * progressionFactor)));
             }
-            let selectedTrack = null;
+            const segTracks = [];
 
-            if (spotifyToken) {
-              try {
-                // ── Fetch candidates (over-fetch for dedup headroom) ──
-                let rec;
-                if (musicMode === "random" && topSeeds) {
-                  const shuffledTracks = [...topSeeds.trackIds].sort(() => Math.random() - 0.5);
-                  rec = await searchTracksByBpmPersonalized(
-                    spotifyToken, bpm, OVER_FETCH,
-                    shuffledTracks.slice(0, 5),
-                    [], topSeeds
-                  );
-                } else if (musicMode === "mood" && selectedMood) {
-                  rec = await searchTracksByBpm(spotifyToken, bpm, OVER_FETCH, selectedMood);
-                } else if (musicMode === "my-taste" && topSeeds) {
-                  const shuffledTracks = [...topSeeds.trackIds].sort(() => Math.random() - 0.5);
-                  const shuffledArtists = [...topSeeds.artistIds].sort(() => Math.random() - 0.5);
-                  rec = await searchTracksByBpmPersonalized(
-                    spotifyToken, bpm, OVER_FETCH,
-                    shuffledTracks.slice(0, 3),
-                    shuffledArtists.slice(0, 2), topSeeds
-                  );
-                } else {
-                  const genres = ["electronic", "rock", "pop", "indie"];
-                  const genre = genres[Math.floor(Math.random() * genres.length)];
-                  rec = await searchTracksByBpm(spotifyToken, bpm, OVER_FETCH, genre);
-                }
+            for (let trackSlot = 0; trackSlot < numTracksForSeg; trackSlot++) {
+              let selectedTrack = null;
+              // Slight BPM variation within segment for variety
+              const slotBpm = Math.round(bpm + (trackSlot > 0 ? (Math.random() * 6 - 3) : 0));
 
-                // ── Score, deduplicate, and select best track ──
-                if (rec.tracks && rec.tracks.length > 0) {
-                  const candidates = rec.tracks
-                    .filter((t) => t.id && !usedTrackIds.has(t.id)) // Remove duplicates
-                    .map((t) => ({
-                      ...t,
-                      _score: scoreTrack(t, bpm, topSeeds, usedArtistCounts),
-                    }))
-                    .sort((a, b) => b._score - a._score); // Best first
+              if (spotifyToken) {
+                try {
+                  let rec;
+                  if (musicMode === "random" && topSeeds) {
+                    const shuffledTracks = [...topSeeds.trackIds].sort(() => Math.random() - 0.5);
+                    rec = await searchTracksByBpmPersonalized(
+                      spotifyToken, slotBpm, OVER_FETCH,
+                      shuffledTracks.slice(0, 5),
+                      [], topSeeds
+                    );
+                  } else if (musicMode === "mood" && selectedMood) {
+                    rec = await searchTracksByBpm(spotifyToken, slotBpm, OVER_FETCH, selectedMood);
+                  } else if (musicMode === "my-taste" && topSeeds) {
+                    const shuffledTracks = [...topSeeds.trackIds].sort(() => Math.random() - 0.5);
+                    const shuffledArtists = [...topSeeds.artistIds].sort(() => Math.random() - 0.5);
+                    rec = await searchTracksByBpmPersonalized(
+                      spotifyToken, slotBpm, OVER_FETCH,
+                      shuffledTracks.slice(0, 3),
+                      shuffledArtists.slice(0, 2), topSeeds
+                    );
+                  } else {
+                    const genres = ["electronic", "rock", "pop", "indie"];
+                    const genre = genres[Math.floor(Math.random() * genres.length)];
+                    rec = await searchTracksByBpm(spotifyToken, slotBpm, OVER_FETCH, genre);
+                  }
 
-                  if (candidates.length > 0) {
-                    const best = candidates[0];
-                    usedTrackIds.add(best.id);
-                    const primaryArtistId = best.artists?.[0]?.id;
-                    if (primaryArtistId) {
-                      usedArtistCounts.set(primaryArtistId, (usedArtistCounts.get(primaryArtistId) || 0) + 1);
+                  if (rec.tracks && rec.tracks.length > 0) {
+                    const candidates = rec.tracks
+                      .filter((t) => t.id && !usedTrackIds.has(t.id))
+                      .map((t) => ({
+                        ...t,
+                        _score: scoreTrack(t, slotBpm, topSeeds, usedArtistCounts),
+                      }))
+                      .sort((a, b) => b._score - a._score);
+
+                    if (candidates.length > 0) {
+                      const best = candidates[0];
+                      usedTrackIds.add(best.id);
+                      const primaryArtistId = best.artists?.[0]?.id;
+                      if (primaryArtistId) {
+                        usedArtistCounts.set(primaryArtistId, (usedArtistCounts.get(primaryArtistId) || 0) + 1);
+                      }
+                      selectedTrack = {
+                        name: best.name,
+                        artist: best.artists?.[0]?.name || "Unknown Artist",
+                        bpm: slotBpm,
+                        uri: best.uri,
+                        popularity: best.popularity || 0,
+                        score: best._score,
+                      };
                     }
-                    selectedTrack = {
-                      name: best.name,
-                      artist: best.artists?.[0]?.name || "Unknown Artist",
-                      bpm: bpm,
-                      uri: best.uri,
-                      popularity: best.popularity || 0,
-                      score: best._score,
-                    };
+                  }
+                } catch (err) {
+                  console.warn("Spotify API error for segment", segIdx, "slot", trackSlot, err);
+                  if (err.message?.includes("expired") || err.message?.includes("reconnect")) {
+                    setSpotifyToken(null);
+                    setSpotifyUser(null);
+                    setMessage({ type: "error", text: "Spotify session expired. Please reconnect to get personalized tracks." });
                   }
                 }
-              } catch (err) {
-                console.warn("Spotify API error for segment", segIdx, err);
-                if (err.message?.includes("expired") || err.message?.includes("reconnect")) {
-                  // Session expired — clear token so user sees "reconnect" state
-                  setSpotifyToken(null);
-                  setSpotifyUser(null);
-                  setMessage({ type: "error", text: "Spotify session expired. Please reconnect to get personalized tracks." });
+              }
+
+              if (!selectedTrack) {
+                const mockCandidate = MOCK_TRACKS
+                  .filter((t) => Math.abs(t.bpm - slotBpm) <= 20 && !usedTrackIds.has(t.uri))
+                  .sort((a, b) => Math.abs(a.bpm - slotBpm) - Math.abs(b.bpm - slotBpm))
+                  .slice(0, 1)[0];
+                if (mockCandidate) {
+                  usedTrackIds.add(mockCandidate.uri);
+                  selectedTrack = { ...mockCandidate, bpm: slotBpm, score: 0 };
                 }
               }
-            }
 
-            // ── Mock fallback (also deduped) ──
-            if (!selectedTrack) {
-              const mockCandidate = MOCK_TRACKS
-                .filter((t) => Math.abs(t.bpm - bpm) <= 20 && !usedTrackIds.has(t.uri))
-                .sort((a, b) => Math.abs(a.bpm - bpm) - Math.abs(b.bpm - bpm)) // closest BPM first
-                .slice(0, 1)[0];
-              if (mockCandidate) {
-                usedTrackIds.add(mockCandidate.uri);
-                selectedTrack = { ...mockCandidate, bpm, score: 0 };
-              }
+              if (selectedTrack) segTracks.push(selectedTrack);
             }
 
             tracksBySegment.push({
               bpm,
               gradient: seg.gradient,
-              tracks: selectedTrack ? [selectedTrack] : [],
+              tracks: segTracks,
             });
           }
 
@@ -3816,9 +4064,30 @@
               <div className="logo-icon" style={{ fontFamily: "Georgia, serif", fontStyle: "italic", fontWeight: "bold" }}>C</div>
               <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", letterSpacing: "-0.02em" }}>Canto</h1>
             </div>
-            <p className="tagline">Every trail has a song</p>
-            {/* Account button — top right of header */}
+            <p className="tagline">{t("tagline")}</p>
+            {/* Account button + Language picker — top right of header */}
             <div style={{ position: "absolute", top: "16px", right: "16px", display: "flex", gap: "8px", alignItems: "center" }}>
+              <div style={{ display: "flex", gap: "2px", marginRight: "4px" }}>
+                {[
+                  { code: "en", flag: "🇬🇧" },
+                  { code: "fr", flag: "🇫🇷" },
+                  { code: "de", flag: "🇩🇪" },
+                  { code: "es", flag: "🇪🇸" },
+                ].map(l => (
+                  <button
+                    key={l.code}
+                    onClick={() => changeLang(l.code)}
+                    style={{
+                      background: lang === l.code ? "rgba(255,255,255,0.25)" : "transparent",
+                      border: "none", cursor: "pointer", fontSize: "1rem",
+                      borderRadius: "6px", padding: "3px 5px",
+                      opacity: lang === l.code ? 1 : 0.5,
+                      transition: "all 0.2s",
+                    }}
+                    title={l.code.toUpperCase()}
+                  >{l.flag}</button>
+                ))}
+              </div>
               {cantoUser ? (
                 <div style={{ position: "relative" }}>
                   <button onClick={() => setShowAccountMenu(!showAccountMenu)} style={{
@@ -4544,6 +4813,148 @@
             )}
           </div>
 
+          {/* Run Analysis */}
+          {stravaActivities && stravaActivities.length > 0 && (
+            <div className="section">
+              <div className="section-title" style={{ cursor: "pointer" }} onClick={() => setShowRunAnalysis(!showRunAnalysis)}>
+                <span className="section-icon">📊</span>
+                Run Analysis
+                <span style={{ marginLeft: "auto", fontSize: "0.8rem", color: "var(--slate-400)", fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>
+                  {showRunAnalysis ? "Hide" : "Show"}
+                </span>
+              </div>
+
+              {showRunAnalysis && (() => {
+                const runsWithSplits = stravaActivities.filter(a => a.splits && a.splits.length > 1);
+
+                // Analyze selected run
+                const analyzeRun = (run) => {
+                  if (!run || !run.splits) return null;
+                  const splits = run.splits;
+                  const avgPace = splits.reduce((s, sp) => s + sp.moving_time, 0) / splits.length;
+                  const totalDist = run.distance / 1000;
+
+                  return splits.map((sp, idx) => {
+                    const paceSecPerKm = sp.moving_time / (sp.distance / 1000);
+                    const paceMin = Math.floor(paceSecPerKm / 60);
+                    const paceSec = Math.round(paceSecPerKm % 60);
+                    const elevGrade = sp.elevation_difference / (sp.distance || 1);
+
+                    // Expected pace adjustment for elevation
+                    const elevAdj = elevGrade > 0 ? avgPace * (1 + elevGrade * 8) : avgPace * (1 + elevGrade * 3);
+                    // Fatigue factor — later splits get slightly more lenient
+                    const progress = idx / Math.max(splits.length - 1, 1);
+                    const fatigueFactor = 1 + progress * 0.04;
+                    const expectedPace = elevAdj * fatigueFactor;
+                    const expectedMin = Math.floor(expectedPace / 60);
+                    const expectedSec = Math.round(expectedPace % 60);
+
+                    const diff = sp.moving_time - expectedPace;
+                    const pctDiff = diff / expectedPace;
+                    let verdict, verdictClass;
+                    if (pctDiff < -0.05) { verdict = "Fast"; verdictClass = "too-fast"; }
+                    else if (pctDiff > 0.05) { verdict = "Slow"; verdictClass = "too-slow"; }
+                    else { verdict = "Good"; verdictClass = "good"; }
+
+                    return {
+                      km: idx + 1, paceStr: `${paceMin}:${String(paceSec).padStart(2, "0")}`,
+                      expectedStr: `${expectedMin}:${String(expectedSec).padStart(2, "0")}`,
+                      elev: sp.elevation_difference, hr: sp.average_heartrate,
+                      cadence: sp.average_cadence, verdict, verdictClass, pctDiff,
+                      recommendation: pctDiff < -0.08 ? "Ease up — save energy for later"
+                        : pctDiff < -0.03 ? "Slightly fast — manageable if intentional"
+                        : pctDiff > 0.08 ? "Push harder here — room to gain time"
+                        : pctDiff > 0.03 ? "Slightly slow — pick it up if legs allow"
+                        : "Right on pace"
+                    };
+                  });
+                };
+
+                const analysis = selectedRunForAnalysis ? analyzeRun(selectedRunForAnalysis) : null;
+
+                return (
+                  <div>
+                    <div style={{ fontSize: "0.78rem", color: "var(--slate-400)", marginBottom: "12px" }}>
+                      Select a run to see segment-by-segment pacing analysis with recommendations.
+                    </div>
+
+                    <div className="run-analysis-list">
+                      {runsWithSplits.map(run => {
+                        const distKm = (run.distance / 1000).toFixed(1);
+                        const mins = Math.floor(run.moving_time / 60);
+                        const date = run.start_date ? new Date(run.start_date).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "";
+                        return (
+                          <div
+                            key={run.id}
+                            className={`run-analysis-item ${selectedRunForAnalysis?.id === run.id ? "selected" : ""}`}
+                            onClick={() => setSelectedRunForAnalysis(selectedRunForAnalysis?.id === run.id ? null : run)}
+                          >
+                            <span className="run-name">{run.name}</span>
+                            <span className="run-meta">{distKm}km · {mins}min{date && ` · ${date}`}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {analysis && (
+                      <div style={{ overflowX: "auto" }}>
+                        <div style={{
+                          display: "flex", gap: "16px", marginBottom: "12px", fontSize: "0.78rem", flexWrap: "wrap"
+                        }}>
+                          <div style={{ background: "rgba(26,158,143,0.06)", padding: "8px 14px", borderRadius: "8px" }}>
+                            <span style={{ color: "var(--slate-400)" }}>Avg pace </span>
+                            <strong style={{ color: "var(--navy)" }}>
+                              {(() => { const avg = selectedRunForAnalysis.moving_time / (selectedRunForAnalysis.distance / 1000); return `${Math.floor(avg/60)}:${String(Math.round(avg%60)).padStart(2,"0")}`; })()}/km
+                            </strong>
+                          </div>
+                          <div style={{ background: "rgba(26,158,143,0.06)", padding: "8px 14px", borderRadius: "8px" }}>
+                            <span style={{ color: "var(--slate-400)" }}>Consistency </span>
+                            <strong style={{ color: "var(--navy)" }}>
+                              {(() => { const good = analysis.filter(a => a.verdictClass === "good").length; return `${Math.round(good/analysis.length*100)}%`; })()}
+                            </strong>
+                          </div>
+                          <div style={{ background: "rgba(228,90,59,0.06)", padding: "8px 14px", borderRadius: "8px" }}>
+                            <span style={{ color: "var(--slate-400)" }}>Too fast </span>
+                            <strong style={{ color: "var(--coral)" }}>{analysis.filter(a => a.verdictClass === "too-fast").length} km</strong>
+                          </div>
+                          <div style={{ background: "rgba(255,140,66,0.06)", padding: "8px 14px", borderRadius: "8px" }}>
+                            <span style={{ color: "var(--slate-400)" }}>Too slow </span>
+                            <strong style={{ color: "var(--amber)" }}>{analysis.filter(a => a.verdictClass === "too-slow").length} km</strong>
+                          </div>
+                        </div>
+
+                        <table className="split-table">
+                          <thead>
+                            <tr>
+                              <th>Km</th><th>Actual</th><th>Target</th><th>Elev</th>
+                              {analysis[0].hr && <th>HR</th>}
+                              <th>Verdict</th><th>Recommendation</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {analysis.map((a, i) => (
+                              <tr key={i}>
+                                <td style={{ fontWeight: 700, color: "var(--navy)" }}>{a.km}</td>
+                                <td style={{ fontWeight: 600 }}>{a.paceStr}</td>
+                                <td style={{ color: "var(--slate-400)" }}>{a.expectedStr}</td>
+                                <td style={{ color: a.elev > 0 ? "var(--coral)" : a.elev < 0 ? "var(--teal)" : "var(--slate-400)" }}>
+                                  {a.elev > 0 ? "+" : ""}{a.elev}m
+                                </td>
+                                {a.hr && <td>{a.hr}</td>}
+                                <td><span className={`pace-verdict ${a.verdictClass}`}>{a.verdict}</span></td>
+                                <td style={{ fontSize: "0.72rem", color: "var(--slate-500)" }}>{a.recommendation}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
+            </div>
+          )}
+
           {/* Race Library */}
           <div className="section">
             <div className="section-title">
@@ -4684,11 +5095,13 @@
                         {trail.type && <span className={`type-badge ${trail.type}`}>{trail.type}</span>}
                         {isUpcoming && <span className="upcoming-badge">{upcomingDate}</span>}
                       </div>
-                      <h3>{trail.name}</h3>
-                      <p className="trail-location">{trail.country && `${countryFlag(trail.country)} `}{trail.location}</p>
+                      <div className="trail-card-info">
+                        <h3>{trail.name}</h3>
+                        <p className="trail-location">{trail.country && `${countryFlag(trail.country)} `}{trail.location}</p>
+                      </div>
                       <div className="trail-stats">
                         <div className="trail-stat">
-                          <div className="trail-stat-label">Distance</div>
+                          <div className="trail-stat-label">Dist</div>
                           <div className="trail-stat-value">{trail.distance}km</div>
                         </div>
                         <div className="trail-stat">
@@ -4696,7 +5109,7 @@
                           <div className="trail-stat-value">{trail.elevGain}m</div>
                         </div>
                       </div>
-                      <ElevationSparkline profile={trail.profile} />
+                      <ElevationSparkline profile={trail.profile} width={80} height={22} />
                       <span className={`difficulty-badge difficulty-${trail.difficulty.toLowerCase()}`}>
                         {trail.difficulty}
                       </span>
