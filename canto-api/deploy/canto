@@ -1,0 +1,121 @@
+#!/bin/bash
+# ============================================================
+# canto — Management CLI
+# Place on VPS at /usr/local/bin/canto
+# Usage: canto [command]
+# ============================================================
+
+APP_DIR="/home/canto/canto-api"
+APP_NAME="canto-api"
+DB_NAME="canto"
+
+case "${1:-help}" in
+
+  status)
+    echo ""
+    echo "  ┌─ Canto Status ──────────────────────────┐"
+    echo ""
+    pm2 describe "$APP_NAME" 2>/dev/null | grep -E "status|cpu|memory|uptime|restarts" | head -6 | sed 's/^/  /'
+    echo ""
+    echo "  Database:"
+    sudo -u postgres psql -d "$DB_NAME" -t -c "SELECT 'Users: ' || COUNT(*) FROM users;" 2>/dev/null | sed 's/^/    /'
+    sudo -u postgres psql -d "$DB_NAME" -t -c "SELECT 'Playlists: ' || COUNT(*) FROM playlists;" 2>/dev/null | sed 's/^/    /'
+    sudo -u postgres psql -d "$DB_NAME" -t -c "SELECT 'Activities: ' || COUNT(*) FROM activities;" 2>/dev/null | sed 's/^/    /'
+    echo ""
+    echo "  Disk: $(df -h / | awk 'NR==2{print $3"/"$2" ("$5" used)"}')"
+    echo "  Memory: $(free -h | awk 'NR==2{print $3"/"$2}')"
+    echo ""
+    echo "  └──────────────────────────────────────────┘"
+    ;;
+
+  logs)
+    pm2 logs "$APP_NAME" --lines "${2:-50}"
+    ;;
+
+  restart)
+    echo "Restarting Canto API..."
+    pm2 restart "$APP_NAME"
+    sleep 2
+    curl -sf http://localhost:3001/api/health | python3 -m json.tool 2>/dev/null || echo "⚠ Health check failed"
+    ;;
+
+  stop)
+    echo "Stopping Canto API..."
+    pm2 stop "$APP_NAME"
+    ;;
+
+  start)
+    echo "Starting Canto API..."
+    pm2 start "$APP_NAME" 2>/dev/null || pm2 start "$APP_DIR/src/server.js" --name "$APP_NAME" --max-memory-restart 300M
+    ;;
+
+  deploy)
+    echo "Deploying latest code..."
+    cd "$APP_DIR"
+    bash deploy/02-deploy.sh --local
+    ;;
+
+  backup)
+    bash "$APP_DIR/deploy/03-backup.sh"
+    ;;
+
+  migrate)
+    echo "Running migrations..."
+    cd "$APP_DIR" && node scripts/migrate.js
+    ;;
+
+  seed)
+    echo "Seeding database..."
+    cd "$APP_DIR" && node scripts/seed.js
+    ;;
+
+  db)
+    echo "Opening PostgreSQL console..."
+    sudo -u postgres psql "$DB_NAME"
+    ;;
+
+  env)
+    echo "Opening .env file..."
+    "${EDITOR:-nano}" "$APP_DIR/.env"
+    echo "Restart needed? Run: canto restart"
+    ;;
+
+  ssl)
+    echo "Renewing SSL certificate..."
+    certbot renew
+    systemctl reload nginx
+    ;;
+
+  nginx)
+    echo "Testing & reloading Nginx..."
+    nginx -t && systemctl reload nginx && echo "✔ Nginx reloaded"
+    ;;
+
+  monitor)
+    pm2 monit
+    ;;
+
+  help|*)
+    echo ""
+    echo "  canto — Canto API Management"
+    echo ""
+    echo "  Usage: canto <command>"
+    echo ""
+    echo "  Commands:"
+    echo "    status    Show app status, DB stats, disk/memory"
+    echo "    logs      View application logs (canto logs 100)"
+    echo "    restart   Restart the API server"
+    echo "    stop      Stop the API server"
+    echo "    start     Start the API server"
+    echo "    deploy    Pull latest code and redeploy"
+    echo "    backup    Run database backup now"
+    echo "    migrate   Run pending database migrations"
+    echo "    seed      Seed database with trail data"
+    echo "    db        Open PostgreSQL console"
+    echo "    env       Edit environment variables"
+    echo "    ssl       Renew SSL certificate"
+    echo "    nginx     Test and reload Nginx config"
+    echo "    monitor   Open pm2 real-time monitor"
+    echo ""
+    ;;
+esac
