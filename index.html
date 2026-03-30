@@ -1289,6 +1289,123 @@
         padding: 20px;
       }
     }
+
+    /* ══════ CANTO V2 — Run Timeline & Intelligence ══════ */
+    .run-timeline { display: flex; flex-direction: column; gap: 6px; }
+    .run-timeline-item {
+      display: grid; grid-template-columns: 48px 1fr auto; gap: 12px; align-items: center;
+      padding: 12px 16px; border-radius: 10px; cursor: pointer;
+      border: 1px solid transparent; transition: all 0.2s;
+      background: white;
+    }
+    .run-timeline-item:hover { border-color: var(--stone-200); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .run-timeline-item.selected { border-color: var(--ember); background: rgba(224,78,42,0.03); }
+    .run-timeline-date {
+      font-size: 0.68rem; text-align: center; color: var(--stone-400); line-height: 1.3;
+    }
+    .run-timeline-date .day { font-size: 1.1rem; font-weight: 700; color: var(--ridge); display: block; }
+    .run-timeline-info h4 { margin: 0; font-size: 0.88rem; font-weight: 600; color: var(--ridge); }
+    .run-timeline-info .run-meta-line {
+      font-size: 0.75rem; color: var(--stone-400); margin-top: 2px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .run-timeline-score {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+    }
+    .run-score-circle {
+      width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 700; color: white;
+    }
+    .run-score-label { font-size: 0.6rem; color: var(--stone-400); }
+
+    /* Run Intelligence Panel */
+    .ri-panel { margin-top: 16px; animation: fadeIn 0.3s ease; }
+    .ri-insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
+    .ri-insight {
+      padding: 12px; border-radius: 10px; background: rgba(15,15,19,0.02);
+      border: 1px solid rgba(15,15,19,0.04);
+    }
+    .ri-insight .label { font-size: 0.68rem; color: var(--stone-400); text-transform: uppercase; letter-spacing: 0.3px; }
+    .ri-insight .value { font-size: 1rem; font-weight: 700; margin-top: 4px; }
+    .ri-insight .detail { font-size: 0.72rem; color: var(--stone-500); margin-top: 2px; }
+    .ri-verdict-box {
+      padding: 16px; border-radius: 10px; margin-bottom: 16px;
+      border-left: 4px solid var(--ember); background: rgba(224,78,42,0.03);
+    }
+    .ri-verdict-box p { margin: 0; font-size: 0.85rem; line-height: 1.6; color: var(--ridge); }
+    .ri-verdict-box .verdict-title { font-weight: 700; color: var(--ember); margin-bottom: 4px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Pace Chart (simple CSS bar chart) */
+    .pace-chart { display: flex; align-items: flex-end; gap: 2px; height: 80px; margin: 16px 0; padding: 0 4px; }
+    .pace-bar {
+      flex: 1; min-width: 6px; border-radius: 3px 3px 0 0; transition: all 0.3s;
+      position: relative; cursor: pointer;
+    }
+    .pace-bar:hover { opacity: 0.8; }
+    .pace-bar .bar-tooltip {
+      display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+      background: var(--ridge); color: white; padding: 3px 6px; border-radius: 4px;
+      font-size: 0.6rem; white-space: nowrap; margin-bottom: 4px;
+    }
+    .pace-bar:hover .bar-tooltip { display: block; }
+
+    /* Cross-run comparison */
+    .ri-trend { display: flex; align-items: center; gap: 6px; margin-top: 12px; padding: 10px 14px; border-radius: 8px; background: rgba(14,165,160,0.04); }
+    .ri-trend .trend-arrow { font-size: 1.2rem; }
+    .ri-trend .trend-text { font-size: 0.78rem; color: var(--ridge); }
+
+    /* Plan Simulator CTA */
+    .plan-sim-cta {
+      display: flex; gap: 8px; margin-top: 16px;
+    }
+    .plan-sim-cta button {
+      flex: 1; padding: 12px; border-radius: 10px; font-weight: 700;
+      font-size: 0.85rem; cursor: pointer; transition: all 0.2s; border: none;
+    }
+    .btn-optimize {
+      background: linear-gradient(135deg, var(--ember), #e85d04); color: white;
+    }
+    .btn-optimize:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(224,78,42,0.3); }
+    .btn-playlist {
+      background: linear-gradient(135deg, #1DB954, #1ed760); color: white;
+    }
+    .btn-playlist:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(30,215,96,0.3); }
+
+    /* Energy Phase Badges */
+    .energy-phase {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 10px; font-size: 0.65rem; font-weight: 600;
+    }
+    .energy-warmup { background: rgba(14,165,160,0.1); color: var(--glacier); }
+    .energy-cruise { background: rgba(230,168,23,0.1); color: var(--gold-dark); }
+    .energy-effort { background: rgba(224,78,42,0.1); color: var(--ember); }
+    .energy-recovery { background: rgba(14,165,160,0.08); color: var(--glacier-dark); }
+    .energy-finish { background: rgba(224,78,42,0.15); color: var(--ember-dark); }
+
+    /* Onboarding empty state */
+    .onboarding-box {
+      text-align: center; padding: 40px 24px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(224,78,42,0.03), rgba(14,165,160,0.03));
+      border: 1px dashed var(--stone-200);
+    }
+    .onboarding-box h3 { margin: 0 0 8px; font-size: 1.1rem; color: var(--ridge); }
+    .onboarding-box p { margin: 0 0 20px; font-size: 0.85rem; color: var(--stone-500); }
+    .onboarding-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .onboarding-actions button {
+      padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.85rem;
+      cursor: pointer; border: none; transition: all 0.2s;
+    }
+
+    /* v2b flow refinements */
+    .btn-optimize:hover { transform: translateY(-1px); }
+    .plan-sim-cta button:active { transform: translateY(0); }
+
+    /* v2c compact overrides */
+    .section { margin-bottom: 16px; }
+    .trail-search-bar { margin-bottom: 10px; }
+    .trail-search-input { padding: 10px 14px 10px 36px; font-size: 0.82rem; }
+    .flat-run-section { margin-top: 8px; }
+    .flat-run-header h3 { font-size: 0.82rem; }
   </style>
   <!-- Supabase JS Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -1307,7 +1424,7 @@
     // ============ INTERNATIONALIZATION ============
     const TRANSLATIONS = {
       en: {
-        tagline: "Every trail has a song.",
+        tagline: "Every run tells a story.",
         signIn: "Sign In", signOut: "Sign Out", connections: "Connections",
         runningProfile: "Your Running Profile", raceLibrary: "Race Library",
         runAnalysis: "Run Analysis", show: "Show", hide: "Hide",
@@ -1341,7 +1458,7 @@
         howItWorksText: "Import a few of your runs and Canto learns how you move — your pace on hills, your natural cadence, when you fade. Then it builds a plan and a playlist that fit you exactly.",
       },
       fr: {
-        tagline: "Chaque sentier a sa chanson.",
+        tagline: "Chaque sortie raconte une histoire.",
         signIn: "Connexion", signOut: "Déconnexion", connections: "Connexions",
         runningProfile: "Votre Profil de Course", raceLibrary: "Bibliothèque de Courses",
         runAnalysis: "Analyse de Course", show: "Afficher", hide: "Masquer",
@@ -1375,7 +1492,7 @@
         howItWorksText: "Importez quelques courses et Canto apprend votre façon de courir — votre allure en côte, votre cadence naturelle, quand vous ralentissez. Puis il crée un plan et une playlist qui vous correspondent parfaitement.",
       },
       de: {
-        tagline: "Jeder Trail hat seinen Song.",
+        tagline: "Jeder Lauf erzählt eine Geschichte.",
         signIn: "Anmelden", signOut: "Abmelden", connections: "Verbindungen",
         runningProfile: "Dein Laufprofil", raceLibrary: "Rennen-Bibliothek",
         runAnalysis: "Laufanalyse", show: "Anzeigen", hide: "Ausblenden",
@@ -1409,7 +1526,7 @@
         howItWorksText: "Importiere einige Läufe und Canto lernt wie du läufst — dein Tempo bergauf, deine natürliche Kadenz, wann du nachlässt. Dann erstellt es einen Plan und eine Playlist, die genau zu dir passen.",
       },
       es: {
-        tagline: "Cada sendero tiene su canción.",
+        tagline: "Cada carrera cuenta una historia.",
         signIn: "Iniciar sesión", signOut: "Cerrar sesión", connections: "Conexiones",
         runningProfile: "Tu Perfil de Carrera", raceLibrary: "Biblioteca de Carreras",
         runAnalysis: "Análisis de Carrera", show: "Mostrar", hide: "Ocultar",
@@ -2475,11 +2592,362 @@
         };
       },
 
+
+      // ═══════════════════════════════════════════════════════════
+      // SmartEstimator — Similarity-matching race time prediction
+      // ═══════════════════════════════════════════════════════════
+      smartEstimate(activities, targetProfile, targetDistKm) {
+        if (!activities || activities.length < 2 || !targetProfile || targetProfile.length < 2) return null;
+
+        // ── Step 1: Compute terrain fingerprint for each run ──
+        const runFingerprints = activities
+          .filter(a => a.splits && a.splits.length >= 2)
+          .map(act => {
+            const distKm = act.distance / 1000;
+            const dPlus = act.total_elevation_gain || 0;
+            const dPlusPerKm = dPlus / Math.max(distKm, 0.1);
+
+            // Split-level grade stats
+            const grades = act.splits.map(s => (s.elevation_difference || 0) / Math.max(s.distance, 1));
+            const avgGrade = grades.reduce((a, b) => a + b, 0) / grades.length;
+            const gradeVar = grades.reduce((a, g) => a + Math.pow(g - avgGrade, 2), 0) / grades.length;
+            const maxGrade = Math.max(...grades.map(Math.abs));
+            const uphillRatio = grades.filter(g => g > 0.02).length / grades.length;
+            const downhillRatio = grades.filter(g => g < -0.02).length / grades.length;
+            const flatRatio = 1 - uphillRatio - downhillRatio;
+
+            // Pace stats
+            const paces = act.splits.map(s => s.moving_time / (s.distance / 1000));
+            const avgPace = paces.reduce((a, b) => a + b, 0) / paces.length;
+
+            // Date for recency weighting
+            const runDate = act.start_date ? new Date(act.start_date) : new Date(0);
+
+            return {
+              id: act.id,
+              distKm,
+              dPlusPerKm,
+              avgGrade,
+              gradeVar,
+              maxGrade,
+              uphillRatio,
+              downhillRatio,
+              flatRatio,
+              avgPace,
+              runDate,
+              dPlus,
+              splits: act.splits,
+            };
+          });
+
+        if (runFingerprints.length === 0) return null;
+
+        // ── Step 2: Compute target race fingerprint ──
+        const targetSegDist = targetDistKm / (targetProfile.length - 1);
+        const targetGrades = [];
+        let targetDPlus = 0;
+        for (let i = 0; i < targetProfile.length - 1; i++) {
+          const elevDiff = targetProfile[i + 1] - targetProfile[i];
+          const grade = elevDiff / (targetSegDist * 1000);
+          targetGrades.push(grade);
+          if (elevDiff > 0) targetDPlus += elevDiff;
+        }
+        const tAvgGrade = targetGrades.reduce((a, b) => a + b, 0) / targetGrades.length;
+        const tGradeVar = targetGrades.reduce((a, g) => a + Math.pow(g - tAvgGrade, 2), 0) / targetGrades.length;
+        const tMaxGrade = Math.max(...targetGrades.map(Math.abs));
+        const tDPlusPerKm = targetDPlus / Math.max(targetDistKm, 0.1);
+        const tUphillRatio = targetGrades.filter(g => g > 0.02).length / targetGrades.length;
+        const tDownhillRatio = targetGrades.filter(g => g < -0.02).length / targetGrades.length;
+        const tFlatRatio = 1 - tUphillRatio - tDownhillRatio;
+
+        const target = { dPlusPerKm: tDPlusPerKm, avgGrade: tAvgGrade, gradeVar: tGradeVar, maxGrade: tMaxGrade, uphillRatio: tUphillRatio, downhillRatio: tDownhillRatio, flatRatio: tFlatRatio, distKm: targetDistKm };
+
+        // ── Step 3: Similarity scoring ──
+        // Weighted euclidean distance across terrain features
+        const weights = { dPlusPerKm: 3.0, gradeVar: 2.0, maxGrade: 1.5, uphillRatio: 2.0, flatRatio: 1.0, distKm: 1.0 };
+
+        // Normalize features by range across all runs + target
+        const allFP = [...runFingerprints, target];
+        const normalize = (key) => {
+          const vals = allFP.map(f => f[key]);
+          const min = Math.min(...vals);
+          const max = Math.max(...vals);
+          const range = max - min || 1;
+          return (v) => (v - min) / range;
+        };
+        const norms = {};
+        Object.keys(weights).forEach(k => { norms[k] = normalize(k); });
+
+        const scored = runFingerprints.map(fp => {
+          let dist = 0;
+          Object.keys(weights).forEach(k => {
+            const d = norms[k](fp[k]) - norms[k](target[k]);
+            dist += weights[k] * d * d;
+          });
+          return { ...fp, similarity: Math.sqrt(dist) };
+        });
+
+        scored.sort((a, b) => a.similarity - b.similarity);
+
+        // Take top N most similar (at least 2, up to 5, or 30% of all runs)
+        const topN = Math.max(2, Math.min(5, Math.ceil(runFingerprints.length * 0.3)));
+        const similar = scored.slice(0, topN);
+
+        // ── Step 4: Form progression ──
+        // Compare recent runs (last 30 days) vs older runs on flat-equivalent pace
+        const now = new Date();
+        const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+        const ninetyDaysAgo = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
+
+        const recent = runFingerprints.filter(f => f.runDate >= thirtyDaysAgo);
+        const older = runFingerprints.filter(f => f.runDate < thirtyDaysAgo && f.runDate >= ninetyDaysAgo);
+
+        let formFactor = 1.0; // 1.0 = no change, <1.0 = faster, >1.0 = slower
+        if (recent.length >= 2 && older.length >= 2) {
+          // Use flat-equivalent pace (energy-cost normalized) for fair comparison
+          const flatEquivPace = (fp) => {
+            const flatCost = 3.6; // Minetti flat cost J/kg/m
+            const gradeCost = fp.avgGrade !== 0 ? (155.4*Math.pow(fp.avgGrade,5) - 30.4*Math.pow(fp.avgGrade,4) - 43.3*Math.pow(fp.avgGrade,3) + 46.3*Math.pow(fp.avgGrade,2) + 19.5*fp.avgGrade + 3.6) : flatCost;
+            return fp.avgPace * (flatCost / Math.max(gradeCost, 1));
+          };
+          const recentAvg = recent.reduce((a, f) => a + flatEquivPace(f), 0) / recent.length;
+          const olderAvg = older.reduce((a, f) => a + flatEquivPace(f), 0) / older.length;
+          formFactor = recentAvg / olderAvg;
+          // Clamp to ±20% max adjustment
+          formFactor = Math.max(0.8, Math.min(1.2, formFactor));
+        }
+
+        // ── Step 5: Smart estimate ──
+        // Weighted average pace from similar runs, adjusted for
+        // distance diff, terrain diff via Minetti, and form progression
+
+        const flatCost = 3.6;
+        const targetAvgCost = targetGrades.reduce((sum, g) => {
+          return sum + (155.4*Math.pow(g,5) - 30.4*Math.pow(g,4) - 43.3*Math.pow(g,3) + 46.3*Math.pow(g,2) + 19.5*g + 3.6);
+        }, 0) / targetGrades.length;
+
+        let weightedPaceSum = 0;
+        let weightSum = 0;
+
+        similar.forEach(fp => {
+          // Similarity weight (inverse of distance, with minimum floor)
+          const simWeight = 1 / (fp.similarity + 0.1);
+
+          // Recency weight (more recent = higher weight)
+          const daysSince = (now - fp.runDate) / (1000 * 60 * 60 * 24);
+          const recencyWeight = Math.exp(-daysSince / 180); // half-life ~180 days
+
+          // Normalize this run's pace to flat-equivalent
+          const runAvgCost = fp.avgGrade !== 0
+            ? (155.4*Math.pow(fp.avgGrade,5) - 30.4*Math.pow(fp.avgGrade,4) - 43.3*Math.pow(fp.avgGrade,3) + 46.3*Math.pow(fp.avgGrade,2) + 19.5*fp.avgGrade + 3.6)
+            : flatCost;
+          const flatEquivPace = fp.avgPace * (flatCost / Math.max(runAvgCost, 1));
+
+          // Re-project onto target terrain
+          const projectedPace = flatEquivPace * (targetAvgCost / flatCost);
+
+          // Distance scaling: longer races are ~2% slower per 10km extra
+          const distRatio = targetDistKm / Math.max(fp.distKm, 1);
+          const distScaling = 1 + Math.max(0, (distRatio - 1)) * 0.02 * 10;
+
+          const adjustedPace = projectedPace * distScaling * formFactor;
+          const w = simWeight * recencyWeight;
+          weightedPaceSum += adjustedPace * w;
+          weightSum += w;
+        });
+
+        const estimatedPace = weightSum > 0 ? weightedPaceSum / weightSum : null;
+        if (!estimatedPace) return null;
+
+        const estimatedTimeSec = estimatedPace * targetDistKm;
+
+        return {
+          estimatedPace: Math.round(estimatedPace),
+          estimatedTimeSec: Math.round(estimatedTimeSec),
+          formFactor: Math.round(formFactor * 1000) / 1000,
+          formLabel: formFactor < 0.96 ? "improving" : formFactor > 1.04 ? "declining" : "stable",
+          similarRunCount: similar.length,
+          similarRuns: similar.map(s => ({
+            id: s.id,
+            distKm: s.distKm,
+            dPlus: s.dPlus,
+            avgPace: s.avgPace,
+            similarity: Math.round(s.similarity * 100) / 100,
+            date: s.runDate,
+          })),
+          confidence: similar.length >= 3 && similar[0].similarity < 0.5 ? "high" : similar[0].similarity < 1.0 ? "medium" : "low",
+        };
+      },
+
       // Format pace (sec/km) to min:ss string
       formatPace(secPerKm) {
         const min = Math.floor(secPerKm / 60);
         const sec = Math.round(secPerKm % 60);
         return `${min}:${sec.toString().padStart(2, "0")}`;
+      },
+    };
+
+
+    // ============ CANTO V2: RUN INTELLIGENCE ============
+    const RunIntelligence = {
+      // Classify pacing strategy
+      classifyPacing(splits) {
+        if (!splits || splits.length < 3) return { type: "unknown", label: "Not enough data", score: 0 };
+        const n = splits.length;
+        const firstThird = splits.slice(0, Math.ceil(n/3));
+        const lastThird = splits.slice(-Math.ceil(n/3));
+        const avgFirst = firstThird.reduce((s,sp) => s + sp.moving_time/(sp.distance/1000), 0) / firstThird.length;
+        const avgLast = lastThird.reduce((s,sp) => s + sp.moving_time/(sp.distance/1000), 0) / lastThird.length;
+        const diff = (avgLast - avgFirst) / avgFirst;
+
+        if (diff > 0.08) return { type: "positive", label: "Positive split", desc: "Started fast, slowed down", color: "var(--ember)" };
+        if (diff < -0.05) return { type: "negative", label: "Negative split", desc: "Built up speed progressively", color: "var(--green-500)" };
+        if (Math.abs(diff) <= 0.05) return { type: "even", label: "Even split", desc: "Consistent pacing throughout", color: "var(--glacier)" };
+        return { type: "erratic", label: "Variable", desc: "Inconsistent pacing", color: "var(--gold)" };
+      },
+
+      // Calculate consistency score (0-100)
+      consistencyScore(splits) {
+        if (!splits || splits.length < 2) return 0;
+        const paces = splits.map(s => s.moving_time / (s.distance / 1000));
+        const avg = paces.reduce((a,b) => a+b,0) / paces.length;
+        const variance = paces.reduce((a,p) => a + Math.pow(p - avg, 2), 0) / paces.length;
+        const cv = Math.sqrt(variance) / avg; // coefficient of variation
+        return Math.round(Math.max(0, Math.min(100, 100 * (1 - cv * 5))));
+      },
+
+      // Compute effort-adjusted pace per split (normalizes for terrain)
+      effortAdjustedPace(splits) {
+        return splits.map((sp, idx) => {
+          const grade = (sp.elevation_difference || 0) / sp.distance;
+          const flatCost = PerformanceLab.energyCost(0);
+          const gradeCost = PerformanceLab.energyCost(grade);
+          const rawPace = sp.moving_time / (sp.distance / 1000);
+          const adjustedPace = rawPace * (flatCost / gradeCost); // normalize to flat equivalent
+          return { km: idx + 1, rawPace, adjustedPace, grade, hr: sp.average_heartrate, elev: sp.elevation_difference };
+        });
+      },
+
+      // Detect HR drift (cardiac drift = fatigue indicator)
+      hrDrift(splits) {
+        const withHR = splits.filter(s => s.average_heartrate > 0);
+        if (withHR.length < 4) return null;
+        const half = Math.floor(withHR.length / 2);
+        const firstHalf = withHR.slice(0, half);
+        const secondHalf = withHR.slice(half);
+        const avgFirst = firstHalf.reduce((a,s) => a + s.average_heartrate, 0) / firstHalf.length;
+        const avgSecond = secondHalf.reduce((a,s) => a + s.average_heartrate, 0) / secondHalf.length;
+        const drift = ((avgSecond - avgFirst) / avgFirst) * 100;
+        return { drift: Math.round(drift * 10) / 10, avgFirst: Math.round(avgFirst), avgSecond: Math.round(avgSecond) };
+      },
+
+      // Find the "blow-up" point (where effort decouples from pace)
+      findBlowUpKm(splits) {
+        if (!splits || splits.length < 4) return null;
+        const paces = splits.map(s => s.moving_time / (s.distance / 1000));
+        const avg = paces.reduce((a,b) => a+b,0) / paces.length;
+        for (let i = 2; i < paces.length; i++) {
+          // 3 consecutive splits >8% slower than average = blow-up
+          if (paces[i] > avg * 1.08 && paces[i-1] > avg * 1.05) {
+            return i; // 0-indexed km where it started
+          }
+        }
+        return null;
+      },
+
+      // Compare this run to similar past runs
+      compareToSimilar(currentRun, allRuns) {
+        if (!allRuns || allRuns.length < 2) return null;
+        const currentDist = currentRun.distance / 1000;
+        const similar = allRuns.filter(r =>
+          r.id !== currentRun.id &&
+          Math.abs(r.distance/1000 - currentDist) < currentDist * 0.25 // within 25% distance
+        );
+        if (similar.length === 0) return null;
+
+        const currentPace = currentRun.moving_time / (currentRun.distance / 1000);
+        const avgPastPace = similar.reduce((a,r) => a + r.moving_time/(r.distance/1000), 0) / similar.length;
+        const bestPastPace = Math.min(...similar.map(r => r.moving_time/(r.distance/1000)));
+        const diff = ((currentPace - avgPastPace) / avgPastPace) * 100;
+
+        return {
+          comparedTo: similar.length,
+          currentPace, avgPastPace, bestPastPace,
+          diffPercent: Math.round(diff * 10) / 10,
+          isFaster: diff < 0,
+          isBest: currentPace <= bestPastPace,
+        };
+      },
+
+      // Generate natural language verdict
+      generateVerdict(run, splits, pacing, consistency, hrDriftData, blowUpKm, comparison) {
+        const lines = [];
+        const distKm = (run.distance / 1000).toFixed(1);
+        const avgPace = run.moving_time / (run.distance / 1000);
+        const paceStr = `${Math.floor(avgPace/60)}:${String(Math.round(avgPace%60)).padStart(2,"0")}`;
+
+        // Pacing verdict
+        if (pacing.type === "positive" && blowUpKm !== null) {
+          lines.push(`You went out too fast and hit the wall at km ${blowUpKm + 1}. Your last third was significantly slower than your first.`);
+        } else if (pacing.type === "positive") {
+          lines.push(`Positive split detected. You started strong but faded in the second half. Consider a more conservative opening.`);
+        } else if (pacing.type === "negative") {
+          lines.push(`Textbook negative split. You built up progressively and finished strong. This is exactly what elite runners aim for.`);
+        } else if (pacing.type === "even") {
+          lines.push(`Very consistent pacing throughout. Solid execution.`);
+        }
+
+        // HR drift
+        if (hrDriftData && hrDriftData.drift > 5) {
+          lines.push(`Your heart rate drifted +${hrDriftData.drift}% from the first to the second half (${hrDriftData.avgFirst} to ${hrDriftData.avgSecond} bpm), which suggests either fatigue, heat, or dehydration.`);
+        }
+
+        // Comparison
+        if (comparison) {
+          if (comparison.isBest) {
+            lines.push(`This is your best pace on a similar distance. Personal best territory.`);
+          } else if (comparison.isFaster) {
+            lines.push(`${Math.abs(comparison.diffPercent)}% faster than your average on similar runs. Good progression.`);
+          } else if (comparison.diffPercent > 3) {
+            lines.push(`${comparison.diffPercent}% slower than your average on similar runs. Could be terrain, weather, or an off day.`);
+          }
+        }
+
+        // Suggestion
+        if (pacing.type === "positive") {
+          const suggestedPace = avgPace * 1.05;
+          const sugStr = `${Math.floor(suggestedPace/60)}:${String(Math.round(suggestedPace%60)).padStart(2,"0")}`;
+          lines.push(`Next time, try starting at ${sugStr}/km instead of going out at full gas. Your overall time will likely improve.`);
+        }
+
+        return lines;
+      },
+
+      // Compute overall run score (0-100)
+      runScore(consistency, pacing, hrDriftData) {
+        let score = consistency; // base from consistency
+        if (pacing.type === "negative") score = Math.min(100, score + 10);
+        if (pacing.type === "positive") score = Math.max(0, score - 10);
+        if (hrDriftData && hrDriftData.drift > 10) score = Math.max(0, score - 5);
+        return Math.round(score);
+      },
+
+      // Get score color
+      scoreColor(score) {
+        if (score >= 80) return "var(--green-500)";
+        if (score >= 60) return "var(--glacier)";
+        if (score >= 40) return "var(--gold)";
+        return "var(--ember)";
+      },
+
+      // Assign emotional energy phase to a segment
+      getEnergyPhase(segIndex, totalSegments) {
+        const progress = segIndex / Math.max(totalSegments - 1, 1);
+        if (progress < 0.15) return { phase: "warmup", label: "Warm-up", className: "energy-warmup" };
+        if (progress < 0.40) return { phase: "cruise", label: "Cruise", className: "energy-cruise" };
+        if (progress < 0.70) return { phase: "effort", label: "Effort", className: "energy-effort" };
+        if (progress < 0.85) return { phase: "recovery", label: "Recovery", className: "energy-recovery" };
+        return { phase: "finish", label: "Finish", className: "energy-finish" };
       },
     };
 
@@ -3364,12 +3832,22 @@
       const [stravaActivities, setStravaActivities] = useState(null);
       const [personalModel, setPersonalModel] = useState(null);
       const [racePlan, setRacePlan] = useState(null);
-      const [showPerformanceLab, setShowPerformanceLab] = useState(false);
+      const [showPerformanceLab, setShowPerformanceLab] = useState(false); // v2: collapsed by default, import via timeline
       const [showRunAnalysis, setShowRunAnalysis] = useState(false);
       const [selectedRunForAnalysis, setSelectedRunForAnalysis] = useState(null);
       const [garminConnected, setGarminConnected] = useState(false);
       const [stravaApiConnected, setStravaApiConnected] = useState(false);
       const [importSources, setImportSources] = useState([]); // ["file", "strava", "garmin"]
+      const [activeView, setActiveView] = useState("timeline"); // "timeline" | "library"
+      const [selectedRunForIntel, setSelectedRunForIntel] = useState(null);
+      const [showPlanSimulator, setShowPlanSimulator] = useState(false);
+      const [planSimMode, setPlanSimMode] = useState("redo");
+        const [showAllRaces, setShowAllRaces] = useState(false);
+        const [showMusicOptions, setShowMusicOptions] = useState(false);
+        const [smartEstimate, setSmartEstimate] = useState(null);
+
+        // Auto-select best music mode
+        React.useEffect(() => { if (topSeeds && musicMode === "generic") setMusicMode("my-taste"); }, [topSeeds]); // "redo" | "new"
       const [showFaq, setShowFaq] = useState(false);
       const [openFaqIdx, setOpenFaqIdx] = useState(null);
       const [showStravaModal, setShowStravaModal] = useState(false);
@@ -3596,38 +4074,55 @@
 
       const trailElevGain = currentTrail ? currentTrail.elevGain : 0;
 
-      // Auto-set realistic default time when trail changes
-      // ~5:00/km base pace, add ~30s/km per 100m elevation gain
+      // Compute smart estimate when trail + activities change
+      React.useEffect(() => {
+        if (stravaActivities && stravaActivities.length >= 2 && currentTrail && currentTrail.profile) {
+          const est = PerformanceLab.smartEstimate(stravaActivities, currentTrail.profile, currentTrail.distance);
+          setSmartEstimate(est);
+        } else {
+          setSmartEstimate(null);
+        }
+      }, [stravaActivities, currentTrail?.id]);
+
+      // Auto-set target time: smartEstimate > personalModel > generic
       useEffect(() => {
         if (trailDistance > 0) {
-          const elevFactor = trailElevGain > 0 ? (trailElevGain / 100) * 0.5 : 0;
-          const realisticPace = 5.0 + elevFactor / trailDistance;
-          const realisticMinutes = Math.round(trailDistance * realisticPace);
+          let realisticMinutes;
+          if (smartEstimate) {
+            // Best: similarity-matched estimate with form progression
+            realisticMinutes = Math.round(smartEstimate.estimatedTimeSec / 60);
+          } else if (personalModel) {
+            const baseSec = personalModel.basePace * trailDistance;
+            const gradePenalty = trailElevGain > 0 ? (trailElevGain / 100) * 30 : 0;
+            realisticMinutes = Math.round((baseSec + gradePenalty) / 60);
+          } else {
+            const elevFactor = trailElevGain > 0 ? (trailElevGain / 100) * 0.5 : 0;
+            const realisticPace = 5.0 + elevFactor / trailDistance;
+            realisticMinutes = Math.round(trailDistance * realisticPace);
+          }
           const hrs = Math.floor(realisticMinutes / 60);
           const mins = realisticMinutes % 60;
-          setTargetPace(Math.round(realisticPace * 10) / 10);
+          const pace = realisticMinutes / trailDistance;
+          setTargetPace(Math.round(pace * 10) / 10);
           setTargetTime(realisticMinutes / 60);
           setTargetTimeHours(hrs);
           setTargetTimeMinutes(mins);
         }
-      }, [currentTrail?.id, trailDistance]);
+      }, [currentTrail?.id, trailDistance, personalModel, smartEstimate]);
 
-      // Compute race plan when personal model and trail are both available
+      // Compute race plan — use target time from H:MM inputs (which are already smart-populated)
       React.useEffect(() => {
         if (personalModel && currentTrail) {
           const distKm = currentTrail.distance;
-          let targetSec;
-          if (targetMode === "time") {
-            targetSec = (targetTimeHours * 3600) + (targetTimeMinutes * 60);
-          } else {
-            targetSec = personalModel.basePace * distKm;
+          const targetSec = (parseInt(targetTimeHours) || 0) * 3600 + (parseInt(targetTimeMinutes) || 0) * 60;
+          if (targetSec > 0) {
+            const plan = PerformanceLab.computeRacePlan(personalModel, currentTrail.profile, distKm, targetSec);
+            setRacePlan(plan);
           }
-          const plan = PerformanceLab.computeRacePlan(personalModel, currentTrail.profile, distKm, targetSec);
-          setRacePlan(plan);
         } else {
           setRacePlan(null);
         }
-      }, [personalModel, currentTrail, targetMode, targetTimeHours, targetTimeMinutes]);
+      }, [personalModel, currentTrail, targetTimeHours, targetTimeMinutes]);
 
       let paceMin = targetPace;
       let estimatedTime = 0;
@@ -4037,7 +4532,7 @@
       const handleStravaLogin = () => {
         const clientId = process.env.STRAVA_CLIENT_ID || "211688";
         const redirect = encodeURIComponent(window.location.origin + window.location.pathname);
-        window.location.href = "https://www.strava.com/oauth/authorize?client_id=" + clientId + "&response_type=code&redirect_uri=" + redirect + "&scope=read,activity:read&state=strava_sso";
+        window.location.href = "https://www.strava.com/oauth/authorize?client_id=" + clientId + "&response_type=code&redirect_uri=" + redirect + "&scope=read,activity:read&state=strava";
       };
 
       // Supabase auth state change listener
@@ -4154,15 +4649,15 @@
 
                 {/* SSO buttons */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }}>
-                  <button onClick={handleGoogleLogin} style={{
+                  <button onClick={handleGoogleLogin} disabled style={{
                     padding: "10px", borderRadius: "8px", border: "1px solid #ddd",
-                    background: "white", cursor: "pointer", fontSize: "0.85rem",
+                    background: "#f5f5f5", cursor: "not-allowed", fontSize: "0.85rem", opacity: 0.5,
                     display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
                   }}>
                     <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                    Continue with Google
+                    Google (coming soon)
                   </button>
-                  <button onClick={() => { window.location.href = "https://accounts.spotify.com/authorize?client_id=" + (localStorage.getItem("spotifyClientId") || "") + "&response_type=code&redirect_uri=" + encodeURIComponent(window.location.origin + window.location.pathname) + "&scope=user-read-private%20user-read-email&state=spotify_sso"; }} style={{
+                  <button onClick={() => { window.location.href = "https://accounts.spotify.com/authorize?client_id=" + (SPOTIFY_CLIENT_ID) + "&response_type=code&redirect_uri=" + encodeURIComponent(window.location.origin + window.location.pathname) + "&scope=user-read-private%20user-read-email&state=spotify_sso"; }} style={{
                     padding: "10px", borderRadius: "8px", border: "none",
                     background: "#1DB954", color: "white", cursor: "pointer", fontSize: "0.85rem",
                     display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontWeight: 600,
@@ -4378,137 +4873,7 @@
             </div>
           </div>
 
-          {/* Music Mode Selector */}
-          {spotifyToken && (
-            <div className="section" style={{ padding: "20px", marginBottom: "20px" }}>
-              <div className="section-title" style={{ marginBottom: "16px" }}>
-                <span className="section-icon">&#127925;</span>
-                Music Style
-              </div>
 
-              {loadingTaste && (
-                <div style={{ fontSize: "0.85rem", color: "var(--slate-600)", marginBottom: "12px" }}>
-                  Loading your listening history...
-                </div>
-              )}
-
-              {/* Mode Tabs */}
-              <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
-                {[
-                  { id: "my-taste", label: "My Taste", emoji: "&#10024;", desc: "Based on what you listen to" },
-                  { id: "mood", label: "Mood", emoji: "&#127926;", desc: "Pick a genre" },
-                  { id: "random", label: "Shuffle", emoji: "&#128256;", desc: "Random from your history" },
-                  { id: "generic", label: "Explore", emoji: "&#127758;", desc: "Discover new tracks" },
-                ].map((mode) => (
-                  <button
-                    key={mode.id}
-                    onClick={() => setMusicMode(mode.id)}
-                    disabled={mode.id !== "generic" && mode.id !== "mood" && !topSeeds}
-                    style={{
-                      flex: "1 1 auto",
-                      minWidth: "100px",
-                      padding: "10px 14px",
-                      border: musicMode === mode.id
-                        ? "1px solid var(--coral)"
-                        : "1px solid rgba(27, 27, 31, 0.1)",
-                      borderRadius: "10px",
-                      background: musicMode === mode.id
-                        ? "rgba(201, 58, 30, 0.08)"
-                        : "var(--cloud)",
-                      color: musicMode === mode.id ? "var(--navy)" : "var(--slate-600)",
-                      cursor: "pointer",
-                      textAlign: "center",
-                      transition: "all 0.2s ease",
-                      opacity: (mode.id !== "generic" && mode.id !== "mood" && !topSeeds) ? 0.35 : 1,
-                      fontSize: "0.85rem",
-                      fontWeight: musicMode === mode.id ? 600 : 400,
-                    }}
-                  >
-                    <div style={{ fontSize: "1.2rem", marginBottom: "4px" }} dangerouslySetInnerHTML={{ __html: mode.emoji }} />
-                    <div>{mode.label}</div>
-                  </button>
-                ))}
-              </div>
-
-              {/* My Taste details */}
-              {musicMode === "my-taste" && topSeeds && (
-                <div style={{ padding: "12px", background: "var(--cloud)", borderRadius: "8px" }}>
-                  <div style={{ fontSize: "0.8rem", color: "var(--slate-600)", marginBottom: "8px" }}>
-                    Recommendations seeded from your top artists: <span style={{ color: "var(--navy)", fontWeight: 600 }}>{topSeeds.artistNames.slice(0, 3).join(", ")}</span> & more
-                  </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                    {topSeeds.genres.slice(0, 8).map((genre, i) => (
-                      <span key={i} style={{
-                        padding: "3px 10px",
-                        background: "rgba(26, 158, 143, 0.08)",
-                        border: "1px solid rgba(26, 158, 143, 0.2)",
-                        borderRadius: "20px",
-                        fontSize: "0.72rem",
-                        color: "var(--teal)",
-                        textTransform: "capitalize"
-                      }}>
-                        {genre}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Mood genre picker */}
-              {musicMode === "mood" && (
-                <div>
-                  <div style={{ fontSize: "0.85rem", color: "var(--slate-600)", marginBottom: "10px" }}>
-                    Pick a mood — {topSeeds ? "tracks will match your taste within this genre" : "we'll find tracks in this genre"}
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))", gap: "8px" }}>
-                    {MOOD_GENRES.map((genre) => (
-                      <button
-                        key={genre.id}
-                        onClick={() => setSelectedMood(genre.id)}
-                        style={{
-                          padding: "10px 8px",
-                          border: selectedMood === genre.id
-                            ? "1px solid var(--teal)"
-                            : "1px solid rgba(27, 27, 31, 0.1)",
-                          borderRadius: "10px",
-                          background: selectedMood === genre.id
-                            ? "rgba(26, 158, 143, 0.08)"
-                            : "var(--cloud)",
-                          color: selectedMood === genre.id ? "var(--navy)" : "var(--slate-600)",
-                          cursor: "pointer",
-                          textAlign: "center",
-                          transition: "all 0.2s ease",
-                          fontSize: "0.85rem",
-                          fontWeight: selectedMood === genre.id ? 600 : 400,
-                        }}
-                      >
-                        <div style={{ fontSize: "1.3rem", marginBottom: "4px" }}>{genre.emoji}</div>
-                        <div>{genre.label}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Random shuffle details */}
-              {musicMode === "random" && topSeeds && (
-                <div style={{ padding: "12px", background: "var(--cloud)", borderRadius: "8px" }}>
-                  <div style={{ fontSize: "0.85rem", color: "var(--slate-600)" }}>
-                    Each segment will pull random seeds from your <span style={{ color: "var(--navy)", fontWeight: 600 }}>{topSeeds.trackIds.length} top tracks</span> — expect a wild mix across all your genres!
-                  </div>
-                </div>
-              )}
-
-              {/* Generic details */}
-              {musicMode === "generic" && (
-                <div style={{ padding: "12px", background: "var(--cloud)", borderRadius: "8px" }}>
-                  <div style={{ fontSize: "0.85rem", color: "var(--slate-600)" }}>
-                    Discover trending tracks from popular genres (electronic, rock, pop, indie).
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
 
           {/* Messages */}
           {message && (
@@ -4517,449 +4882,322 @@
             </div>
           )}
 
-          {/* Performance Lab */}
-          <div className="section">
-            <div className="section-title" style={{ cursor: "pointer" }} onClick={() => setShowPerformanceLab(!showPerformanceLab)}>
-              <span className="section-icon">🧬</span>
-              Your Running Profile
-              <span style={{ marginLeft: "auto", fontSize: "0.8rem", color: "var(--slate-400)", fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>
-                {showPerformanceLab ? "Hide" : "Show"}
-              </span>
+          {/* Compact Model Stats — replaces old Running Profile section */}
+          {personalModel && (
+            <div style={{
+              display: "flex", alignItems: "center", gap: "12px", padding: "12px 16px",
+              background: "white", borderRadius: "12px", marginBottom: "16px",
+              border: "1px solid rgba(15,15,19,0.06)", flexWrap: "wrap",
+            }}>
+              <div style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: "var(--stone-400)", whiteSpace: "nowrap" }}>Your model</div>
+              {[
+                { v: PerformanceLab.formatPace(personalModel.basePace), l: "/km" },
+                { v: personalModel.baseCadence, l: "spm" },
+                { v: personalModel.avgHR, l: "bpm" },
+                { v: personalModel.gradeCoeff > 0 ? `+${Math.round(personalModel.gradeCoeff / 10)}` : Math.round(personalModel.gradeCoeff / 10), l: "s/km/%" },
+              ].map((s, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "baseline", gap: "3px" }}>
+                  <span style={{ fontWeight: 800, fontSize: "0.88rem", color: "var(--ridge)" }}>{s.v}</span>
+                  <span style={{ fontSize: "0.6rem", color: "var(--stone-400)" }}>{s.l}</span>
+                </div>
+              ))}
+              <div style={{ marginLeft: "auto", display: "flex", gap: "6px", alignItems: "center" }}>
+                <span style={{ fontSize: "0.65rem", color: "var(--stone-400)" }}>{personalModel.totalRuns} runs</span>
+                <button
+                  style={{ background: "none", border: "1px solid var(--stone-200)", borderRadius: "5px", padding: "3px 8px", fontSize: "0.62rem", cursor: "pointer", color: "var(--stone-400)" }}
+                  onClick={() => document.getElementById("tcx-input").click()}
+                >+</button>
+              </div>
             </div>
+          )}
+          <input id="tcx-input" type="file" accept=".tcx,.fit" multiple style={{ display: "none" }}
+            onChange={(e) => {
+              const files = Array.from(e.target.files);
+              if (files.length > 0) { handleTCXFiles(files); setImportSources(prev => [...new Set([...prev, "file"])]); }
+              e.target.value = "";
+            }}
+          />
 
-            {showPerformanceLab && (
-              <div>
-                {/* Training Data Import — Multi-Source */}
-                {stravaConnected && personalModel ? (
-                  <div style={{ marginBottom: "16px" }}>
-                    <div style={{
-                      padding: "16px 20px", background: "rgba(224,78,42,0.04)",
-                      borderRadius: "12px", border: "1.5px solid var(--ember)",
-                      display: "flex", justifyContent: "space-between", alignItems: "center",
-                      marginBottom: "12px"
-                    }}>
-                      <div>
-                        <div style={{ fontWeight: 700, fontSize: "0.9rem", color: "var(--ridge)" }}>
-                          {personalModel.totalRuns} runs analyzed
-                        </div>
-                        <div style={{ fontSize: "0.75rem", color: "var(--stone-400)", marginTop: "2px", display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
-                          <span>{personalModel.totalKm}km total</span>
-                          <span style={{ opacity: 0.4 }}>·</span>
-                          <span>{personalModel.splitCount} data points</span>
-                          {importSources.length > 0 && (
-                            <>
-                              <span style={{ opacity: 0.4 }}>·</span>
-                              <span>from {importSources.join(", ")}</span>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                      <div style={{ display: "flex", gap: "8px" }}>
-                        <button
-                          style={{ background: "none", border: "1px solid var(--stone-200)", borderRadius: "6px", padding: "6px 12px", fontSize: "0.7rem", cursor: "pointer", color: "var(--stone-500)", fontWeight: 600 }}
-                          onClick={() => document.getElementById("tcx-input").click()}
-                        >
-                          + Add more
-                        </button>
-                        <button
-                          className="btn btn-danger"
-                          style={{ fontSize: "0.7rem", padding: "6px 12px" }}
-                          onClick={() => {
-                            setStravaConnected(false);
-                            setStravaActivities(null);
-                            setPersonalModel(null);
-                            setRacePlan(null);
-                            setImportSources([]);
-                            setStravaApiConnected(false);
-                            setGarminConnected(false);
-                          }}
-                        >
-                          Reset
-                        </button>
-                      </div>
-                    </div>
-                    <input
-                      id="tcx-input"
-                      type="file"
-                      accept=".tcx,.fit"
-                      multiple
-                      style={{ display: "none" }}
-                      onChange={(e) => {
-                        const files = Array.from(e.target.files);
-                        if (files.length > 0) {
-                          handleTCXFiles(files);
-                          setImportSources(prev => [...new Set([...prev, "file"])]);
-                        }
-                        e.target.value = "";
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <div style={{ marginBottom: "16px" }}>
-                    {/* Import guidance + compact file drop */}
-                    <div style={{ marginBottom: "16px" }}>
-                      {(stravaApiConnected || garminConnected) && (
-                        <div style={{
-                          padding: "10px 14px", borderRadius: "8px", marginBottom: "12px",
-                          background: "rgba(16,185,129,0.06)", fontSize: "0.78rem", color: "var(--green-600)",
-                          display: "flex", alignItems: "center", gap: "8px",
-                        }}>
-                          <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--green-500)", display: "inline-block" }} />
-                          {stravaApiConnected && "Strava"}{stravaApiConnected && garminConnected && " + "}{garminConnected && "Garmin"} connected — runs will sync automatically
-                        </div>
-                      )}
+          {/* ══════ CANTO V2: RUN TIMELINE & INTELLIGENCE ══════ */}
 
-                      <div
-                        style={{
-                          borderRadius: "10px", padding: "18px", textAlign: "center",
-                          cursor: "pointer", background: "var(--snow)",
-                          border: "1.5px dashed var(--stone-200)", transition: "all 0.25s",
-                        }}
-                        onClick={() => document.getElementById("tcx-input").click()}
-                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--stone-400)"; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--stone-200)"; }}
-                        onDragOver={(e) => { e.preventDefault(); e.currentTarget.style.borderColor = "var(--ember)"; e.currentTarget.style.background = "rgba(224,78,42,0.03)"; }}
-                        onDragLeave={(e) => { e.currentTarget.style.borderColor = "var(--stone-200)"; e.currentTarget.style.background = "var(--snow)"; }}
-                        onDrop={(e) => {
-                          e.preventDefault();
-                          e.currentTarget.style.borderColor = "var(--stone-200)";
-                          e.currentTarget.style.background = "var(--snow)";
-                          const files = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith(".tcx") || f.name.endsWith(".fit"));
-                          if (files.length === 0) { setMessage({ type: "error", text: "Drop your run files here — export from Garmin Connect or your watch app." }); return; }
-                          handleTCXFiles(files);
-                          setImportSources(prev => [...new Set([...prev, "file"])]);
-                        }}
-                      >
-                        <div style={{ fontWeight: 700, fontSize: "0.88rem", color: "var(--ridge)", marginBottom: "4px" }}>
-                          Import your runs
-                        </div>
-                        <div style={{ fontSize: "0.75rem", color: "var(--stone-400)", lineHeight: "1.5" }}>
-                          Drop files here, or connect Strava / Garmin above
-                        </div>
-                      </div>
-                      <input
-                        id="tcx-input"
-                        type="file"
-                        accept=".tcx,.fit"
-                        multiple
-                        style={{ display: "none" }}
-                        onChange={(e) => {
-                          const files = Array.from(e.target.files);
-                          if (files.length > 0) {
-                            handleTCXFiles(files);
-                            setImportSources(prev => [...new Set([...prev, "file"])]);
-                          }
-                          e.target.value = "";
-                        }}
-                      />
-                    </div>
-
-                    <div style={{ textAlign: "center" }}>
-                      <button
-                        style={{
-                          background: "none", border: "none", color: "var(--stone-400)",
-                          fontSize: "0.72rem", cursor: "pointer", textDecoration: "underline",
-                        }}
-                        onClick={() => {
-                          setStravaActivities(DEMO_STRAVA_ACTIVITIES);
-                          const model = PerformanceLab.buildPersonalModel(DEMO_STRAVA_ACTIVITIES);
-                          setPersonalModel(model);
-                          setStravaConnected(true);
-                          setImportSources(["demo"]);
-                          setMessage({ type: "success", text: "Sample data loaded. Import your own runs for personal results." });
-                        }}
-                      >
-                        or see how it works with sample data
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Personal Model Display */}
-                {personalModel && (
-                  <div style={{ marginBottom: "16px" }}>
-                    <div style={{
-                      fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase",
-                      letterSpacing: "1.5px", color: "var(--slate-400)", marginBottom: "12px"
-                    }}>
-                      How you run
-                    </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", gap: "10px" }}>
-                      {[
-                        { label: "Flat Pace", value: PerformanceLab.formatPace(personalModel.basePace), unit: "/km" },
-                        { label: "Cadence", value: personalModel.baseCadence, unit: "spm" },
-                        { label: "Avg HR", value: personalModel.avgHR, unit: "bpm" },
-                        { label: "Max HR", value: personalModel.maxHR, unit: "bpm" },
-                        { label: "HR Drift", value: `${(personalModel.hrDrift * 100).toFixed(1)}%`, unit: "per run" },
-                        { label: "Climb Cost", value: personalModel.gradeCoeff > 0 ? `+${Math.round(personalModel.gradeCoeff / 10)}` : Math.round(personalModel.gradeCoeff / 10), unit: "s/km/%" },
-                      ].map((stat, i) => (
-                        <div key={i} style={{
-                          background: "var(--cloud)", borderRadius: "10px", padding: "12px",
-                          textAlign: "center"
-                        }}>
-                          <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--navy)" }}>
-                            {stat.value}
-                          </div>
-                          <div style={{ fontSize: "0.65rem", color: "var(--slate-400)", textTransform: "uppercase", letterSpacing: "0.8px", marginTop: "2px" }}>
-                            {stat.label}
-                          </div>
-                          <div style={{ fontSize: "0.6rem", color: "var(--slate-400)" }}>
-                            {stat.unit}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Race Plan */}
-                {racePlan && currentTrail && (
-                  <div>
-                    <div style={{
-                      fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase",
-                      letterSpacing: "1.5px", color: "var(--slate-400)", marginBottom: "12px"
-                    }}>
-                      Your plan — {currentTrail.name}
-                    </div>
-
-                    {/* Summary Bar */}
-                    <div style={{
-                      display: "flex", gap: "12px", marginBottom: "16px", flexWrap: "wrap"
-                    }}>
-                      {[
-                        { label: "Est. Time", value: `${Math.floor(racePlan.totalTimeEstimate / 3600)}h${Math.round((racePlan.totalTimeEstimate % 3600) / 60).toString().padStart(2,"0")}` },
-                        { label: "Avg Pace", value: PerformanceLab.formatPace(racePlan.avgPace) + "/km" },
-                        { label: "Strategy", value: "Constant Effort" },
-                        { label: "Segments", value: racePlan.segments.length },
-                      ].map((s, i) => (
-                        <div key={i} style={{
-                          flex: "1 1 auto", padding: "10px 14px", background: "var(--cloud)",
-                          borderRadius: "8px", textAlign: "center", minWidth: "100px"
-                        }}>
-                          <div style={{ fontWeight: 800, fontSize: "0.95rem", color: "var(--navy)" }}>{s.value}</div>
-                          <div style={{ fontSize: "0.6rem", color: "var(--slate-400)", textTransform: "uppercase", letterSpacing: "0.8px" }}>{s.label}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Segment Breakdown Table */}
-                    <div style={{ overflowX: "auto" }}>
-                      <table style={{
-                        width: "100%", borderCollapse: "collapse", fontSize: "0.75rem",
-                      }}>
-                        <thead>
-                          <tr style={{ borderBottom: "2px solid var(--slate-200)" }}>
-                            {["Seg", "Grade", "Pace", "Cadence", "BPM", "HR Zone", "Arc"].map(h => (
-                              <th key={h} style={{
-                                padding: "8px 6px", textAlign: "center", fontWeight: 700,
-                                textTransform: "uppercase", letterSpacing: "0.8px", fontSize: "0.6rem",
-                                color: "var(--slate-400)"
-                              }}>{h}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {racePlan.segments.map((seg, idx) => (
-                            <tr key={idx} style={{
-                              borderBottom: "1px solid var(--slate-100)",
-                              background: seg.emotionalZone === "motivational" ? "rgba(228,90,59,0.03)" : "transparent"
-                            }}>
-                              <td style={{ padding: "8px 6px", textAlign: "center", fontWeight: 700, color: "var(--navy)" }}>
-                                {idx + 1}
-                              </td>
-                              <td style={{ padding: "8px 6px", textAlign: "center", color: seg.grade > 2 ? "var(--coral)" : seg.grade < -2 ? "var(--teal)" : "var(--slate-600)" }}>
-                                {seg.grade > 0 ? "+" : ""}{seg.grade}%
-                              </td>
-                              <td style={{ padding: "8px 6px", textAlign: "center", fontWeight: 600 }}>
-                                {PerformanceLab.formatPace(seg.paceSec)}
-                              </td>
-                              <td style={{ padding: "8px 6px", textAlign: "center" }}>
-                                {seg.cadence}
-                              </td>
-                              <td style={{ padding: "8px 6px", textAlign: "center", fontWeight: 700, color: "var(--coral)" }}>
-                                {seg.targetBpm}
-                              </td>
-                              <td style={{ padding: "8px 6px", textAlign: "center" }}>
-                                <span style={{
-                                  padding: "2px 8px", borderRadius: "10px", fontSize: "0.65rem", fontWeight: 700,
-                                  background: seg.hrZone === "Z2" ? "rgba(15,166,138,0.1)" :
-                                             seg.hrZone === "Z3" ? "rgba(45,108,223,0.1)" :
-                                             seg.hrZone === "Z4" ? "rgba(255,140,66,0.1)" : "rgba(228,90,59,0.1)",
-                                  color: seg.hrZone === "Z2" ? "var(--teal)" :
-                                         seg.hrZone === "Z3" ? "var(--accent-blue)" :
-                                         seg.hrZone === "Z4" ? "var(--amber)" : "var(--coral)"
-                                }}>
-                                  {seg.hrZone}
-                                </span>
-                              </td>
-                              <td style={{ padding: "8px 6px", textAlign: "center", fontSize: "0.65rem", color: "var(--slate-400)" }}>
-                                {seg.emotionalZone === "controlled" ? "🎯 Control" :
-                                 seg.emotionalZone === "dissociative" ? "🎧 Flow" : "🔥 Push"}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
-
-                {!personalModel && (
-                  <div style={{ textAlign: "center", padding: "20px", color: "var(--slate-400)", fontSize: "0.85rem" }}>
-                    Import a few of your runs and Canto learns how you move — your pace on hills, your natural cadence, when you fade. Then it builds a plan and a playlist that fit you exactly.
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* Run Analysis */}
-          {stravaActivities && stravaActivities.length > 0 && (
+          {/* Run Timeline — always visible */}
+          {(
             <div className="section">
-              <div className="section-title" style={{ cursor: "pointer" }} onClick={() => setShowRunAnalysis(!showRunAnalysis)}>
-                <span className="section-icon">📊</span>
-                Run Analysis
-                <span style={{ marginLeft: "auto", fontSize: "0.8rem", color: "var(--slate-400)", fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>
-                  {showRunAnalysis ? "Hide" : "Show"}
-                </span>
+              <div className="section-title">
+                <span className="section-icon">&#x1F3C3;</span>
+                Your Runs
+                {stravaActivities && <span style={{ marginLeft: "8px", fontSize: "0.72rem", fontWeight: 400, color: "var(--stone-400)" }}>{stravaActivities.length} analyzed</span>}
               </div>
 
-              {showRunAnalysis && (() => {
-                const runsWithSplits = stravaActivities.filter(a => a.splits && a.splits.length > 1);
+              {(!stravaActivities || stravaActivities.length === 0) ? (
+                <div className="onboarding-box">
+                  <h3>Start with your data</h3>
+                  <p>Connect Strava or import your runs. Every new run refines your analysis.</p>
+                  <div className="onboarding-actions">
+                    <button onClick={() => setShowStravaModal(true)} style={{ background: "var(--strava)", color: "white" }}>Connect Strava</button>
+                    <button onClick={() => setShowGarminModal(true)} style={{ background: "var(--garmin)", color: "white" }}>Import Garmin</button>
+                    <button onClick={() => {
+                      setStravaActivities(DEMO_STRAVA_ACTIVITIES);
+                      const model = PerformanceLab.buildPersonalModel(DEMO_STRAVA_ACTIVITIES);
+                      setPersonalModel(model);
+                      setStravaConnected(true);
+                      setMessage({ type: "success", text: "Demo data loaded. Connect Strava to use your real runs." });
+                    }} style={{ background: "var(--stone-700)", color: "white" }}>Try with demo data</button>
+                  </div>
+                </div>
+              ) : (
+                <div className="run-timeline">
+                  {stravaActivities.filter(a => a.splits && a.splits.length > 1).map(run => {
+                    const distKm = (run.distance / 1000).toFixed(1);
+                    const avgPace = run.moving_time / (run.distance / 1000);
+                    const paceStr = `${Math.floor(avgPace/60)}:${String(Math.round(avgPace%60)).padStart(2,"0")}`;
+                    const date = run.start_date ? new Date(run.start_date) : null;
+                    const dayStr = date ? date.getDate() : "";
+                    const monthStr = date ? date.toLocaleDateString(lang === "fr" ? "fr-FR" : "en-US", { month: "short" }) : "";
+                    const pacing = RunIntelligence.classifyPacing(run.splits);
+                    const consistency = RunIntelligence.consistencyScore(run.splits);
+                    const score = RunIntelligence.runScore(consistency, pacing, RunIntelligence.hrDrift(run.splits));
+                    const isSelected = selectedRunForIntel?.id === run.id;
 
-                // Analyze selected run
-                const analyzeRun = (run) => {
-                  if (!run || !run.splits) return null;
-                  const splits = run.splits;
-                  const avgPace = splits.reduce((s, sp) => s + sp.moving_time, 0) / splits.length;
-                  const totalDist = run.distance / 1000;
-
-                  return splits.map((sp, idx) => {
-                    const paceSecPerKm = sp.moving_time / (sp.distance / 1000);
-                    const paceMin = Math.floor(paceSecPerKm / 60);
-                    const paceSec = Math.round(paceSecPerKm % 60);
-                    const elevGrade = sp.elevation_difference / (sp.distance || 1);
-
-                    // Expected pace adjustment for elevation
-                    const elevAdj = elevGrade > 0 ? avgPace * (1 + elevGrade * 8) : avgPace * (1 + elevGrade * 3);
-                    // Fatigue factor — later splits get slightly more lenient
-                    const progress = idx / Math.max(splits.length - 1, 1);
-                    const fatigueFactor = 1 + progress * 0.04;
-                    const expectedPace = elevAdj * fatigueFactor;
-                    const expectedMin = Math.floor(expectedPace / 60);
-                    const expectedSec = Math.round(expectedPace % 60);
-
-                    const diff = sp.moving_time - expectedPace;
-                    const pctDiff = diff / expectedPace;
-                    let verdict, verdictClass;
-                    if (pctDiff < -0.05) { verdict = "Fast"; verdictClass = "too-fast"; }
-                    else if (pctDiff > 0.05) { verdict = "Slow"; verdictClass = "too-slow"; }
-                    else { verdict = "Good"; verdictClass = "good"; }
-
-                    return {
-                      km: idx + 1, paceStr: `${paceMin}:${String(paceSec).padStart(2, "0")}`,
-                      expectedStr: `${expectedMin}:${String(expectedSec).padStart(2, "0")}`,
-                      elev: sp.elevation_difference, hr: sp.average_heartrate,
-                      cadence: sp.average_cadence, verdict, verdictClass, pctDiff,
-                      recommendation: pctDiff < -0.08 ? "Ease up — save energy for later"
-                        : pctDiff < -0.03 ? "Slightly fast — manageable if intentional"
-                        : pctDiff > 0.08 ? "Push harder here — room to gain time"
-                        : pctDiff > 0.03 ? "Slightly slow — pick it up if legs allow"
-                        : "Right on pace"
-                    };
-                  });
-                };
-
-                const analysis = selectedRunForAnalysis ? analyzeRun(selectedRunForAnalysis) : null;
-
-                return (
-                  <div>
-                    <div style={{ fontSize: "0.78rem", color: "var(--slate-400)", marginBottom: "12px" }}>
-                      Select a run to see segment-by-segment pacing analysis with recommendations.
-                    </div>
-
-                    <div className="run-analysis-list">
-                      {runsWithSplits.map(run => {
-                        const distKm = (run.distance / 1000).toFixed(1);
-                        const mins = Math.floor(run.moving_time / 60);
-                        const date = run.start_date ? new Date(run.start_date).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "";
-                        return (
-                          <div
-                            key={run.id}
-                            className={`run-analysis-item ${selectedRunForAnalysis?.id === run.id ? "selected" : ""}`}
-                            onClick={() => setSelectedRunForAnalysis(selectedRunForAnalysis?.id === run.id ? null : run)}
-                          >
-                            <span className="run-name">{run.name}</span>
-                            <span className="run-meta">{distKm}km · {mins}min{date && ` · ${date}`}</span>
+                    return (
+                      <div key={run.id}>
+                        <div
+                          className={`run-timeline-item ${isSelected ? "selected" : ""}`}
+                          onClick={() => setSelectedRunForIntel(isSelected ? null : run)}
+                        >
+                          <div className="run-timeline-date">
+                            <span className="day">{dayStr}</span>
+                            {monthStr}
                           </div>
-                        );
-                      })}
-                    </div>
-
-                    {analysis && (
-                      <div style={{ overflowX: "auto" }}>
-                        <div style={{
-                          display: "flex", gap: "16px", marginBottom: "12px", fontSize: "0.78rem", flexWrap: "wrap"
-                        }}>
-                          <div style={{ background: "rgba(26,158,143,0.06)", padding: "8px 14px", borderRadius: "8px" }}>
-                            <span style={{ color: "var(--slate-400)" }}>Avg pace </span>
-                            <strong style={{ color: "var(--navy)" }}>
-                              {(() => { const avg = selectedRunForAnalysis.moving_time / (selectedRunForAnalysis.distance / 1000); return `${Math.floor(avg/60)}:${String(Math.round(avg%60)).padStart(2,"0")}`; })()}/km
-                            </strong>
+                          <div className="run-timeline-info">
+                            <h4>{run.name}</h4>
+                            <div className="run-meta-line">
+                              <span>{distKm} km</span>
+                              <span>{paceStr}/km</span>
+                              {run.total_elevation_gain > 0 && <span>+{Math.round(run.total_elevation_gain)}m</span>}
+                              {run.average_heartrate > 0 && <span>{Math.round(run.average_heartrate)} bpm</span>}
+                            </div>
                           </div>
-                          <div style={{ background: "rgba(26,158,143,0.06)", padding: "8px 14px", borderRadius: "8px" }}>
-                            <span style={{ color: "var(--slate-400)" }}>Consistency </span>
-                            <strong style={{ color: "var(--navy)" }}>
-                              {(() => { const good = analysis.filter(a => a.verdictClass === "good").length; return `${Math.round(good/analysis.length*100)}%`; })()}
-                            </strong>
-                          </div>
-                          <div style={{ background: "rgba(228,90,59,0.06)", padding: "8px 14px", borderRadius: "8px" }}>
-                            <span style={{ color: "var(--slate-400)" }}>Too fast </span>
-                            <strong style={{ color: "var(--coral)" }}>{analysis.filter(a => a.verdictClass === "too-fast").length} km</strong>
-                          </div>
-                          <div style={{ background: "rgba(255,140,66,0.06)", padding: "8px 14px", borderRadius: "8px" }}>
-                            <span style={{ color: "var(--slate-400)" }}>Too slow </span>
-                            <strong style={{ color: "var(--amber)" }}>{analysis.filter(a => a.verdictClass === "too-slow").length} km</strong>
+                          <div className="run-timeline-score">
+                            <div className="run-score-circle" style={{ background: RunIntelligence.scoreColor(score) }}>{score}</div>
+                            <div className="run-score-label">{pacing.label}</div>
                           </div>
                         </div>
 
-                        <table className="split-table">
-                          <thead>
-                            <tr>
-                              <th>Km</th><th>Actual</th><th>Target</th><th>Elev</th>
-                              {analysis[0].hr && <th>HR</th>}
-                              <th>Verdict</th><th>Recommendation</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {analysis.map((a, i) => (
-                              <tr key={i}>
-                                <td style={{ fontWeight: 700, color: "var(--navy)" }}>{a.km}</td>
-                                <td style={{ fontWeight: 600 }}>{a.paceStr}</td>
-                                <td style={{ color: "var(--slate-400)" }}>{a.expectedStr}</td>
-                                <td style={{ color: a.elev > 0 ? "var(--coral)" : a.elev < 0 ? "var(--teal)" : "var(--slate-400)" }}>
-                                  {a.elev > 0 ? "+" : ""}{a.elev}m
-                                </td>
-                                {a.hr && <td>{a.hr}</td>}
-                                <td><span className={`pace-verdict ${a.verdictClass}`}>{a.verdict}</span></td>
-                                <td style={{ fontSize: "0.72rem", color: "var(--slate-500)" }}>{a.recommendation}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
+                        {/* Run Intelligence Panel */}
+                        {isSelected && (() => {
+                          const effortData = RunIntelligence.effortAdjustedPace(run.splits);
+                          const hrDriftData = RunIntelligence.hrDrift(run.splits);
+                          const blowUpKm = RunIntelligence.findBlowUpKm(run.splits);
+                          const comparison = RunIntelligence.compareToSimilar(run, stravaActivities);
+                          const verdictLines = RunIntelligence.generateVerdict(run, run.splits, pacing, consistency, hrDriftData, blowUpKm, comparison);
+                          const maxPace = Math.max(...effortData.map(e => e.rawPace));
+                          const minPace = Math.min(...effortData.map(e => e.rawPace));
+                          const avgRunPace = run.moving_time / (run.distance / 1000);
+
+                          return (
+                            <div className="ri-panel">
+                              {/* Key Insights */}
+                              <div className="ri-insights">
+                                <div className="ri-insight">
+                                  <div className="label">Avg Pace</div>
+                                  <div className="value" style={{ color: "var(--ridge)" }}>{paceStr}/km</div>
+                                </div>
+                                <div className="ri-insight">
+                                  <div className="label">Consistency</div>
+                                  <div className="value" style={{ color: RunIntelligence.scoreColor(consistency) }}>{consistency}%</div>
+                                </div>
+                                <div className="ri-insight">
+                                  <div className="label">Strategy</div>
+                                  <div className="value" style={{ color: pacing.color }}>{pacing.label}</div>
+                                  <div className="detail">{pacing.desc}</div>
+                                </div>
+                                {hrDriftData && (
+                                  <div className="ri-insight">
+                                    <div className="label">HR Drift</div>
+                                    <div className="value" style={{ color: hrDriftData.drift > 8 ? "var(--ember)" : "var(--glacier)" }}>
+                                      {hrDriftData.drift > 0 ? "+" : ""}{hrDriftData.drift}%
+                                    </div>
+                                    <div className="detail">{hrDriftData.avgFirst} &rarr; {hrDriftData.avgSecond} bpm</div>
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* Pace Chart */}
+                              <div style={{ fontSize: "0.72rem", color: "var(--stone-400)", fontWeight: 600, marginBottom: "6px" }}>PACE BY KM</div>
+                              <div className="pace-chart">
+                                {effortData.map((d, i) => {
+                                  const paceRange = maxPace - minPace || 1;
+                                  const height = 20 + ((d.rawPace - minPace) / paceRange) * 60;
+                                  const isFast = d.rawPace < avgRunPace * 0.95;
+                                  const isSlow = d.rawPace > avgRunPace * 1.05;
+                                  const barColor = isFast ? "var(--ember)" : isSlow ? "var(--gold)" : "var(--glacier)";
+                                  const kmPaceStr = `${Math.floor(d.rawPace/60)}:${String(Math.round(d.rawPace%60)).padStart(2,"0")}`;
+                                  return (
+                                    <div key={i} className="pace-bar" style={{ height: `${height}%`, background: barColor }}>
+                                      <div className="bar-tooltip">Km {d.km}: {kmPaceStr}/km{d.elev !== 0 ? ` (${d.elev > 0 ? "+" : ""}${d.elev}m)` : ""}</div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.6rem", color: "var(--stone-400)", marginBottom: "16px" }}>
+                                <span>Km 1</span><span>Km {effortData.length}</span>
+                              </div>
+
+                              {/* Verdict */}
+                              {verdictLines.length > 0 && (
+                                <div className="ri-verdict-box">
+                                  <div className="verdict-title">Analysis</div>
+                                  {verdictLines.map((line, i) => <p key={i} style={{ marginBottom: i < verdictLines.length - 1 ? "8px" : 0 }}>{line}</p>)}
+                                </div>
+                              )}
+
+                              {/* Cross-run comparison */}
+                              {comparison && (
+                                <div className="ri-trend">
+                                  <span className="trend-arrow">{comparison.isFaster ? "\u2197" : "\u2198"}</span>
+                                  <span className="trend-text">
+                                    {comparison.isBest
+                                      ? `Personal best! Faster than all ${comparison.comparedTo} similar runs.`
+                                      : comparison.isFaster
+                                      ? `${Math.abs(comparison.diffPercent)}% faster than your average on ${comparison.comparedTo} similar runs.`
+                                      : `${comparison.diffPercent}% slower than your average on ${comparison.comparedTo} similar runs.`
+                                    }
+                                  </span>
+                                </div>
+                              )}
+
+                              {/* Split Table */}
+                              <div style={{ overflowX: "auto", marginTop: "16px" }}>
+                                <table className="split-table">
+                                  <thead>
+                                    <tr>
+                                      <th>Km</th><th>Pace</th><th>Effort*</th><th>Elev</th>
+                                      {run.splits[0]?.average_heartrate > 0 && <th>HR</th>}
+                                      <th>Status</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {effortData.map((d, i) => {
+                                      const rawStr = `${Math.floor(d.rawPace/60)}:${String(Math.round(d.rawPace%60)).padStart(2,"0")}`;
+                                      const adjStr = `${Math.floor(d.adjustedPace/60)}:${String(Math.round(d.adjustedPace%60)).padStart(2,"0")}`;
+                                      const isFast = d.rawPace < avgRunPace * 0.95;
+                                      const isSlow = d.rawPace > avgRunPace * 1.05;
+                                      return (
+                                        <tr key={i}>
+                                          <td style={{ fontWeight: 700 }}>{d.km}</td>
+                                          <td style={{ fontWeight: 600 }}>{rawStr}</td>
+                                          <td style={{ color: "var(--stone-400)" }}>{adjStr}</td>
+                                          <td style={{ color: d.elev > 0 ? "var(--ember)" : d.elev < 0 ? "var(--glacier)" : "var(--stone-400)" }}>
+                                            {d.elev > 0 ? "+" : ""}{d.elev}m
+                                          </td>
+                                          {d.hr > 0 && <td>{Math.round(d.hr)}</td>}
+                                          <td>
+                                            <span className={`pace-verdict ${isFast ? "too-fast" : isSlow ? "too-slow" : "good"}`}>
+                                              {isFast ? "Fast" : isSlow ? "Slow" : "Good"}
+                                            </span>
+                                          </td>
+                                        </tr>
+                                      );
+                                    })}
+                                  </tbody>
+                                </table>
+                                <div style={{ fontSize: "0.65rem", color: "var(--stone-400)", marginTop: "6px" }}>
+                                  * Effort = pace normalized to flat equivalent (Minetti energy cost model)
+                                </div>
+                              </div>
+
+                              {/* Action Buttons — two playlist modes */}
+                              <div style={{ marginTop: "20px" }}>
+                                <div style={{ fontSize: "0.72rem", color: "var(--stone-400)", fontWeight: 600, marginBottom: "10px", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                                  What do you want to do with this run?
+                                </div>
+                                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+
+                                  {/* Playlist for THIS run (as it happened) */}
+                                  <button className="btn-optimize" style={{ width: "100%", display: "flex", alignItems: "center", gap: "12px", padding: "14px 16px", textAlign: "left" }} onClick={() => {
+                                    const runDist = run.distance / 1000;
+                                    const elevProfile = [0];
+                                    run.splits.forEach(sp => { elevProfile.push(elevProfile[elevProfile.length-1] + (sp.elevation_difference || 0)); });
+                                    const rerunTrail = {
+                                      id: `actual-${run.id}`, name: run.name,
+                                      location: "Replay your run", distance: Math.round(runDist * 10) / 10,
+                                      elevGain: run.total_elevation_gain || 0, difficulty: "Medium",
+                                      profile: elevProfile, type: "trail",
+                                    };
+                                    // Use actual paces as target (replay mode)
+                                    const actualPace = run.moving_time / (run.distance / 1000) / 60;
+                                    setSelectedTrail(rerunTrail);
+                                    setFlatRunActive(false);
+                                    setGpxTrail(null);
+                                    setTargetPace(Math.round(actualPace * 10) / 10);
+                                    setTargetMode("pace");
+                                    setMessage({ type: "info", text: `Generating a playlist that matches your actual run. Scroll down to generate.` });
+                                    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+                                  }}>
+                                    <div style={{ fontSize: "1.2rem" }}>&#127925;</div>
+                                    <div>
+                                      <div style={{ fontWeight: 700, fontSize: "0.85rem" }}>Playlist for this run</div>
+                                      <div style={{ fontWeight: 400, fontSize: "0.72rem", opacity: 0.8, marginTop: "2px" }}>Music that matches what you actually did — same pace, same terrain</div>
+                                    </div>
+                                  </button>
+
+                                  {/* Optimized plan + playlist */}
+                                  <button style={{
+                                    width: "100%", display: "flex", alignItems: "center", gap: "12px",
+                                    padding: "14px 16px", textAlign: "left", borderRadius: "10px",
+                                    border: "2px solid var(--ember)", background: "rgba(224,78,42,0.04)",
+                                    cursor: "pointer", transition: "all 0.2s", color: "var(--ridge)",
+                                  }} onClick={() => {
+                                    const runDist = run.distance / 1000;
+                                    const elevProfile = [0];
+                                    run.splits.forEach(sp => { elevProfile.push(elevProfile[elevProfile.length-1] + (sp.elevation_difference || 0)); });
+                                    const rerunTrail = {
+                                      id: `optimized-${run.id}`, name: `Optimized: ${run.name}`,
+                                      location: "Your ideal version", distance: Math.round(runDist * 10) / 10,
+                                      elevGain: run.total_elevation_gain || 0, difficulty: "Medium",
+                                      profile: elevProfile, type: "trail",
+                                    };
+                                    setSelectedTrail(rerunTrail);
+                                    setFlatRunActive(false);
+                                    setGpxTrail(null);
+                                    setMessage({ type: "success", text: `Optimized plan loaded. Your race plan below shows the ideal pacing. Generate a playlist matched to this plan.` });
+                                    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+                                  }}>
+                                    <div style={{ fontSize: "1.2rem" }}>&#9889;</div>
+                                    <div>
+                                      <div style={{ fontWeight: 700, fontSize: "0.85rem", color: "var(--ember)" }}>Optimize &amp; build playlist</div>
+                                      <div style={{ fontWeight: 400, fontSize: "0.72rem", color: "var(--stone-500)", marginTop: "2px" }}>Corrected pacing based on your analysis — the run you could have done</div>
+                                    </div>
+                                  </button>
+
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })()}
                       </div>
-                    )}
-                  </div>
-                );
-              })()}
+                    );
+                  })}
+                </div>
+              )}
             </div>
           )}
 
-          {/* Race Library */}
+
+          
+          {/* Divider */}
+          <div style={{ display: "flex", alignItems: "center", gap: "16px", margin: "8px 0 24px", padding: "0 4px" }}>
+            <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, var(--stone-200), transparent)" }} />
+            <span style={{ fontSize: "0.75rem", color: "var(--stone-400)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1px", whiteSpace: "nowrap" }}>Plan your next race</span>
+            <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, var(--stone-200), transparent)" }} />
+          </div>
+
+          {/* Race Library — Plan a new race */}
           <div className="section">
             <div className="section-title">
               <span className="section-icon">🏔️</span>
-              Race Library
+              Pick a Race
             </div>
 
             {/* Search Bar */}
@@ -4976,21 +5214,23 @@
               </div>
             </div>
 
-            {/* Filter Chips */}
-            <div className="trail-filter-chips">
+            {/* Compact type toggle */}
+            <div style={{ display: "flex", gap: "6px", marginBottom: "12px" }}>
               {[
-                { key: "all", label: "All", count: allTrails.length },
-                { key: "road", label: "Road", count: allTrails.filter(t => t.type === "road").length },
-                { key: "trail", label: "Trail", count: allTrails.filter(t => t.type === "trail").length },
-                { key: "upcoming", label: "Upcoming", count: (() => { const now = new Date(); const m3 = new Date(now.getTime() + 90*24*60*60*1000); return allTrails.filter(t => t.date && new Date(t.date) >= now && new Date(t.date) <= m3).length; })() },
+                { key: "all", label: "All" },
+                { key: "trail", label: "Trail" },
+                { key: "road", label: "Road" },
               ].map((f) => (
                 <button
                   key={f.key}
-                  className={`filter-chip ${trailFilter === f.key ? "active" : ""}`}
                   onClick={() => setTrailFilter(f.key)}
-                >
-                  {f.label} ({f.count})
-                </button>
+                  style={{
+                    padding: "5px 14px", borderRadius: "20px", border: "none", cursor: "pointer",
+                    fontSize: "0.72rem", fontWeight: 600, transition: "all 0.2s",
+                    background: trailFilter === f.key ? "var(--ridge)" : "var(--cloud)",
+                    color: trailFilter === f.key ? "white" : "var(--stone-500)",
+                  }}
+                >{f.label}</button>
               ))}
             </div>
 
@@ -5072,54 +5312,56 @@
               </div>
             )}
 
-            {/* Trails Grid */}
+            {/* Compact Race List */}
             {filteredTrails.length > 0 ? (
-              <div className="trails-grid">
-                {filteredTrails.map((trail) => {
-                  const now = new Date();
-                  const threeMonths = new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000);
-                  const isUpcoming = trail.date && new Date(trail.date) >= now && new Date(trail.date) <= threeMonths;
-                  const upcomingDate = isUpcoming ? new Date(trail.date).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : null;
-
+              <div>
+                {filteredTrails.slice(0, showAllRaces ? 999 : 4).map((trail) => {
+                  const isActive = !flatRunActive && selectedTrail?.id === trail.id;
                   return (
                     <div
                       key={trail.id}
-                      className={`trail-card ${!flatRunActive && selectedTrail?.id === trail.id ? "selected" : ""}`}
-                      onClick={() => {
-                        setSelectedTrail(trail);
-                        setGpxTrail(null);
-                        setFlatRunActive(false);
+                      onClick={() => { setSelectedTrail(trail); setGpxTrail(null); setFlatRunActive(false); }}
+                      style={{
+                        display: "flex", alignItems: "center", gap: "12px",
+                        padding: "10px 14px", borderRadius: "10px", cursor: "pointer",
+                        marginBottom: "4px", transition: "all 0.15s",
+                        background: isActive ? "rgba(224,78,42,0.06)" : "transparent",
+                        border: isActive ? "1px solid var(--ember)" : "1px solid transparent",
                       }}
                     >
-                      <div className="trail-card-badges">
-                        {trail.type && <span className={`type-badge ${trail.type}`}>{trail.type}</span>}
-                        {isUpcoming && <span className="upcoming-badge">{upcomingDate}</span>}
-                      </div>
-                      <div className="trail-card-info">
-                        <h3>{trail.name}</h3>
-                        <p className="trail-location">{trail.country && `${countryFlag(trail.country)} `}{trail.location}</p>
-                      </div>
-                      <div className="trail-stats">
-                        <div className="trail-stat">
-                          <div className="trail-stat-label">Dist</div>
-                          <div className="trail-stat-value">{trail.distance}km</div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontWeight: 600, fontSize: "0.82rem", color: "var(--ridge)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                          {trail.country && `${countryFlag(trail.country)} `}{trail.name}
                         </div>
-                        <div className="trail-stat">
-                          <div className="trail-stat-label">Gain</div>
-                          <div className="trail-stat-value">{trail.elevGain}m</div>
+                        <div style={{ fontSize: "0.68rem", color: "var(--stone-400)", marginTop: "1px" }}>
+                          {trail.location}
                         </div>
                       </div>
-                      <ElevationSparkline profile={trail.profile} width={80} height={22} />
-                      <span className={`difficulty-badge difficulty-${trail.difficulty.toLowerCase()}`}>
-                        {trail.difficulty}
-                      </span>
+                      <div style={{ display: "flex", gap: "12px", alignItems: "center", flexShrink: 0 }}>
+                        <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "var(--ridge)" }}>{trail.distance}km</span>
+                        <span style={{ fontSize: "0.72rem", color: "var(--stone-400)" }}>+{trail.elevGain}m</span>
+                        <ElevationSparkline profile={trail.profile} width={48} height={16} />
+                      </div>
                     </div>
                   );
                 })}
+                {filteredTrails.length > 4 && (
+                  <button
+                    onClick={() => setShowAllRaces(!showAllRaces)}
+                    style={{
+                      display: "block", width: "100%", padding: "10px", marginTop: "4px",
+                      background: "none", border: "1px dashed var(--stone-200)", borderRadius: "8px",
+                      cursor: "pointer", fontSize: "0.75rem", fontWeight: 600, color: "var(--stone-400)",
+                      transition: "all 0.2s",
+                    }}
+                  >
+                    {showAllRaces ? "Show less" : `Show all ${filteredTrails.length} races`}
+                  </button>
+                )}
               </div>
             ) : (
-              <div className="no-results-message">
-                No races found matching your search. Try different keywords or adjust your filters.
+              <div style={{ padding: "16px", textAlign: "center", color: "var(--stone-400)", fontSize: "0.8rem" }}>
+                No races found. Try a different search.
               </div>
             )}
 
@@ -5180,145 +5422,98 @@
             </div>
           </div>
 
-          {/* Elevation Chart & BPM */}
+          {/* ═══ UNIFIED: Race + Target + Generate ═══ */}
           {currentTrail && (
-            <div className="section">
-              <div className="section-title">
-                <span className="section-icon">📊</span>
-                {currentTrail.name}
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "20px" }}>
-                <div>
-                  <div className="control-label">Total Distance</div>
-                  <div className="control-value">{trailDistance.toFixed(1)}km</div>
-                </div>
-                <div>
-                  <div className="control-label">Elevation Gain</div>
-                  <div className="control-value">{trailElevGain}m</div>
-                </div>
-              </div>
-              <ElevationChart profile={trailElevProfile} segments={elevSegments} />
-            </div>
-          )}
-
-          {/* Set Your Target */}
-          {currentTrail && (
-            <div className="section">
-              <div className="section-title">
-                <span className="section-icon">⏱️</span>
-                Set Your Target
-              </div>
-
-              <div className="tabs-container">
-                <button
-                  className={`tab-button ${targetMode === "pace" ? "active" : ""}`}
-                  onClick={() => setTargetMode("pace")}
-                >
-                  Target Pace
-                </button>
-                <button
-                  className={`tab-button ${targetMode === "distance-time" ? "active" : ""}`}
-                  onClick={() => setTargetMode("distance-time")}
-                >
-                  Distance + Time
-                </button>
-                <button
-                  className={`tab-button ${targetMode === "time" ? "active" : ""}`}
-                  onClick={() => setTargetMode("time")}
-                >
-                  Target Time
-                </button>
-              </div>
-
-              {targetMode === "pace" && (
-                <div className="control-group">
-                  <label className="control-label">
-                    Target Pace: <span className="control-value">{targetPace.toFixed(2)} min/km</span>
-                  </label>
-                  <input
-                    type="range"
-                    min="3"
-                    max="10"
-                    step="0.1"
-                    value={targetPace}
-                    onChange={(e) => setTargetPace(parseFloat(e.target.value))}
-                  />
-                  <div style={{ marginTop: "12px", color: "var(--slate-400)", fontSize: "0.9rem" }}>
-                    Estimated time: {(trailDistance * targetPace).toFixed(0)} min
+            <div className="section" style={{ padding: "20px" }}>
+              {/* Race header — name + key stats inline */}
+              <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 800, fontSize: "1.05rem", color: "var(--ridge)", marginBottom: "4px" }}>
+                    {currentTrail.name}
+                  </div>
+                  <div style={{ display: "flex", gap: "12px", fontSize: "0.78rem", color: "var(--stone-400)" }}>
+                    <span><strong style={{ color: "var(--ridge)" }}>{trailDistance.toFixed(1)}</strong> km</span>
+                    <span><strong style={{ color: "var(--ridge)" }}>+{trailElevGain}</strong> m</span>
+                    <span><strong style={{ color: "var(--coral)" }}>{Math.round(baseBpm)}</strong> bpm</span>
                   </div>
                 </div>
-              )}
+                <div style={{ flexShrink: 0 }}>
+                  <ElevationSparkline profile={trailElevProfile} width={120} height={36} />
+                </div>
+              </div>
 
-              {targetMode === "distance-time" && (
-                <div className="control-group">
-                  <label className="control-label">
-                    Total Time: <span className="control-value">{targetTime.toFixed(1)} hours</span>
-                  </label>
-                  <input
-                    type="range"
-                    min="0.5"
-                    max="12"
-                    step="0.25"
-                    value={targetTime}
-                    onChange={(e) => setTargetTime(parseFloat(e.target.value))}
-                  />
-                  <div style={{ marginTop: "12px", color: "var(--slate-400)", fontSize: "0.9rem" }}>
-                    Pace: {(targetTime / trailDistance).toFixed(2)} min/km
+              {/* Single target input — just H:MM */}
+              <div style={{ marginBottom: "16px" }}>
+                <div style={{ fontSize: "0.68rem", fontWeight: 600, color: "var(--stone-400)", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "8px" }}>Target time</div>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "4px", flex: 1 }}>
+                    <input
+                      type="number" min="0" max="24"
+                      value={targetTimeHours}
+                      onChange={(e) => setTargetTimeHours(e.target.value)}
+                      style={{
+                        width: "52px", padding: "10px 8px", borderRadius: "8px",
+                        border: "1.5px solid var(--stone-200)", fontSize: "1.1rem",
+                        fontWeight: 700, textAlign: "center", color: "var(--ridge)",
+                        background: "var(--snow)",
+                      }}
+                    />
+                    <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--stone-400)" }}>h</span>
+                    <input
+                      type="number" min="0" max="59"
+                      value={targetTimeMinutes}
+                      onChange={(e) => setTargetTimeMinutes(e.target.value)}
+                      style={{
+                        width: "52px", padding: "10px 8px", borderRadius: "8px",
+                        border: "1.5px solid var(--stone-200)", fontSize: "1.1rem",
+                        fontWeight: 700, textAlign: "center", color: "var(--ridge)",
+                        background: "var(--snow)",
+                      }}
+                    />
+                    <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--stone-400)" }}>min</span>
+                  </div>
+                  <div style={{ fontSize: "0.75rem", color: "var(--stone-400)", textAlign: "right" }}>
+                    <span style={{ fontWeight: 700, color: "var(--ridge)" }}>{paceMin.toFixed(1)}</span> min/km
                   </div>
                 </div>
-              )}
-
-              {targetMode === "time" && (
-                <div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "20px" }}>
-                    <div className="control-group">
-                      <label className="control-label">
-                        Hours: <span className="control-value">{targetTimeHours}</span>
-                      </label>
-                      <input
-                        type="number"
-                        min="0"
-                        max="24"
-                        value={targetTimeHours}
-                        onChange={(e) => setTargetTimeHours(e.target.value)}
-                      />
+                {smartEstimate ? (
+                  <div style={{ marginTop: "8px", padding: "8px 12px", borderRadius: "8px", background: "rgba(14,165,160,0.05)", border: "1px solid rgba(14,165,160,0.1)" }}>
+                    <div style={{ fontSize: "0.7rem", color: "var(--glacier)", fontWeight: 600, marginBottom: "2px" }}>
+                      {smartEstimate.confidence === "high" ? "High confidence" : smartEstimate.confidence === "medium" ? "Good estimate" : "Rough estimate"} from {smartEstimate.similarRunCount} similar {smartEstimate.similarRunCount === 1 ? "run" : "runs"}
                     </div>
-                    <div className="control-group">
-                      <label className="control-label">
-                        Minutes: <span className="control-value">{targetTimeMinutes}</span>
-                      </label>
-                      <input
-                        type="number"
-                        min="0"
-                        max="59"
-                        value={targetTimeMinutes}
-                        onChange={(e) => setTargetTimeMinutes(e.target.value)}
-                      />
+                    <div style={{ fontSize: "0.65rem", color: "var(--stone-400)" }}>
+                      Form: <span style={{ color: smartEstimate.formLabel === "improving" ? "var(--glacier)" : smartEstimate.formLabel === "declining" ? "var(--ember)" : "var(--stone-500)", fontWeight: 600 }}>
+                        {smartEstimate.formLabel === "improving" ? "\u2191 Improving" : smartEstimate.formLabel === "declining" ? "\u2193 Declining" : "\u2192 Stable"}
+                      </span>
+                      <span style={{ margin: "0 6px", opacity: 0.3 }}>\u00b7</span>
+                      Based on terrain similarity + recent progression
                     </div>
                   </div>
-                  <div style={{ color: "var(--slate-400)", fontSize: "0.9rem" }}>
-                    Pace: {paceMin.toFixed(2)} min/km
+                ) : personalModel ? (
+                  <div style={{ fontSize: "0.68rem", color: "var(--glacier)", marginTop: "6px", fontWeight: 500 }}>
+                    Estimated from your running profile
                   </div>
-                </div>
-              )}
-
-              <div style={{ marginTop: "20px", padding: "12px", background: "rgba(201, 58, 30, 0.06)", borderRadius: "8px" }}>
-                <div className="control-label">Base BPM for Target Pace</div>
-                <div className="control-value">{Math.round(baseBpm)} BPM</div>
+                ) : null}
               </div>
-            </div>
-          )}
 
-          {/* Generate Button */}
-          {currentTrail && (
-            <button
-              className="btn btn-primary"
-              style={{ width: "100%", padding: "16px", fontSize: "1.1rem", marginBottom: "24px" }}
-              onClick={generatePlaylistTracks}
-              disabled={loading}
-            >
-              {loading ? "Generating..." : "Generate Playlist"}
-            </button>
+              {/* Race plan auto-computes */}
+              {personalModel && racePlan ? (
+                <div style={{
+                  display: "flex", alignItems: "center", gap: "8px",
+                  padding: "10px 14px", borderRadius: "10px",
+                  background: "rgba(14,165,160,0.05)", border: "1px solid rgba(14,165,160,0.1)",
+                }}>
+                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--glacier)", flexShrink: 0 }} />
+                  <span style={{ fontSize: "0.75rem", color: "var(--glacier)", fontWeight: 600 }}>
+                    Race plan ready — {racePlan.segments.length} segments, {PerformanceLab.formatPace(racePlan.avgPace)}/km avg
+                  </span>
+                </div>
+              ) : !personalModel ? (
+                <div style={{ fontSize: "0.72rem", color: "var(--stone-400)", textAlign: "center", padding: "8px" }}>
+                  Import your runs above to get a personalized race plan
+                </div>
+              ) : null}
+            </div>
           )}
 
           {/* Race Plan — optimized pacing from personal model */}
@@ -5386,6 +5581,100 @@
                   </tbody>
                 </table>
               </div>
+            </div>
+          )}
+
+          {/* ═══ MATCH A PLAYLIST — appears after race plan ═══ */}
+          {currentTrail && (
+            <div style={{ marginBottom: "20px" }}>
+              {/* Spotify connect */}
+              {!spotifyToken && (
+                <div style={{
+                  display: "flex", alignItems: "center", gap: "10px",
+                  padding: "12px 16px", borderRadius: "12px", marginBottom: "12px",
+                  background: "rgba(30,215,96,0.06)", border: "1px solid rgba(30,215,96,0.15)",
+                }}>
+                  <span style={{ fontSize: "1rem" }}>&#127911;</span>
+                  <div style={{ flex: 1, fontSize: "0.78rem", color: "var(--ridge)" }}>
+                    <strong>Connect Spotify</strong> for a playlist matched to your taste
+                  </div>
+                  <button onClick={startSpotifyAuth} style={{
+                    padding: "6px 14px", borderRadius: "8px", border: "none",
+                    background: "#1DB954", color: "white", fontWeight: 600, fontSize: "0.75rem",
+                    cursor: "pointer",
+                  }}>Connect</button>
+                </div>
+              )}
+
+              {/* Music mode — compact inline */}
+              {spotifyToken && (
+                <div style={{ marginBottom: "12px" }}>
+                  <button
+                    onClick={() => setShowMusicOptions(!showMusicOptions)}
+                    style={{
+                      background: "none", border: "none", cursor: "pointer",
+                      fontSize: "0.72rem", color: "var(--stone-400)", padding: "4px 0",
+                      display: "flex", alignItems: "center", gap: "6px",
+                    }}
+                  >
+                    <span style={{ fontSize: "0.8rem" }}>&#127925;</span>
+                    Music: <strong style={{ color: "var(--ridge)" }}>
+                      {musicMode === "my-taste" ? "Your taste" : musicMode === "mood" ? "Mood" : musicMode === "random" ? "Shuffle" : "Explore"}
+                    </strong>
+                    <span style={{ fontSize: "0.55rem", transition: "transform 0.2s", transform: showMusicOptions ? "rotate(180deg)" : "none" }}>{"\u25BC"}</span>
+                  </button>
+                  {showMusicOptions && (
+                    <div style={{ marginTop: "8px" }}>
+                      <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+                        {[
+                          { id: "my-taste", label: "My Taste", icon: "\u2728" },
+                          { id: "mood", label: "Mood", icon: "\u266b" },
+                          { id: "random", label: "Shuffle", icon: "\ud83d\udd00" },
+                          { id: "generic", label: "Explore", icon: "\ud83c\udf0e" },
+                        ].map((mode) => (
+                          <button
+                            key={mode.id}
+                            onClick={() => { setMusicMode(mode.id); if (mode.id !== "mood") setShowMusicOptions(false); }}
+                            disabled={mode.id !== "generic" && mode.id !== "mood" && !topSeeds}
+                            style={{
+                              padding: "6px 14px", borderRadius: "20px", border: "none", cursor: "pointer",
+                              fontSize: "0.72rem", fontWeight: 600, transition: "all 0.2s",
+                              background: musicMode === mode.id ? "var(--ridge)" : "var(--cloud)",
+                              color: musicMode === mode.id ? "white" : "var(--stone-500)",
+                              opacity: (mode.id !== "generic" && mode.id !== "mood" && !topSeeds) ? 0.35 : 1,
+                            }}
+                          >{mode.icon} {mode.label}</button>
+                        ))}
+                      </div>
+                      {musicMode === "mood" && (
+                        <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginTop: "8px" }}>
+                          {MOOD_GENRES.map((genre) => (
+                            <button key={genre.id} onClick={() => setSelectedMood(genre.id)} style={{
+                              padding: "4px 12px", borderRadius: "16px", border: "none", cursor: "pointer",
+                              fontSize: "0.7rem", fontWeight: selectedMood === genre.id ? 700 : 400,
+                              background: selectedMood === genre.id ? "rgba(26,158,143,0.12)" : "var(--cloud)",
+                              color: selectedMood === genre.id ? "var(--teal)" : "var(--stone-500)",
+                            }}>{genre.emoji} {genre.label}</button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* THE button */}
+              <button
+                className="btn btn-primary"
+                style={{
+                  width: "100%", padding: "16px", fontSize: "1.05rem",
+                  borderRadius: "12px", fontWeight: 700, letterSpacing: "0.3px",
+                }}
+                onClick={generatePlaylistTracks}
+                disabled={loading}
+              >
+                {loading ? "Matching tracks..." : "\ud83c\udfb5 Match a Playlist"}
+              </button>
             </div>
           )}
 
@@ -5466,7 +5755,10 @@
                           {paceStr && <span style={{ marginLeft: "8px", color: "var(--stone-400)", fontSize: "0.72rem" }}>@ {paceStr}/km</span>}
                         </div>
                       </div>
+                      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "2px" }}>
                       <div className="track-bpm">{track.bpm} BPM</div>
+                      {(() => { const ep = RunIntelligence.getEnergyPhase(idx, generatedPlaylist.tracks.length); return <span className={`energy-phase ${ep.className}`}>{ep.label}</span>; })()}
+                    </div>
                     </div>
                   );
                 })}
