@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,122 +11,140 @@
       padding: 0;
       box-sizing: border-box;
     }
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+
+    
+
+    
 
     :root {
+      /* ── The Void: Deep cinematic blacks ── */
+      --bg: #08080C;
+      --bg-elevated: #101016;
+      --bg-card: rgba(255,255,255,0.03);
+      --bg-card-hover: rgba(255,255,255,0.055);
+      --bg-glass: rgba(255,255,255,0.04);
+
+      /* ── Light on dark ── */
+      --ridge: #EDEDF0;
+      --ridge-soft: rgba(237,237,240,0.8);
+
       /* ── Primary: Volcanic Ember ── */
       --ember: #E04E2A;
       --ember-dark: #C43A1A;
       --ember-glow: #F06840;
+      --ember-ambient: rgba(224,78,42,0.15);
+
       /* ── Secondary: Alpine Glacier ── */
-      --glacier: #0EA5A0;
-      --glacier-dark: #0C8A86;
-      --glacier-light: #14C4BE;
-      /* ── Dark: Summit Ridge ── */
-      --ridge: #0F0F13;
-      --ridge-deep: #08080B;
+      --glacier: #2DD4BF;
+      --glacier-dark: #14B8A6;
+      --glacier-light: #5EEAD4;
+
       /* ── Accent: Trail Gold ── */
-      --gold: #E6A817;
-      --gold-dark: #C48D0D;
-      /* ── Neutrals: Stone ── */
-      --stone-700: #2E2E34;
-      --stone-500: #5C5C66;
-      --stone-400: #8A8A96;
-      --stone-200: #CDCDD4;
-      --stone-100: #E8E8ED;
-      --snow: #F5F5F8;
+      --gold: #FBBF24;
+      --gold-dark: #F59E0B;
+
+      /* ── Neutrals: Stone (inverted for dark) ── */
+      --stone-700: #A1A1AA;
+      --stone-500: #71717A;
+      --stone-400: #52525B;
+      --stone-200: rgba(255,255,255,0.08);
+      --stone-100: rgba(255,255,255,0.04);
+      --snow: #18181B;
+      --cloud: #18181B;
+
       /* ── Semantic ── */
-      --green-500: #10b981;
-      --green-600: #059669;
-      --red-500: #ef4444;
-      --red-600: #dc2626;
-      /* ── Garmin ── */
-      --garmin: #007CC3;
-      --garmin-dark: #005F99;
-      /* ── Strava ── */
+      --green-500: #34D399;
+      --green-600: #10B981;
+      --red-500: #F87171;
+      --red-600: #EF4444;
+
+      /* ── Services ── */
+      --garmin: #00A3E0;
+      --garmin-dark: #0088CC;
       --strava: #FC4C02;
       --strava-dark: #E03E00;
+
       /* Legacy aliases */
       --coral: var(--ember);
       --coral-dark: var(--ember-dark);
       --teal: var(--glacier);
-      --teal-dark: var(--glacier-dark);
       --navy: var(--ridge);
-      --navy-deep: var(--ridge-deep);
       --amber: var(--gold);
       --accent-blue: var(--glacier);
       --slate-600: var(--stone-700);
       --slate-400: var(--stone-500);
       --slate-200: var(--stone-200);
       --slate-100: var(--stone-100);
-      --cloud: var(--snow);
     }
 
     body {
-      font-family: "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--snow);
+      font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
       color: var(--ridge);
       line-height: 1.6;
       min-height: 100vh;
-      padding: 20px;
+      padding: 0;
       position: relative;
-    }
-
-    /* Subtle mountain ridge silhouette as page background */
-    body::before {
-      content: "";
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 40vh;
-      background:
-        linear-gradient(to top, rgba(14,14,19,0.04) 0%, transparent 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 400' preserveAspectRatio='none'%3E%3Cpath d='M0 400 L0 280 L80 220 L160 260 L240 180 L320 200 L400 140 L480 170 L560 100 L640 130 L720 80 L800 120 L880 60 L960 110 L1040 70 L1120 130 L1200 90 L1280 160 L1360 120 L1440 180 L1440 400Z' fill='%230F0F13' fill-opacity='0.03'/%3E%3Cpath d='M0 400 L0 320 L120 280 L240 300 L360 250 L480 270 L600 220 L720 250 L840 200 L960 240 L1080 190 L1200 230 L1320 210 L1440 260 L1440 400Z' fill='%230F0F13' fill-opacity='0.02'/%3E%3C/svg%3E") no-repeat bottom center;
-      background-size: 100% 100%, 100% auto;
-      pointer-events: none;
-      z-index: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
     body > #root {
       position: relative;
-      z-index: 1;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 540px;
       margin: 0 auto;
+      padding: 0 20px;
     }
 
-    /* Header & Logo */
+    /* Header — Cinematic Gradient Mesh */
     header {
       text-align: center;
-      margin-bottom: 40px;
-      padding: 48px 20px 36px;
-      background: linear-gradient(145deg, var(--ridge) 0%, #1A1A22 50%, var(--ridge-deep) 100%);
-      border-radius: 16px;
+      margin-bottom: 0;
+      padding: 100px 20px 48px;
+      background: var(--bg);
+      border-radius: 0;
       position: relative;
       overflow: hidden;
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
     }
 
     header::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--ember), var(--gold) 40%, var(--glacier-light) 70%, var(--glacier));
+      inset: -80%;
+      background:
+        radial-gradient(ellipse 600px 400px at 25% 40%, rgba(224,78,42,0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 500px 350px at 75% 55%, rgba(45,212,191,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 50% 20%, rgba(251,191,36,0.05) 0%, transparent 70%);
+      animation: meshDrift 30s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
     }
 
     header::after {
       content: "";
       position: absolute;
-      bottom: -40%;
-      right: -10%;
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(224, 78, 42, 0.08) 0%, transparent 65%);
-      pointer-events: none;
+      bottom: 0;
+      left: 5%;
+      right: 5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(224,78,42,0.4), transparent);
+      z-index: 3;
+    }
+
+    header > * {
+      position: relative;
+      z-index: 2;
     }
 
     .logo-container {
@@ -138,51 +156,45 @@
     }
 
     .logo-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--ember);
-      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--ember) 0%, #c73a18 100%);
+      border-radius: 13px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 22px;
       font-weight: bold;
       color: white;
+      box-shadow: 0 4px 20px rgba(224,78,42,0.5), 0 0 40px rgba(224,78,42,0.2);
+      animation: logoPulse 4s ease-in-out infinite;
     }
 
     h1 {
-      font-size: 2.6rem;
-      margin-bottom: 10px;
-      color: white;
+      font-size: 3.2rem;
+      margin-bottom: 8px;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      text-transform: uppercase;
+      letter-spacing: -1.5px;
+      text-transform: none;
+      background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
     }
 
     .tagline {
-      color: var(--stone-400);
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 3.5px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      margin: 4px 0 0;
+      font-weight: 400;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
+      animation: taglineReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
     }
 
     /* Spotify Connect Bar */
-    .spotify-connect {
-      background: white;
-      border: 1px solid rgba(27, 27, 31, 0.1);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-bottom: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      box-shadow: 0 2px 8px rgba(27, 27, 31, 0.06);
-    }
-
-    .spotify-status {
+        .spotify-status {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -212,26 +224,42 @@
     }
 
     .btn {
-      padding: 11px 22px;
+      padding: 14px 28px;
       border: none;
-      border-radius: 8px;
-      font-weight: 700;
+      border-radius: 14px;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 0.85rem;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      transition: all 0.25s ease;
+      font-size: 0.95rem;
+      letter-spacing: -0.1px;
+      text-transform: none;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .btn-primary {
-      background: var(--coral);
+      background: linear-gradient(135deg, var(--ember) 0%, #c73a18 100%);
       color: white;
+      box-shadow: 0 4px 20px rgba(224,78,42,0.35), 0 0 0 1px rgba(224,78,42,0.1) inset;
+      position: relative;
+      overflow: hidden;
     }
-
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
     .btn-primary:hover {
-      background: var(--coral-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(228, 90, 59, 0.3);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 32px rgba(224,78,42,0.5), 0 0 60px rgba(224,78,42,0.15);
+    }
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+    .btn-primary:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow: 0 2px 12px rgba(224,78,42,0.4);
     }
 
     .btn-secondary {
@@ -257,28 +285,41 @@
 
     /* Section Styling */
     .section {
-      background: white;
-      border: 1px solid rgba(13, 27, 42, 0.06);
-      border-radius: 14px;
-      padding: 28px;
-      margin-bottom: 20px;
-      box-shadow: 0 1px 4px rgba(13, 27, 42, 0.04);
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.03) inset;
+      transition: border-color 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .section.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section:hover {
+      border-color: rgba(255,255,255,0.1);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06) inset;
     }
 
     .section-title {
-      font-size: 1.15rem;
+      font-size: 0.95rem;
       margin-bottom: 20px;
-      color: var(--navy);
+      color: var(--ridge);
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+      text-transform: none;
+      letter-spacing: -0.2px;
     }
 
     .section-icon {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
 
     /* GPX Import */
@@ -338,22 +379,23 @@
     .trails-grid {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 4px;
       margin-top: 12px;
-      border: 1px solid rgba(13, 27, 42, 0.08);
-      border-radius: 10px;
+      border: none;
+      border-radius: 16px;
       overflow: hidden;
     }
 
     .trail-card {
-      background: white;
-      border-bottom: 1px solid rgba(13, 27, 42, 0.06);
-      padding: 10px 14px;
+      background: rgba(0,0,0,0.1);
+      border-bottom: none;
+      padding: 12px 14px;
       cursor: pointer;
-      transition: background 0.15s ease;
+      transition: all 0.15s ease;
       display: flex;
       align-items: center;
       gap: 12px;
+      border-radius: 12px;
     }
 
     .trail-card:last-child {
@@ -361,12 +403,13 @@
     }
 
     .trail-card:hover {
-      background: rgba(13, 27, 42, 0.02);
+      background: rgba(0,0,0,0.2);
     }
 
     .trail-card.selected {
-      background: rgba(228, 90, 59, 0.04);
-      box-shadow: inset 3px 0 0 var(--coral);
+      background: rgba(224,78,42,0.06);
+      box-shadow: inset 3px 0 0 var(--ember);
+      border-radius: 0 12px 12px 0;
     }
 
     .flat-run-section {
@@ -572,17 +615,19 @@
 
     .trail-search-input {
       flex: 1;
-      padding: 10px 16px 10px 40px;
-      border: 2px solid var(--slate-200);
-      border-radius: 12px;
-      font-size: 0.95rem;
-      background: white;
-      transition: border-color 0.2s;
+      padding: 12px 16px 12px 40px;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 14px;
+      font-size: 0.88rem;
+      background: rgba(0,0,0,0.1);
+      transition: all 0.2s;
       outline: none;
     }
 
     .trail-search-input:focus {
-      border-color: var(--coral);
+      border-color: var(--ember);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(224,78,42,0.08);
     }
 
     .trail-search-icon {
@@ -602,28 +647,28 @@
     }
 
     .filter-chip {
-      padding: 6px 16px;
-      border-radius: 6px;
-      border: 1.5px solid var(--slate-200);
+      padding: 7px 16px;
+      border-radius: 20px;
+      border: 1.5px solid rgba(0,0,0,0.08);
       background: white;
       font-size: 0.72rem;
-      font-weight: 700;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
-      color: var(--slate-400);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
+      color: var(--stone-500);
+      text-transform: none;
+      letter-spacing: 0;
     }
 
     .filter-chip:hover {
-      border-color: var(--navy);
-      color: var(--navy);
+      border-color: var(--ridge);
+      color: var(--ridge);
     }
 
     .filter-chip.active {
-      background: var(--navy);
+      background: var(--ridge);
       color: white;
-      border-color: var(--navy);
+      border-color: var(--ridge);
     }
 
     .trail-card-badges {
@@ -684,9 +729,9 @@
     .run-analysis-list {
       display: flex;
       flex-direction: column;
-      gap: 0;
-      border: 1px solid rgba(13,27,42,0.08);
-      border-radius: 10px;
+      gap: 4px;
+      border: none;
+      border-radius: 16px;
       overflow: hidden;
       margin-bottom: 16px;
     }
@@ -694,18 +739,19 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 10px 14px;
-      background: white;
-      border-bottom: 1px solid rgba(13,27,42,0.06);
+      padding: 12px 14px;
+      background: rgba(0,0,0,0.1);
+      border-bottom: none;
+      border-radius: 12px;
       cursor: pointer;
       transition: background 0.15s;
       font-size: 0.82rem;
     }
     .run-analysis-item:last-child { border-bottom: none; }
-    .run-analysis-item:hover { background: rgba(13,27,42,0.02); }
-    .run-analysis-item.selected { background: rgba(26,158,143,0.05); box-shadow: inset 3px 0 0 var(--teal); }
-    .run-analysis-item .run-name { flex: 1; font-weight: 600; color: var(--navy); }
-    .run-analysis-item .run-meta { font-size: 0.72rem; color: var(--slate-400); }
+    .run-analysis-item:hover { background: rgba(0,0,0,0.2); }
+    .run-analysis-item.selected { background: rgba(14,165,160,0.06); box-shadow: inset 3px 0 0 var(--glacier); border-radius: 0 12px 12px 0; }
+    .run-analysis-item .run-name { flex: 1; font-weight: 600; color: var(--ridge); }
+    .run-analysis-item .run-meta { font-size: 0.72rem; color: var(--stone-400); }
 
     .split-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
     .split-table th {
@@ -780,8 +826,9 @@
       display: block;
       margin-bottom: 8px;
       font-weight: 600;
-      color: var(--navy);
-      font-size: 0.95rem;
+      color: var(--ridge);
+      font-size: 0.85rem;
+      letter-spacing: -0.1px;
     }
 
     .control-value {
@@ -839,19 +886,21 @@
     input[type="number"] {
       width: 100%;
       padding: 10px 12px;
-      background: var(--cloud);
-      border: 1px solid rgba(27, 27, 31, 0.12);
-      border-radius: 8px;
-      color: var(--navy);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      color: var(--ridge);
       font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s;
     }
 
     input[type="text"]:focus,
     input[type="number"]:focus {
       outline: none;
-      border-color: var(--coral);
-      background: white;
-      box-shadow: 0 0 0 3px rgba(201, 58, 30, 0.1);
+      border-color: var(--ember);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 0 0 3px rgba(224,78,42,0.12), 0 0 20px rgba(224,78,42,0.08);
     }
 
     /* Playlist Results */
@@ -898,13 +947,20 @@
     }
 
     .track-item {
-      background: var(--cloud);
-      border: 1px solid rgba(27, 27, 31, 0.06);
-      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
       padding: 12px;
       display: flex;
       gap: 12px;
       align-items: center;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .track-item:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(224,78,42,0.15);
+      box-shadow: 0 4px 20px rgba(224,78,42,0.08);
+      transform: translateX(4px);
     }
 
     .track-thumbnail {
@@ -982,6 +1038,158 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
+
+    /* ── Cinematic Animations ── */
+    @keyframes meshDrift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(40px, -25px) rotate(3deg); }
+    }
+    @keyframes titleReveal {
+      from { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    @keyframes taglineReveal {
+      from { opacity: 0; letter-spacing: 8px; }
+      to { opacity: 1; letter-spacing: 1.5px; }
+    }
+    @keyframes logoPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(224,78,42,0.5), 0 0 40px rgba(224,78,42,0.2); }
+      50% { box-shadow: 0 4px 24px rgba(224,78,42,0.6), 0 0 60px rgba(224,78,42,0.3); }
+    }
+    @keyframes heroLineDraw {
+      from { stroke-dashoffset: 1200; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes heroLineGlow {
+      0%, 100% { filter: drop-shadow(0 0 3px rgba(224,78,42,0.4)); opacity: 0.7; }
+      50% { filter: drop-shadow(0 0 8px rgba(224,78,42,0.6)); opacity: 1; }
+    }
+    @keyframes cardStagger {
+      from { opacity: 0; transform: translateY(30px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes glowBreathe {
+      0%, 100% { box-shadow: 0 0 20px rgba(224,78,42,0.15); }
+      50% { box-shadow: 0 0 35px rgba(224,78,42,0.25); }
+    }
+
+    /* ── Scroll reveal for non-section elements ── */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Hero elevation line ── */
+    .hero-elevation-line {
+      margin: 24px auto 0;
+      display: block;
+      overflow: visible;
+      filter: drop-shadow(0 0 6px rgba(224,78,42,0.3));
+    }
+    .hero-elevation-line polyline {
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+      animation: heroLineDraw 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards,
+                 heroLineGlow 4s ease-in-out 3.3s infinite;
+    }
+
+    /* ── Playlist elevation map glow ── */
+    .elevation-map-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 16px;
+    }
+    .elevation-map-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      border: 1px solid rgba(224,78,42,0.15);
+      pointer-events: none;
+    }
+    .elevation-map-wrapper svg rect {
+      transition: opacity 0.3s;
+    }
+    .elevation-map-wrapper:hover svg rect {
+      opacity: 0.9 !important;
+    }
+
+    /* ── Section title on dark ── */
+    .section-title {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      color: var(--ridge);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: -0.2px;
+    }
+
+    /* ── Run timeline items on dark ── */
+    .run-timeline-item {
+      background: rgba(255,255,255,0.02) !important;
+      border: 1px solid rgba(255,255,255,0.04) !important;
+      transition: all 0.3s !important;
+    }
+    .run-timeline-item:hover {
+      background: rgba(255,255,255,0.05) !important;
+      border-color: rgba(255,255,255,0.08) !important;
+    }
+    .run-timeline-item.selected {
+      border-color: rgba(224,78,42,0.3) !important;
+      box-shadow: 0 0 20px rgba(224,78,42,0.1) !important;
+    }
+
+    /* ── Messages on dark ── */
+    .message-info, .message-success {
+      background: rgba(45,212,191,0.08) !important;
+      border: 1px solid rgba(45,212,191,0.15) !important;
+      color: var(--glacier) !important;
+    }
+    .message-error {
+      background: rgba(224,78,42,0.08) !important;
+      border: 1px solid rgba(224,78,42,0.15) !important;
+    }
+
+    /* ── BPM phases on dark ── */
+    .bpm-phase {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Auth modal — dark glass ── */
+    .auth-modal-panel {
+      background: var(--bg-elevated) !important;
+      border: 1px solid rgba(255,255,255,0.08) !important;
+      color: var(--ridge) !important;
+    }
+
+    /* ── Run Drop Card enhancement ── */
+    .run-drop-card {
+      background: linear-gradient(135deg, #101016 0%, #0D0D12 100%) !important;
+      border: 1px solid rgba(224,78,42,0.12);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+
+    /* ── GPX dropzone ── */
+    .gpx-dropzone {
+      border-color: rgba(255,255,255,0.1) !important;
+      background: rgba(255,255,255,0.02) !important;
+    }
+
+    /* ── Container bottom padding for fixed nav ── */
+    .container {
+      padding-bottom: 80px;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -1103,11 +1311,11 @@
     footer {
       text-align: center;
       margin-top: 24px;
-      padding: 20px;
-      color: var(--slate-400);
-      font-size: 0.75rem;
+      padding: 40px 20px 80px;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
     }
 
     /* Connector Buttons */
@@ -1124,7 +1332,7 @@
       transition: all 0.25s ease;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      background: white;
+      background: rgba(255,255,255,0.04);
     }
     .connector-btn:hover {
       transform: translateY(-2px);
@@ -1298,7 +1506,7 @@
       border: 1px solid transparent; transition: all 0.2s;
       background: white;
     }
-    .run-timeline-item:hover { border-color: var(--stone-200); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .run-timeline-item:hover { border-color: var(--stone-200); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
     .run-timeline-item.selected { border-color: var(--ember); background: rgba(224,78,42,0.03); }
     .run-timeline-date {
       font-size: 0.68rem; text-align: center; color: var(--stone-400); line-height: 1.3;
@@ -1323,7 +1531,7 @@
     .ri-insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
     .ri-insight {
       padding: 12px; border-radius: 10px; background: rgba(15,15,19,0.02);
-      border: 1px solid rgba(15,15,19,0.04);
+      border: 1px solid rgba(255,255,255,0.04);
     }
     .ri-insight .label { font-size: 0.68rem; color: var(--stone-400); text-transform: uppercase; letter-spacing: 0.3px; }
     .ri-insight .value { font-size: 1rem; font-weight: 700; margin-top: 4px; }
@@ -1406,6 +1614,31 @@
     .trail-search-input { padding: 10px 14px 10px 36px; font-size: 0.82rem; }
     .flat-run-section { margin-top: 8px; }
     .flat-run-header h3 { font-size: 0.82rem; }
+  
+    /* Bottom Nav */
+    .step-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center; gap: 40px; padding: 14px 20px 18px;
+      background: rgba(8,8,12,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .step-nav-item { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+    .step-nav-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .step-nav-item.active .step-nav-dot {
+      background: var(--ember);
+      box-shadow: 0 0 12px rgba(224,78,42,0.6), 0 0 24px rgba(224,78,42,0.3);
+      transform: scale(1.3);
+    }
+    .step-nav-item.reached .step-nav-dot { background: rgba(255,255,255,0.4); }
+    .step-nav-label { font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.25); font-weight: 500; transition: color 0.3s; }
+    .step-nav-item.active .step-nav-label { color: var(--ember); font-weight: 700; }
+    .step-nav-item.locked { opacity: 0.15; cursor: default; }
+
   </style>
   <!-- Supabase JS Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -1449,7 +1682,6 @@
         pushHarder: "Push harder here — room to gain time",
         slightlySlow: "Slightly slow — pick it up if legs allow",
         rightOnPace: "Right on pace",
-        musicMode: "Music Mode", myTaste: "My Taste", mood: "Mood", random: "Random",
         bpm: "BPM", segments: "segments",
         connectStrava: "Connect Strava", connectSpotify: "Connect Spotify",
         playlistGenerated: "Playlist generated!",
@@ -1483,7 +1715,6 @@
         pushHarder: "Poussez ici — marge de progression",
         slightlySlow: "Un peu lent — accélérez si possible",
         rightOnPace: "Allure parfaite",
-        musicMode: "Mode Musique", myTaste: "Mes Goûts", mood: "Ambiance", random: "Aléatoire",
         bpm: "BPM", segments: "segments",
         connectStrava: "Connecter Strava", connectSpotify: "Connecter Spotify",
         playlistGenerated: "Playlist générée !",
@@ -1517,7 +1748,6 @@
         pushHarder: "Hier mehr geben — Zeitgewinn möglich",
         slightlySlow: "Etwas langsam — wenn möglich beschleunigen",
         rightOnPace: "Genau im Tempo",
-        musicMode: "Musik-Modus", myTaste: "Mein Geschmack", mood: "Stimmung", random: "Zufällig",
         bpm: "BPM", segments: "Segmente",
         connectStrava: "Strava verbinden", connectSpotify: "Spotify verbinden",
         playlistGenerated: "Playlist erstellt!",
@@ -1551,7 +1781,6 @@
         pushHarder: "Empuja aquí — margen para ganar tiempo",
         slightlySlow: "Un poco lento — acelera si puedes",
         rightOnPace: "Ritmo perfecto",
-        musicMode: "Modo Música", myTaste: "Mi Gusto", mood: "Estado", random: "Aleatorio",
         bpm: "BPM", segments: "segmentos",
         connectStrava: "Conectar Strava", connectSpotify: "Conectar Spotify",
         playlistGenerated: "¡Playlist generada!",
@@ -3651,6 +3880,233 @@
 
     // ============ MAIN APP ============
     // ============ RUN DROP CARD ============
+
+    // ============ PLAYLIST ELEVATION MAP (interactive hover-to-song) ============
+    function PlaylistElevationMap({ profile, segments, tracks, racePlanSegs }) {
+      if (!profile || profile.length < 2 || !segments || !tracks) return null;
+
+      const [hoveredIdx, setHoveredIdx] = React.useState(null);
+      const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+      const svgRef = React.useRef(null);
+
+      const W = 800, H = 200;
+      const pad = { top: 16, right: 16, bottom: 32, left: 44 };
+      const cw = W - pad.left - pad.right;
+      const ch = H - pad.top - pad.bottom;
+
+      const minElev = Math.min(...profile);
+      const maxElev = Math.max(...profile);
+      const elevRange = maxElev - minElev || 1;
+
+      // Build elevation points
+      const pts = profile.map(function(elev, i) {
+        var x = pad.left + (i / (profile.length - 1)) * cw;
+        var y = pad.top + ch - ((elev - minElev) / elevRange) * ch;
+        return [x, y];
+      });
+
+      var pathData = pts.map(function(p, i) { return (i === 0 ? "M" : "L") + p[0] + " " + p[1]; }).join(" ");
+
+      // Total distance for x-axis labels
+      var totalDistM = 0;
+      segments.forEach(function(s) { totalDistM += (s.distM || 0); });
+      var totalDistKm = totalDistM / 1000;
+
+      // Color palette for segments
+      function segColor(seg, alpha) {
+        if (seg.gradient > 0.05) return "rgba(224,78,42," + alpha + ")";
+        if (seg.gradient > 0.008) return "rgba(230,168,23," + alpha + ")";
+        if (seg.gradient < -0.05) return "rgba(14,165,160," + alpha + ")";
+        if (seg.gradient < -0.008) return "rgba(100,180,170," + alpha + ")";
+        return "rgba(100,100,120," + alpha + ")";
+      }
+
+      // Build segment rects with track association
+      var segRects = segments.map(function(seg, idx) {
+        var startX = pad.left + (seg.startIdx / (profile.length - 1)) * cw;
+        var endX = pad.left + (seg.endIdx / (profile.length - 1)) * cw;
+        var isHovered = hoveredIdx === idx;
+        return {
+          idx: idx,
+          x: startX,
+          w: Math.max(endX - startX, 2),
+          fillColor: segColor(seg, isHovered ? 0.35 : 0.15),
+          borderColor: segColor(seg, isHovered ? 0.8 : 0.4),
+          seg: seg,
+          track: tracks[idx] || null,
+        };
+      });
+
+      function handleMouseMove(e) {
+        if (!svgRef.current) return;
+        var rect = svgRef.current.getBoundingClientRect();
+        var svgX = ((e.clientX - rect.left) / rect.width) * W;
+        var svgY = ((e.clientY - rect.top) / rect.height) * H;
+        setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+
+        // Find which segment we are over
+        var found = -1;
+        for (var i = 0; i < segRects.length; i++) {
+          if (svgX >= segRects[i].x && svgX < segRects[i].x + segRects[i].w) {
+            found = i;
+            break;
+          }
+        }
+        setHoveredIdx(found >= 0 ? found : null);
+      }
+
+      function handleMouseLeave() {
+        setHoveredIdx(null);
+      }
+
+      // Pace from racePlan segments
+      function getPace(idx) {
+        if (!racePlanSegs || racePlanSegs.length === 0) return "";
+        var rpIdx = Math.min(racePlanSegs.length - 1, Math.floor((idx / segments.length) * racePlanSegs.length));
+        return PerformanceLab.formatPace(racePlanSegs[rpIdx].paceSec);
+      }
+
+      // Distance axis labels
+      var distLabels = [];
+      var labelCount = Math.min(5, Math.floor(totalDistKm));
+      for (var d = 0; d <= labelCount; d++) {
+        var km = (d / labelCount) * totalDistKm;
+        var lx = pad.left + (d / labelCount) * cw;
+        distLabels.push({ x: lx, label: km.toFixed(0) + "km" });
+      }
+
+      // Hovered track info for tooltip
+      var hovTrack = hoveredIdx !== null && tracks[hoveredIdx] ? tracks[hoveredIdx] : null;
+      var hovSeg = hoveredIdx !== null && segments[hoveredIdx] ? segments[hoveredIdx] : null;
+
+      return (
+        <div style={{ marginTop: "20px", marginBottom: "8px" }}>
+          <div style={{ fontSize: "0.72rem", fontWeight: 600, color: "var(--stone-400)", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "10px" }}>
+            Your run, song by song
+          </div>
+          <div style={{ position: "relative" }}>
+            <svg
+              ref={svgRef}
+              width={W} height={H}
+              viewBox={"0 0 " + W + " " + H}
+              style={{ width: "100%", height: "auto", cursor: "crosshair", borderRadius: "10px", background: "rgba(248,249,250,0.5)" }}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              {/* Segment background rects */}
+              {segRects.map(function(sr) {
+                return (
+                  <rect
+                    key={"seg-" + sr.idx}
+                    x={sr.x}
+                    y={pad.top}
+                    width={sr.w}
+                    height={ch}
+                    fill={sr.fillColor}
+                    stroke={sr.borderColor}
+                    strokeWidth={hoveredIdx === sr.idx ? 1.5 : 0}
+                    rx="2"
+                  />
+                );
+              })}
+
+              {/* Elevation fill */}
+              <defs>
+                <linearGradient id="pem-elevFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="rgba(26,158,143,0.25)" />
+                  <stop offset="100%" stopColor="rgba(224,78,42,0.05)" />
+                </linearGradient>
+              </defs>
+              <path
+                d={pathData + " L" + pts[pts.length - 1][0] + " " + (pad.top + ch) + " L" + pad.left + " " + (pad.top + ch) + " Z"}
+                fill="url(#pem-elevFill)"
+              />
+
+              {/* Elevation line */}
+              <path d={pathData} fill="none" stroke="rgba(26,158,143,0.8)" strokeWidth="2.5" />
+
+              {/* Hovered segment highlight line */}
+              {hoveredIdx !== null && segRects[hoveredIdx] && (
+                <rect
+                  x={segRects[hoveredIdx].x}
+                  y={pad.top}
+                  width={segRects[hoveredIdx].w}
+                  height={ch}
+                  fill="rgba(255,255,255,0.15)"
+                  stroke="var(--ridge)"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 2"
+                  rx="2"
+                />
+              )}
+
+              {/* Track number labels inside segments */}
+              {segRects.map(function(sr) {
+                if (sr.w < 25) return null;
+                return (
+                  <text
+                    key={"lbl-" + sr.idx}
+                    x={sr.x + sr.w / 2}
+                    y={pad.top + ch - 6}
+                    textAnchor="middle"
+                    fontSize="9"
+                    fontWeight="700"
+                    fill={hoveredIdx === sr.idx ? "var(--ridge)" : "rgba(100,100,120,0.4)"}
+                  >{sr.idx + 1}</text>
+                );
+              })}
+
+              {/* Y axis: elevation labels */}
+              <text x={pad.left - 4} y={pad.top + 4} textAnchor="end" fontSize="9" fill="var(--stone-400)">{Math.round(maxElev)}m</text>
+              <text x={pad.left - 4} y={pad.top + ch} textAnchor="end" fontSize="9" fill="var(--stone-400)">{Math.round(minElev)}m</text>
+
+              {/* X axis: distance labels */}
+              {distLabels.map(function(dl, di) {
+                return (
+                  <text key={"dl-" + di} x={dl.x} y={H - 8} textAnchor="middle" fontSize="9" fill="var(--stone-400)">{dl.label}</text>
+                );
+              })}
+
+              {/* X axis line */}
+              <line x1={pad.left} y1={pad.top + ch} x2={pad.left + cw} y2={pad.top + ch} stroke="rgba(148,163,184,0.2)" strokeWidth="1" />
+            </svg>
+
+            {/* Tooltip */}
+            {hovTrack && hovSeg && (
+              <div style={{
+                position: "absolute",
+                left: Math.min(mousePos.x + 12, (svgRef.current ? svgRef.current.getBoundingClientRect().width - 200 : 200)),
+                top: Math.max(mousePos.y - 90, 0),
+                background: "var(--ridge)",
+                color: "white",
+                padding: "10px 14px",
+                borderRadius: "10px",
+                fontSize: "0.75rem",
+                lineHeight: "1.4",
+                pointerEvents: "none",
+                zIndex: 10,
+                minWidth: "160px",
+                maxWidth: "220px",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+              }}>
+                <div style={{ fontWeight: 700, fontSize: "0.82rem", marginBottom: "4px" }}>{hovTrack.name}</div>
+                <div style={{ opacity: 0.75, marginBottom: "6px" }}>{hovTrack.artist}</div>
+                <div style={{ display: "flex", gap: "10px", fontSize: "0.7rem" }}>
+                  <span style={{ fontWeight: 600 }}>{hovSeg.bpm || hovTrack.bpm} BPM</span>
+                  <span>{Math.abs(Math.round(hovSeg.gradient * 100))}% {hovSeg.gradient > 0.008 ? "↗" : hovSeg.gradient < -0.008 ? "↘" : "→"}</span>
+                  {getPace(hoveredIdx) && <span>{getPace(hoveredIdx)}/km</span>}
+                </div>
+              </div>
+            )}
+          </div>
+          <div style={{ fontSize: "0.62rem", color: "var(--stone-400)", marginTop: "6px", textAlign: "center" }}>
+            Hover over the profile to see which song plays at each point
+          </div>
+        </div>
+      );
+    }
+
+
     function RunDropCard({ playlist, trail, baseBpm }) {
       if (!playlist || !trail || !playlist.segments || playlist.segments.length === 0) return null;
 
@@ -3824,8 +4280,6 @@
       const [useMyTaste, setUseMyTaste] = useState(true);
       const [topSeeds, setTopSeeds] = useState(null);
       const [loadingTaste, setLoadingTaste] = useState(false);
-      const [musicMode, setMusicMode] = useState("my-taste"); // "my-taste", "mood", "random", "generic"
-      const [selectedMood, setSelectedMood] = useState(null);
       const [trailSearch, setTrailSearch] = useState("");
       const [trailFilter, setTrailFilter] = useState("all"); // "all", "road", "trail", "upcoming"
       const [stravaConnected, setStravaConnected] = useState(false);
@@ -3838,18 +4292,19 @@
       const [garminConnected, setGarminConnected] = useState(false);
       const [stravaApiConnected, setStravaApiConnected] = useState(false);
       const [importSources, setImportSources] = useState([]); // ["file", "strava", "garmin"]
-      const [activeView, setActiveView] = useState("timeline"); // "timeline" | "library"
+      const [activeView, setActiveView] = useState("timeline");
+      const [appScreen, setAppScreen] = useState("future");
+      const scrollTo = (id, screen) => {
+        setAppScreen(screen);
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+ // "timeline" | "library"
       const [selectedRunForIntel, setSelectedRunForIntel] = useState(null);
-      const [showPlanSimulator, setShowPlanSimulator] = useState(false);
-      const [planSimMode, setPlanSimMode] = useState("redo");
         const [showAllRaces, setShowAllRaces] = useState(false);
-        const [showMusicOptions, setShowMusicOptions] = useState(false);
         const [smartEstimate, setSmartEstimate] = useState(null);
 
         // Auto-select best music mode
-        React.useEffect(() => { if (topSeeds && musicMode === "generic") setMusicMode("my-taste"); }, [topSeeds]); // "redo" | "new"
-      const [showFaq, setShowFaq] = useState(false);
-      const [openFaqIdx, setOpenFaqIdx] = useState(null);
       const [showStravaModal, setShowStravaModal] = useState(false);
       const [showGarminModal, setShowGarminModal] = useState(false);
       const [garminDragOver, setGarminDragOver] = useState(false);
@@ -4283,17 +4738,8 @@
               if (spotifyToken) {
                 try {
                   let rec;
-                  if (musicMode === "random" && topSeeds) {
-                    const shuffledTracks = [...topSeeds.trackIds].sort(() => Math.random() - 0.5);
-                    rec = await searchTracksByBpmPersonalized(
-                      spotifyToken, slotBpm, OVER_FETCH,
-                      shuffledTracks.slice(0, 5),
-                      [], topSeeds
-                    );
-                  } else if (musicMode === "mood" && selectedMood) {
-                    rec = await searchTracksByBpm(spotifyToken, slotBpm, OVER_FETCH, selectedMood);
-                  } else if (musicMode === "my-taste" && topSeeds) {
-                    const shuffledTracks = [...topSeeds.trackIds].sort(() => Math.random() - 0.5);
+                  if (topSeeds) {
+const shuffledTracks = [...topSeeds.trackIds].sort(() => Math.random() - 0.5);
                     const shuffledArtists = [...topSeeds.artistIds].sort(() => Math.random() - 0.5);
                     rec = await searchTracksByBpmPersonalized(
                       spotifyToken, slotBpm, OVER_FETCH,
@@ -4366,7 +4812,7 @@
           const allTracks = tracksBySegment.flatMap((seg) => seg.tracks);
           const allTrackUris = allTracks.map((t) => t.uri);
 
-          setGeneratedPlaylist({
+          setAppScreen("play"); setTimeout(() => { const el = document.getElementById("section-play"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 200); setGeneratedPlaylist({
             segments: tracksBySegment,
             tracks: allTracks,
             trackUris: allTrackUris,
@@ -4503,7 +4949,7 @@
           }));
           await CantoAPI.savePlaylist({
             name: trail ? trail.name + " Playlist" : "Canto Playlist",
-            musicMode: musicMode,
+            musicMode: "my-taste",
             trailId: null,
             tracks: trackData,
           });
@@ -4552,6 +4998,21 @@
         return () => subscription.unsubscribe();
       }, []);
 
+
+      // Scroll reveal for sections
+      React.useEffect(() => {
+        const io = new IntersectionObserver(
+          (entries) => entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add("revealed"); io.unobserve(e.target); }
+          }),
+          { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
+        );
+        const tick = setTimeout(() => {
+          document.querySelectorAll(".section, .reveal-item").forEach(el => io.observe(el));
+        }, 100);
+        return () => { clearTimeout(tick); io.disconnect(); };
+      }, []);
+
       return (
         <div className="container">
           <header style={{ position: "relative" }}>
@@ -4560,6 +5021,26 @@
               <h1 style={{ fontFamily: "Georgia, 'Times New Roman', serif", letterSpacing: "-0.02em" }}>Canto</h1>
             </div>
             <p className="tagline">{t("tagline")}</p>
+            {/* Animated elevation line — the signature */}
+            <svg className="hero-elevation-line" viewBox="0 0 800 70" style={{ width: "100%", maxWidth: "480px", height: "50px" }}>
+              <defs>
+                <linearGradient id="heroLineGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="transparent" />
+                  <stop offset="15%" stopColor="var(--ember)" stopOpacity="0.5" />
+                  <stop offset="50%" stopColor="var(--ember)" />
+                  <stop offset="85%" stopColor="var(--ember)" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="transparent" />
+                </linearGradient>
+              </defs>
+              <polyline
+                points="0,55 30,53 60,50 100,42 140,35 180,40 220,28 260,22 300,30 340,25 380,18 420,14 460,22 500,28 540,20 580,25 620,32 660,38 700,44 740,50 780,53 800,55"
+                fill="none"
+                stroke="url(#heroLineGrad)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
             {/* Account button + Language picker — top right of header */}
             <div style={{ position: "absolute", top: "16px", right: "16px", display: "flex", gap: "8px", alignItems: "center" }}>
               <div style={{ display: "flex", gap: "2px", marginRight: "4px" }}>
@@ -4573,7 +5054,7 @@
                     key={l.code}
                     onClick={() => changeLang(l.code)}
                     style={{
-                      background: lang === l.code ? "rgba(255,255,255,0.25)" : "transparent",
+                      background: lang === l.code ? "rgba(255,255,255,0.12)" : "transparent",
                       border: "none", cursor: "pointer", fontSize: "1rem",
                       borderRadius: "6px", padding: "3px 5px",
                       opacity: lang === l.code ? 1 : 0.5,
@@ -4600,10 +5081,10 @@
                   {showAccountMenu && (
                     <div style={{
                       position: "absolute", top: "40px", right: 0, zIndex: 100,
-                      background: "white", borderRadius: "10px", boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
+                      background: "rgba(255,255,255,0.04)", borderRadius: "10px", boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
                       minWidth: "200px", overflow: "hidden", border: "1px solid rgba(0,0,0,0.08)",
                     }}>
-                      <div style={{ padding: "14px 16px", borderBottom: "1px solid rgba(0,0,0,0.06)", fontSize: "0.8rem", color: "#666" }}>
+                      <div style={{ padding: "14px 16px", borderBottom: "1px solid rgba(0,0,0,0.06)", fontSize: "0.8rem", color: "rgba(255,255,255,0.5)" }}>
                         {cantoUser.email}
                       </div>
                       <button onClick={handleLoadMyPlaylists} style={{
@@ -4636,27 +5117,19 @@
               display: "flex", alignItems: "center", justifyContent: "center",
             }} onClick={(e) => e.target === e.currentTarget && setShowAuthModal(false)}>
               <div style={{
-                background: "white", borderRadius: "16px", padding: "32px",
+                background: "rgba(255,255,255,0.04)", borderRadius: "16px", padding: "32px",
                 width: "380px", maxWidth: "90vw", boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
                 animation: "fadeIn 0.2s ease",
               }}>
                 <h2 style={{ margin: "0 0 4px", fontSize: "1.4rem", background: "linear-gradient(135deg, var(--ember), #e85d04)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   {authMode === "login" ? "Welcome Back" : "Create Account"}
                 </h2>
-                <p style={{ margin: "0 0 20px", fontSize: "0.85rem", color: "#666" }}>
+                <p style={{ margin: "0 0 20px", fontSize: "0.85rem", color: "rgba(255,255,255,0.5)" }}>
                   {authMode === "login" ? "Sign in to access your playlists and race plans" : "Join Canto to save your playlists and data"}
                 </p>
 
                 {/* SSO buttons */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }}>
-                  <button onClick={handleGoogleLogin} disabled style={{
-                    padding: "10px", borderRadius: "8px", border: "1px solid #ddd",
-                    background: "#f5f5f5", cursor: "not-allowed", fontSize: "0.85rem", opacity: 0.5,
-                    display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
-                  }}>
-                    <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                    Google (coming soon)
-                  </button>
                   <button onClick={() => { window.location.href = "https://accounts.spotify.com/authorize?client_id=" + (SPOTIFY_CLIENT_ID) + "&response_type=code&redirect_uri=" + encodeURIComponent(window.location.origin + window.location.pathname) + "&scope=user-read-private%20user-read-email&state=spotify_sso"; }} style={{
                     padding: "10px", borderRadius: "8px", border: "none",
                     background: "#1DB954", color: "white", cursor: "pointer", fontSize: "0.85rem",
@@ -4675,7 +5148,7 @@
                   </button>
                 </div>
 
-                <div style={{ display: "flex", alignItems: "center", gap: "12px", margin: "16px 0", fontSize: "0.8rem", color: "#999" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px", margin: "16px 0", fontSize: "0.8rem", color: "rgba(255,255,255,0.3)" }}>
                   <div style={{ flex: 1, height: "1px", background: "#e0e0e0" }} />
                   or use email
                   <div style={{ flex: 1, height: "1px", background: "#e0e0e0" }} />
@@ -4684,16 +5157,16 @@
                 <form onSubmit={handleAuth} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                   {authMode === "register" && (
                     <input type="text" placeholder="Display Name" value={authName} onChange={(e) => setAuthName(e.target.value)} required style={{
-                      padding: "10px 14px", borderRadius: "8px", border: "1px solid #ddd",
+                      padding: "10px 14px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.08)",
                       fontSize: "0.9rem", outline: "none",
                     }} />
                   )}
                   <input type="email" placeholder="Email" value={authEmail} onChange={(e) => setAuthEmail(e.target.value)} required style={{
-                    padding: "10px 14px", borderRadius: "8px", border: "1px solid #ddd",
+                    padding: "10px 14px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.08)",
                     fontSize: "0.9rem", outline: "none",
                   }} />
                   <input type="password" placeholder="Password" value={authPassword} onChange={(e) => setAuthPassword(e.target.value)} required minLength={8} style={{
-                    padding: "10px 14px", borderRadius: "8px", border: "1px solid #ddd",
+                    padding: "10px 14px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.08)",
                     fontSize: "0.9rem", outline: "none",
                   }} />
                   {authError && <div style={{ color: "#c33", fontSize: "0.8rem" }}>{authError}</div>}
@@ -4707,7 +5180,7 @@
                   </button>
                 </form>
 
-                <p style={{ margin: "14px 0 0", fontSize: "0.8rem", color: "#666", textAlign: "center" }}>
+                <p style={{ margin: "14px 0 0", fontSize: "0.8rem", color: "rgba(255,255,255,0.5)", textAlign: "center" }}>
                   {authMode === "login" ? "Don't have an account? " : "Already have an account? "}
                   <a href="#" onClick={(e) => { e.preventDefault(); setAuthMode(authMode === "login" ? "register" : "login"); setAuthError(""); }} style={{ color: "var(--ember)", fontWeight: 600 }}>
                     {authMode === "login" ? "Sign Up" : "Sign In"}
@@ -4725,18 +5198,18 @@
               display: "flex", justifyContent: "flex-end",
             }} onClick={(e) => e.target === e.currentTarget && setShowMyPlaylists(false)}>
               <div style={{
-                background: "white", width: "400px", maxWidth: "90vw", height: "100vh",
+                background: "rgba(255,255,255,0.04)", width: "400px", maxWidth: "90vw", height: "100vh",
                 boxShadow: "-8px 0 32px rgba(0,0,0,0.15)", padding: "24px",
                 overflowY: "auto", animation: "fadeIn 0.2s ease",
               }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
                   <h2 style={{ margin: 0, fontSize: "1.2rem" }}>My Playlists</h2>
                   <button onClick={() => setShowMyPlaylists(false)} style={{
-                    border: "none", background: "transparent", fontSize: "1.4rem", cursor: "pointer", color: "#999",
+                    border: "none", background: "transparent", fontSize: "1.4rem", cursor: "pointer", color: "rgba(255,255,255,0.3)",
                   }}>&times;</button>
                 </div>
                 {savedPlaylists.length === 0 ? (
-                  <div style={{ textAlign: "center", padding: "40px 0", color: "#999" }}>
+                  <div style={{ textAlign: "center", padding: "40px 0", color: "rgba(255,255,255,0.3)" }}>
                     <div style={{ fontSize: "2rem", marginBottom: "8px" }}>&#127925;</div>
                     <p>No saved playlists yet.</p>
                     <p style={{ fontSize: "0.85rem" }}>Generate a playlist and save it to see it here.</p>
@@ -4748,7 +5221,7 @@
                       border: "1px solid rgba(0,0,0,0.06)", background: "rgba(0,0,0,0.01)",
                     }}>
                       <div style={{ fontWeight: 600, fontSize: "0.95rem" }}>{pl.name}</div>
-                      <div style={{ fontSize: "0.8rem", color: "#666", marginTop: "4px" }}>
+                      <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.5)", marginTop: "4px" }}>
                         {pl.total_tracks} tracks &middot; {pl.music_mode} &middot; {new Date(pl.created_at).toLocaleDateString()}
                       </div>
                       {pl.trail_name && (
@@ -4767,114 +5240,6 @@
             </div>
           )}
 
-          {/* Connections Bar — Spotify + Strava + Garmin */}
-          <div style={{
-            display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap",
-            marginBottom: "24px", padding: "10px 16px",
-            background: "white", borderRadius: "10px",
-            border: "1px solid rgba(15,15,19,0.06)",
-            boxShadow: "0 1px 4px rgba(15,15,19,0.04)",
-          }}>
-            {/* Spotify */}
-            {spotifyToken ? (
-              <div style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "6px 12px", borderRadius: "6px",
-                background: "rgba(30,215,96,0.08)", fontSize: "0.75rem", fontWeight: 600,
-                color: "#1DB954",
-              }}>
-                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#1DB954", display: "inline-block" }} />
-                {spotifyUser?.display_name || "Spotify"}
-                <button onClick={() => {
-                  localStorage.removeItem("spotifyAccessToken");
-                  localStorage.removeItem("spotifyRefreshToken");
-                  localStorage.removeItem("spotifyCodeVerifier");
-                  setSpotifyToken(null); setSpotifyUser(null); setTopSeeds(null); setGeneratedPlaylist(null);
-                }} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--stone-400)", fontSize: "0.7rem", marginLeft: "4px" }}>×</button>
-              </div>
-            ) : (
-              <button onClick={startSpotifyAuth} style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "6px 12px", borderRadius: "6px",
-                background: "rgba(15,15,19,0.03)", border: "1px solid var(--stone-200)",
-                fontSize: "0.75rem", fontWeight: 600, cursor: "pointer",
-                color: "var(--stone-500)", transition: "all 0.2s",
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#1DB954"; e.currentTarget.style.color = "#1DB954"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--stone-200)"; e.currentTarget.style.color = "var(--stone-500)"; }}
-              >
-                <span>🎵</span> Spotify
-              </button>
-            )}
-
-            {/* Strava */}
-            {stravaApiConnected ? (
-              <div style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "6px 12px", borderRadius: "6px",
-                background: "rgba(252,76,2,0.08)", fontSize: "0.75rem", fontWeight: 600,
-                color: "var(--strava)",
-              }}>
-                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--strava)", display: "inline-block" }} />
-                Strava
-                <button onClick={() => {
-                  localStorage.removeItem("stravaAccessToken");
-                  setStravaApiConnected(false);
-                }} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--stone-400)", fontSize: "0.7rem", marginLeft: "4px" }}>×</button>
-              </div>
-            ) : (
-              <button onClick={() => setShowStravaModal(true)} style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "6px 12px", borderRadius: "6px",
-                background: "rgba(15,15,19,0.03)", border: "1px solid var(--stone-200)",
-                fontSize: "0.75rem", fontWeight: 600, cursor: "pointer",
-                color: "var(--stone-500)", transition: "all 0.2s",
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--strava)"; e.currentTarget.style.color = "var(--strava)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--stone-200)"; e.currentTarget.style.color = "var(--stone-500)"; }}
-              >
-                <span>🏃</span> Strava
-              </button>
-            )}
-
-            {/* Garmin */}
-            {garminConnected ? (
-              <div style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "6px 12px", borderRadius: "6px",
-                background: "rgba(0,124,195,0.08)", fontSize: "0.75rem", fontWeight: 600,
-                color: "var(--garmin)",
-              }}>
-                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--garmin)", display: "inline-block" }} />
-                Garmin
-                <button onClick={() => {
-                  localStorage.removeItem("garminAccessToken");
-                  setGarminConnected(false);
-                }} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--stone-400)", fontSize: "0.7rem", marginLeft: "4px" }}>×</button>
-              </div>
-            ) : (
-              <button onClick={() => setShowGarminModal(true)} style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "6px 12px", borderRadius: "6px",
-                background: "rgba(15,15,19,0.03)", border: "1px solid var(--stone-200)",
-                fontSize: "0.75rem", fontWeight: 600, cursor: "pointer",
-                color: "var(--stone-500)", transition: "all 0.2s",
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--garmin)"; e.currentTarget.style.color = "var(--garmin)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--stone-200)"; e.currentTarget.style.color = "var(--stone-500)"; }}
-              >
-                <span>⌚</span> Garmin
-              </button>
-            )}
-
-            <div style={{ flex: 1 }} />
-            <div style={{ fontSize: "0.65rem", color: "var(--stone-400)", textTransform: "uppercase", letterSpacing: "1px" }}>
-              Connections
-            </div>
-          </div>
-
-
-
           {/* Messages */}
           {message && (
             <div className={`message message-${message.type}`}>
@@ -4882,314 +5247,10 @@
             </div>
           )}
 
-          {/* Compact Model Stats — replaces old Running Profile section */}
-          {personalModel && (
-            <div style={{
-              display: "flex", alignItems: "center", gap: "12px", padding: "12px 16px",
-              background: "white", borderRadius: "12px", marginBottom: "16px",
-              border: "1px solid rgba(15,15,19,0.06)", flexWrap: "wrap",
-            }}>
-              <div style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: "var(--stone-400)", whiteSpace: "nowrap" }}>Your model</div>
-              {[
-                { v: PerformanceLab.formatPace(personalModel.basePace), l: "/km" },
-                { v: personalModel.baseCadence, l: "spm" },
-                { v: personalModel.avgHR, l: "bpm" },
-                { v: personalModel.gradeCoeff > 0 ? `+${Math.round(personalModel.gradeCoeff / 10)}` : Math.round(personalModel.gradeCoeff / 10), l: "s/km/%" },
-              ].map((s, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "baseline", gap: "3px" }}>
-                  <span style={{ fontWeight: 800, fontSize: "0.88rem", color: "var(--ridge)" }}>{s.v}</span>
-                  <span style={{ fontSize: "0.6rem", color: "var(--stone-400)" }}>{s.l}</span>
-                </div>
-              ))}
-              <div style={{ marginLeft: "auto", display: "flex", gap: "6px", alignItems: "center" }}>
-                <span style={{ fontSize: "0.65rem", color: "var(--stone-400)" }}>{personalModel.totalRuns} runs</span>
-                <button
-                  style={{ background: "none", border: "1px solid var(--stone-200)", borderRadius: "5px", padding: "3px 8px", fontSize: "0.62rem", cursor: "pointer", color: "var(--stone-400)" }}
-                  onClick={() => document.getElementById("tcx-input").click()}
-                >+</button>
-              </div>
-            </div>
-          )}
-          <input id="tcx-input" type="file" accept=".tcx,.fit" multiple style={{ display: "none" }}
-            onChange={(e) => {
-              const files = Array.from(e.target.files);
-              if (files.length > 0) { handleTCXFiles(files); setImportSources(prev => [...new Set([...prev, "file"])]); }
-              e.target.value = "";
-            }}
-          />
-
-          {/* ══════ CANTO V2: RUN TIMELINE & INTELLIGENCE ══════ */}
-
-          {/* Run Timeline — always visible */}
-          {(
-            <div className="section">
-              <div className="section-title">
-                <span className="section-icon">&#x1F3C3;</span>
-                Your Runs
-                {stravaActivities && <span style={{ marginLeft: "8px", fontSize: "0.72rem", fontWeight: 400, color: "var(--stone-400)" }}>{stravaActivities.length} analyzed</span>}
-              </div>
-
-              {(!stravaActivities || stravaActivities.length === 0) ? (
-                <div className="onboarding-box">
-                  <h3>Start with your data</h3>
-                  <p>Connect Strava or import your runs. Every new run refines your analysis.</p>
-                  <div className="onboarding-actions">
-                    <button onClick={() => setShowStravaModal(true)} style={{ background: "var(--strava)", color: "white" }}>Connect Strava</button>
-                    <button onClick={() => setShowGarminModal(true)} style={{ background: "var(--garmin)", color: "white" }}>Import Garmin</button>
-                    <button onClick={() => {
-                      setStravaActivities(DEMO_STRAVA_ACTIVITIES);
-                      const model = PerformanceLab.buildPersonalModel(DEMO_STRAVA_ACTIVITIES);
-                      setPersonalModel(model);
-                      setStravaConnected(true);
-                      setMessage({ type: "success", text: "Demo data loaded. Connect Strava to use your real runs." });
-                    }} style={{ background: "var(--stone-700)", color: "white" }}>Try with demo data</button>
-                  </div>
-                </div>
-              ) : (
-                <div className="run-timeline">
-                  {stravaActivities.filter(a => a.splits && a.splits.length > 1).map(run => {
-                    const distKm = (run.distance / 1000).toFixed(1);
-                    const avgPace = run.moving_time / (run.distance / 1000);
-                    const paceStr = `${Math.floor(avgPace/60)}:${String(Math.round(avgPace%60)).padStart(2,"0")}`;
-                    const date = run.start_date ? new Date(run.start_date) : null;
-                    const dayStr = date ? date.getDate() : "";
-                    const monthStr = date ? date.toLocaleDateString(lang === "fr" ? "fr-FR" : "en-US", { month: "short" }) : "";
-                    const pacing = RunIntelligence.classifyPacing(run.splits);
-                    const consistency = RunIntelligence.consistencyScore(run.splits);
-                    const score = RunIntelligence.runScore(consistency, pacing, RunIntelligence.hrDrift(run.splits));
-                    const isSelected = selectedRunForIntel?.id === run.id;
-
-                    return (
-                      <div key={run.id}>
-                        <div
-                          className={`run-timeline-item ${isSelected ? "selected" : ""}`}
-                          onClick={() => setSelectedRunForIntel(isSelected ? null : run)}
-                        >
-                          <div className="run-timeline-date">
-                            <span className="day">{dayStr}</span>
-                            {monthStr}
-                          </div>
-                          <div className="run-timeline-info">
-                            <h4>{run.name}</h4>
-                            <div className="run-meta-line">
-                              <span>{distKm} km</span>
-                              <span>{paceStr}/km</span>
-                              {run.total_elevation_gain > 0 && <span>+{Math.round(run.total_elevation_gain)}m</span>}
-                              {run.average_heartrate > 0 && <span>{Math.round(run.average_heartrate)} bpm</span>}
-                            </div>
-                          </div>
-                          <div className="run-timeline-score">
-                            <div className="run-score-circle" style={{ background: RunIntelligence.scoreColor(score) }}>{score}</div>
-                            <div className="run-score-label">{pacing.label}</div>
-                          </div>
-                        </div>
-
-                        {/* Run Intelligence Panel */}
-                        {isSelected && (() => {
-                          const effortData = RunIntelligence.effortAdjustedPace(run.splits);
-                          const hrDriftData = RunIntelligence.hrDrift(run.splits);
-                          const blowUpKm = RunIntelligence.findBlowUpKm(run.splits);
-                          const comparison = RunIntelligence.compareToSimilar(run, stravaActivities);
-                          const verdictLines = RunIntelligence.generateVerdict(run, run.splits, pacing, consistency, hrDriftData, blowUpKm, comparison);
-                          const maxPace = Math.max(...effortData.map(e => e.rawPace));
-                          const minPace = Math.min(...effortData.map(e => e.rawPace));
-                          const avgRunPace = run.moving_time / (run.distance / 1000);
-
-                          return (
-                            <div className="ri-panel">
-                              {/* Key Insights */}
-                              <div className="ri-insights">
-                                <div className="ri-insight">
-                                  <div className="label">Avg Pace</div>
-                                  <div className="value" style={{ color: "var(--ridge)" }}>{paceStr}/km</div>
-                                </div>
-                                <div className="ri-insight">
-                                  <div className="label">Consistency</div>
-                                  <div className="value" style={{ color: RunIntelligence.scoreColor(consistency) }}>{consistency}%</div>
-                                </div>
-                                <div className="ri-insight">
-                                  <div className="label">Strategy</div>
-                                  <div className="value" style={{ color: pacing.color }}>{pacing.label}</div>
-                                  <div className="detail">{pacing.desc}</div>
-                                </div>
-                                {hrDriftData && (
-                                  <div className="ri-insight">
-                                    <div className="label">HR Drift</div>
-                                    <div className="value" style={{ color: hrDriftData.drift > 8 ? "var(--ember)" : "var(--glacier)" }}>
-                                      {hrDriftData.drift > 0 ? "+" : ""}{hrDriftData.drift}%
-                                    </div>
-                                    <div className="detail">{hrDriftData.avgFirst} &rarr; {hrDriftData.avgSecond} bpm</div>
-                                  </div>
-                                )}
-                              </div>
-
-                              {/* Pace Chart */}
-                              <div style={{ fontSize: "0.72rem", color: "var(--stone-400)", fontWeight: 600, marginBottom: "6px" }}>PACE BY KM</div>
-                              <div className="pace-chart">
-                                {effortData.map((d, i) => {
-                                  const paceRange = maxPace - minPace || 1;
-                                  const height = 20 + ((d.rawPace - minPace) / paceRange) * 60;
-                                  const isFast = d.rawPace < avgRunPace * 0.95;
-                                  const isSlow = d.rawPace > avgRunPace * 1.05;
-                                  const barColor = isFast ? "var(--ember)" : isSlow ? "var(--gold)" : "var(--glacier)";
-                                  const kmPaceStr = `${Math.floor(d.rawPace/60)}:${String(Math.round(d.rawPace%60)).padStart(2,"0")}`;
-                                  return (
-                                    <div key={i} className="pace-bar" style={{ height: `${height}%`, background: barColor }}>
-                                      <div className="bar-tooltip">Km {d.km}: {kmPaceStr}/km{d.elev !== 0 ? ` (${d.elev > 0 ? "+" : ""}${d.elev}m)` : ""}</div>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.6rem", color: "var(--stone-400)", marginBottom: "16px" }}>
-                                <span>Km 1</span><span>Km {effortData.length}</span>
-                              </div>
-
-                              {/* Verdict */}
-                              {verdictLines.length > 0 && (
-                                <div className="ri-verdict-box">
-                                  <div className="verdict-title">Analysis</div>
-                                  {verdictLines.map((line, i) => <p key={i} style={{ marginBottom: i < verdictLines.length - 1 ? "8px" : 0 }}>{line}</p>)}
-                                </div>
-                              )}
-
-                              {/* Cross-run comparison */}
-                              {comparison && (
-                                <div className="ri-trend">
-                                  <span className="trend-arrow">{comparison.isFaster ? "\u2197" : "\u2198"}</span>
-                                  <span className="trend-text">
-                                    {comparison.isBest
-                                      ? `Personal best! Faster than all ${comparison.comparedTo} similar runs.`
-                                      : comparison.isFaster
-                                      ? `${Math.abs(comparison.diffPercent)}% faster than your average on ${comparison.comparedTo} similar runs.`
-                                      : `${comparison.diffPercent}% slower than your average on ${comparison.comparedTo} similar runs.`
-                                    }
-                                  </span>
-                                </div>
-                              )}
-
-                              {/* Split Table */}
-                              <div style={{ overflowX: "auto", marginTop: "16px" }}>
-                                <table className="split-table">
-                                  <thead>
-                                    <tr>
-                                      <th>Km</th><th>Pace</th><th>Effort*</th><th>Elev</th>
-                                      {run.splits[0]?.average_heartrate > 0 && <th>HR</th>}
-                                      <th>Status</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    {effortData.map((d, i) => {
-                                      const rawStr = `${Math.floor(d.rawPace/60)}:${String(Math.round(d.rawPace%60)).padStart(2,"0")}`;
-                                      const adjStr = `${Math.floor(d.adjustedPace/60)}:${String(Math.round(d.adjustedPace%60)).padStart(2,"0")}`;
-                                      const isFast = d.rawPace < avgRunPace * 0.95;
-                                      const isSlow = d.rawPace > avgRunPace * 1.05;
-                                      return (
-                                        <tr key={i}>
-                                          <td style={{ fontWeight: 700 }}>{d.km}</td>
-                                          <td style={{ fontWeight: 600 }}>{rawStr}</td>
-                                          <td style={{ color: "var(--stone-400)" }}>{adjStr}</td>
-                                          <td style={{ color: d.elev > 0 ? "var(--ember)" : d.elev < 0 ? "var(--glacier)" : "var(--stone-400)" }}>
-                                            {d.elev > 0 ? "+" : ""}{d.elev}m
-                                          </td>
-                                          {d.hr > 0 && <td>{Math.round(d.hr)}</td>}
-                                          <td>
-                                            <span className={`pace-verdict ${isFast ? "too-fast" : isSlow ? "too-slow" : "good"}`}>
-                                              {isFast ? "Fast" : isSlow ? "Slow" : "Good"}
-                                            </span>
-                                          </td>
-                                        </tr>
-                                      );
-                                    })}
-                                  </tbody>
-                                </table>
-                                <div style={{ fontSize: "0.65rem", color: "var(--stone-400)", marginTop: "6px" }}>
-                                  * Effort = pace normalized to flat equivalent (Minetti energy cost model)
-                                </div>
-                              </div>
-
-                              {/* Action Buttons — two playlist modes */}
-                              <div style={{ marginTop: "20px" }}>
-                                <div style={{ fontSize: "0.72rem", color: "var(--stone-400)", fontWeight: 600, marginBottom: "10px", textTransform: "uppercase", letterSpacing: "0.5px" }}>
-                                  What do you want to do with this run?
-                                </div>
-                                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-
-                                  {/* Playlist for THIS run (as it happened) */}
-                                  <button className="btn-optimize" style={{ width: "100%", display: "flex", alignItems: "center", gap: "12px", padding: "14px 16px", textAlign: "left" }} onClick={() => {
-                                    const runDist = run.distance / 1000;
-                                    const elevProfile = [0];
-                                    run.splits.forEach(sp => { elevProfile.push(elevProfile[elevProfile.length-1] + (sp.elevation_difference || 0)); });
-                                    const rerunTrail = {
-                                      id: `actual-${run.id}`, name: run.name,
-                                      location: "Replay your run", distance: Math.round(runDist * 10) / 10,
-                                      elevGain: run.total_elevation_gain || 0, difficulty: "Medium",
-                                      profile: elevProfile, type: "trail",
-                                    };
-                                    // Use actual paces as target (replay mode)
-                                    const actualPace = run.moving_time / (run.distance / 1000) / 60;
-                                    setSelectedTrail(rerunTrail);
-                                    setFlatRunActive(false);
-                                    setGpxTrail(null);
-                                    setTargetPace(Math.round(actualPace * 10) / 10);
-                                    setTargetMode("pace");
-                                    setMessage({ type: "info", text: `Generating a playlist that matches your actual run. Scroll down to generate.` });
-                                    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-                                  }}>
-                                    <div style={{ fontSize: "1.2rem" }}>&#127925;</div>
-                                    <div>
-                                      <div style={{ fontWeight: 700, fontSize: "0.85rem" }}>Playlist for this run</div>
-                                      <div style={{ fontWeight: 400, fontSize: "0.72rem", opacity: 0.8, marginTop: "2px" }}>Music that matches what you actually did — same pace, same terrain</div>
-                                    </div>
-                                  </button>
-
-                                  {/* Optimized plan + playlist */}
-                                  <button style={{
-                                    width: "100%", display: "flex", alignItems: "center", gap: "12px",
-                                    padding: "14px 16px", textAlign: "left", borderRadius: "10px",
-                                    border: "2px solid var(--ember)", background: "rgba(224,78,42,0.04)",
-                                    cursor: "pointer", transition: "all 0.2s", color: "var(--ridge)",
-                                  }} onClick={() => {
-                                    const runDist = run.distance / 1000;
-                                    const elevProfile = [0];
-                                    run.splits.forEach(sp => { elevProfile.push(elevProfile[elevProfile.length-1] + (sp.elevation_difference || 0)); });
-                                    const rerunTrail = {
-                                      id: `optimized-${run.id}`, name: `Optimized: ${run.name}`,
-                                      location: "Your ideal version", distance: Math.round(runDist * 10) / 10,
-                                      elevGain: run.total_elevation_gain || 0, difficulty: "Medium",
-                                      profile: elevProfile, type: "trail",
-                                    };
-                                    setSelectedTrail(rerunTrail);
-                                    setFlatRunActive(false);
-                                    setGpxTrail(null);
-                                    setMessage({ type: "success", text: `Optimized plan loaded. Your race plan below shows the ideal pacing. Generate a playlist matched to this plan.` });
-                                    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-                                  }}>
-                                    <div style={{ fontSize: "1.2rem" }}>&#9889;</div>
-                                    <div>
-                                      <div style={{ fontWeight: 700, fontSize: "0.85rem", color: "var(--ember)" }}>Optimize &amp; build playlist</div>
-                                      <div style={{ fontWeight: 400, fontSize: "0.72rem", color: "var(--stone-500)", marginTop: "2px" }}>Corrected pacing based on your analysis — the run you could have done</div>
-                                    </div>
-                                  </button>
-
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })()}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          )}
-
-
-          
           {/* Divider */}
           <div style={{ display: "flex", alignItems: "center", gap: "16px", margin: "8px 0 24px", padding: "0 4px" }}>
-            <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, var(--stone-200), transparent)" }} />
-            <span style={{ fontSize: "0.75rem", color: "var(--stone-400)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1px", whiteSpace: "nowrap" }}>Plan your next race</span>
+            <div id="section-future" style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, var(--stone-200), transparent)" }} />
+            <span style={{ fontSize: "0.85rem", color: "var(--ridge)", fontWeight: 700, letterSpacing: "0.3px", whiteSpace: "nowrap" }}>Pick your next race</span>
             <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, var(--stone-200), transparent)" }} />
           </div>
 
@@ -5227,8 +5288,8 @@
                   style={{
                     padding: "5px 14px", borderRadius: "20px", border: "none", cursor: "pointer",
                     fontSize: "0.72rem", fontWeight: 600, transition: "all 0.2s",
-                    background: trailFilter === f.key ? "var(--ridge)" : "var(--cloud)",
-                    color: trailFilter === f.key ? "white" : "var(--stone-500)",
+                    background: trailFilter === f.key ? "var(--ember)" : "rgba(255,255,255,0.06)",
+                    color: trailFilter === f.key ? "white" : "var(--stone-700)",
                   }}
                 >{f.label}</button>
               ))}
@@ -5256,7 +5317,7 @@
                   display: "flex", alignItems: "center", gap: "10px",
                   padding: "10px 16px", borderRadius: "8px", marginBottom: "16px",
                   cursor: "pointer", color: "var(--stone-400)", fontSize: "0.8rem",
-                  border: "1px dashed var(--stone-200)", transition: "all 0.2s"
+                  border: "1px dashed rgba(255,255,255,0.1)", transition: "all 0.2s"
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--stone-400)"; e.currentTarget.style.color = "var(--ridge)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--stone-200)"; e.currentTarget.style.color = "var(--stone-400)"; }}
@@ -5320,7 +5381,7 @@
                   return (
                     <div
                       key={trail.id}
-                      onClick={() => { setSelectedTrail(trail); setGpxTrail(null); setFlatRunActive(false); }}
+                      onClick={() => { setSelectedTrail(trail); setGpxTrail(null); setFlatRunActive(false); setAppScreen("future"); setTimeout(() => { const el = document.getElementById("section-future"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 100); setTimeout(() => { if (spotifyToken) generatePlaylistTracks(); }, 500); }}
                       style={{
                         display: "flex", alignItems: "center", gap: "12px",
                         padding: "10px 14px", borderRadius: "10px", cursor: "pointer",
@@ -5350,7 +5411,7 @@
                     onClick={() => setShowAllRaces(!showAllRaces)}
                     style={{
                       display: "block", width: "100%", padding: "10px", marginTop: "4px",
-                      background: "none", border: "1px dashed var(--stone-200)", borderRadius: "8px",
+                      background: "none", border: "1px dashed rgba(255,255,255,0.1)", borderRadius: "8px",
                       cursor: "pointer", fontSize: "0.75rem", fontWeight: 600, color: "var(--stone-400)",
                       transition: "all 0.2s",
                     }}
@@ -5537,132 +5598,13 @@
                   <div style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--gold-dark)", marginTop: "4px" }}>{Math.floor(racePlan.totalTimeEstimate / 3600)}h{String(Math.floor((racePlan.totalTimeEstimate % 3600) / 60)).padStart(2, "0")}</div>
                 </div>
               </div>
-              <div style={{ overflowX: "auto" }}>
-                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.75rem" }}>
-                  <thead>
-                    <tr style={{ borderBottom: "2px solid var(--stone-100)" }}>
-                      <th style={{ padding: "8px 6px", textAlign: "left", color: "var(--stone-400)", fontWeight: 600 }}>Seg</th>
-                      <th style={{ padding: "8px 6px", textAlign: "right", color: "var(--stone-400)", fontWeight: 600 }}>Grade</th>
-                      <th style={{ padding: "8px 6px", textAlign: "right", color: "var(--stone-400)", fontWeight: 600 }}>Pace</th>
-                      <th style={{ padding: "8px 6px", textAlign: "right", color: "var(--stone-400)", fontWeight: 600 }}>BPM</th>
-                      <th style={{ padding: "8px 6px", textAlign: "right", color: "var(--stone-400)", fontWeight: 600 }}>HR</th>
-                      <th style={{ padding: "8px 6px", textAlign: "center", color: "var(--stone-400)", fontWeight: 600 }}>Zone</th>
-                      <th style={{ padding: "8px 6px", textAlign: "center", color: "var(--stone-400)", fontWeight: 600 }}>Mood</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {racePlan.segments.map((seg, i) => (
-                      <tr key={i} style={{ borderBottom: "1px solid var(--stone-100)" }}>
-                        <td style={{ padding: "6px", fontWeight: 600, color: "var(--ridge)" }}>{i + 1}</td>
-                        <td style={{ padding: "6px", textAlign: "right", color: seg.grade > 0 ? "var(--ember)" : seg.grade < 0 ? "var(--glacier)" : "var(--stone-500)", fontWeight: 600 }}>
-                          {seg.grade > 0 ? "↗" : seg.grade < 0 ? "↘" : "→"} {Math.abs(seg.grade)}%
-                        </td>
-                        <td style={{ padding: "6px", textAlign: "right", color: "var(--ridge)" }}>{PerformanceLab.formatPace(seg.paceSec)}</td>
-                        <td style={{ padding: "6px", textAlign: "right" }}>
-                          <span style={{
-                            padding: "2px 8px", borderRadius: "10px", fontWeight: 700, fontSize: "0.72rem",
-                            background: seg.targetBpm > 165 ? "rgba(224,78,42,0.1)" : seg.targetBpm > 150 ? "rgba(230,168,23,0.1)" : "rgba(14,165,160,0.1)",
-                            color: seg.targetBpm > 165 ? "var(--ember)" : seg.targetBpm > 150 ? "var(--gold-dark)" : "var(--glacier)",
-                          }}>{seg.targetBpm}</span>
-                        </td>
-                        <td style={{ padding: "6px", textAlign: "right", color: "var(--stone-500)" }}>{seg.estimatedHR}</td>
-                        <td style={{ padding: "6px", textAlign: "center" }}>
-                          <span style={{
-                            padding: "2px 6px", borderRadius: "6px", fontSize: "0.68rem", fontWeight: 600,
-                            background: seg.hrZone === "Z5" ? "rgba(224,78,42,0.12)" : seg.hrZone === "Z4" ? "rgba(230,168,23,0.12)" : seg.hrZone === "Z3" ? "rgba(14,165,160,0.12)" : "rgba(100,100,120,0.08)",
-                            color: seg.hrZone === "Z5" ? "var(--ember)" : seg.hrZone === "Z4" ? "var(--gold-dark)" : seg.hrZone === "Z3" ? "var(--glacier)" : "var(--stone-500)",
-                          }}>{seg.hrZone}</span>
-                        </td>
-                        <td style={{ padding: "6px", textAlign: "center", fontSize: "0.7rem", color: "var(--stone-400)" }}>
-                          {seg.emotionalZone === "controlled" ? "🧘 Controlled" : seg.emotionalZone === "dissociative" ? "🎧 Flow" : "🔥 Push"}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                          </div>
           )}
 
           {/* ═══ MATCH A PLAYLIST — appears after race plan ═══ */}
           {currentTrail && (
             <div style={{ marginBottom: "20px" }}>
               {/* Spotify connect */}
-              {!spotifyToken && (
-                <div style={{
-                  display: "flex", alignItems: "center", gap: "10px",
-                  padding: "12px 16px", borderRadius: "12px", marginBottom: "12px",
-                  background: "rgba(30,215,96,0.06)", border: "1px solid rgba(30,215,96,0.15)",
-                }}>
-                  <span style={{ fontSize: "1rem" }}>&#127911;</span>
-                  <div style={{ flex: 1, fontSize: "0.78rem", color: "var(--ridge)" }}>
-                    <strong>Connect Spotify</strong> for a playlist matched to your taste
-                  </div>
-                  <button onClick={startSpotifyAuth} style={{
-                    padding: "6px 14px", borderRadius: "8px", border: "none",
-                    background: "#1DB954", color: "white", fontWeight: 600, fontSize: "0.75rem",
-                    cursor: "pointer",
-                  }}>Connect</button>
-                </div>
-              )}
-
-              {/* Music mode — compact inline */}
-              {spotifyToken && (
-                <div style={{ marginBottom: "12px" }}>
-                  <button
-                    onClick={() => setShowMusicOptions(!showMusicOptions)}
-                    style={{
-                      background: "none", border: "none", cursor: "pointer",
-                      fontSize: "0.72rem", color: "var(--stone-400)", padding: "4px 0",
-                      display: "flex", alignItems: "center", gap: "6px",
-                    }}
-                  >
-                    <span style={{ fontSize: "0.8rem" }}>&#127925;</span>
-                    Music: <strong style={{ color: "var(--ridge)" }}>
-                      {musicMode === "my-taste" ? "Your taste" : musicMode === "mood" ? "Mood" : musicMode === "random" ? "Shuffle" : "Explore"}
-                    </strong>
-                    <span style={{ fontSize: "0.55rem", transition: "transform 0.2s", transform: showMusicOptions ? "rotate(180deg)" : "none" }}>{"\u25BC"}</span>
-                  </button>
-                  {showMusicOptions && (
-                    <div style={{ marginTop: "8px" }}>
-                      <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                        {[
-                          { id: "my-taste", label: "My Taste", icon: "\u2728" },
-                          { id: "mood", label: "Mood", icon: "\u266b" },
-                          { id: "random", label: "Shuffle", icon: "\ud83d\udd00" },
-                          { id: "generic", label: "Explore", icon: "\ud83c\udf0e" },
-                        ].map((mode) => (
-                          <button
-                            key={mode.id}
-                            onClick={() => { setMusicMode(mode.id); if (mode.id !== "mood") setShowMusicOptions(false); }}
-                            disabled={mode.id !== "generic" && mode.id !== "mood" && !topSeeds}
-                            style={{
-                              padding: "6px 14px", borderRadius: "20px", border: "none", cursor: "pointer",
-                              fontSize: "0.72rem", fontWeight: 600, transition: "all 0.2s",
-                              background: musicMode === mode.id ? "var(--ridge)" : "var(--cloud)",
-                              color: musicMode === mode.id ? "white" : "var(--stone-500)",
-                              opacity: (mode.id !== "generic" && mode.id !== "mood" && !topSeeds) ? 0.35 : 1,
-                            }}
-                          >{mode.icon} {mode.label}</button>
-                        ))}
-                      </div>
-                      {musicMode === "mood" && (
-                        <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginTop: "8px" }}>
-                          {MOOD_GENRES.map((genre) => (
-                            <button key={genre.id} onClick={() => setSelectedMood(genre.id)} style={{
-                              padding: "4px 12px", borderRadius: "16px", border: "none", cursor: "pointer",
-                              fontSize: "0.7rem", fontWeight: selectedMood === genre.id ? 700 : 400,
-                              background: selectedMood === genre.id ? "rgba(26,158,143,0.12)" : "var(--cloud)",
-                              color: selectedMood === genre.id ? "var(--teal)" : "var(--stone-500)",
-                            }}>{genre.emoji} {genre.label}</button>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              )}
-
               {/* THE button */}
               <button
                 className="btn btn-primary"
@@ -5670,20 +5612,20 @@
                   width: "100%", padding: "16px", fontSize: "1.05rem",
                   borderRadius: "12px", fontWeight: 700, letterSpacing: "0.3px",
                 }}
-                onClick={generatePlaylistTracks}
+                onClick={() => { if (spotifyToken) { generatePlaylistTracks(); } else { startSpotifyAuth(); } }}
                 disabled={loading}
               >
-                {loading ? "Matching tracks..." : "\ud83c\udfb5 Match a Playlist"}
+                {loading ? "Building your playlist..." : spotifyToken ? "Regenerate Playlist" : "Build My Playlist"}
               </button>
             </div>
           )}
 
           {/* Playlist Results */}
           {generatedPlaylist && (
-            <div className="section playlist-results">
+            <div id="section-play" className="section playlist-results">
               <div className="section-title">
                 <span className="section-icon">🎵</span>
-                Your Generated Playlist
+                Your Playlist
               </div>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "20px" }}>
@@ -5697,39 +5639,7 @@
                 </div>
               </div>
 
-              <div className="control-label" style={{ marginBottom: "12px" }}>
-                BPM by Terrain
-              </div>
-              <div className="bpm-phases">
-                {generatedPlaylist.segments.map((seg, idx) => {
-                  const gradePercent = Math.round(Math.abs(seg.gradient) * 100);
-                  const isUp = seg.gradient > 0.008;
-                  const isDown = seg.gradient < -0.008;
-                  // Find matching racePlan segment for pace
-                  let paceStr = "";
-                  if (racePlan && racePlan.segments.length > 0) {
-                    const rpLen = racePlan.segments.length;
-                    const rpIdx = Math.min(rpLen - 1, Math.floor((idx / generatedPlaylist.segments.length) * rpLen));
-                    paceStr = PerformanceLab.formatPace(racePlan.segments[rpIdx].paceSec);
-                  }
-                  return (
-                    <div key={idx} className="bpm-phase" style={{
-                      borderLeft: isUp ? "3px solid var(--ember)" : isDown ? "3px solid var(--glacier)" : "3px solid var(--stone-200)",
-                    }}>
-                      <div className="bpm-phase-label" style={{
-                        color: isUp ? "var(--ember)" : isDown ? "var(--glacier)" : "var(--stone-400)",
-                        fontWeight: 600,
-                      }}>
-                        {isUp ? `↗ +${gradePercent}%` : isDown ? `↘ −${gradePercent}%` : "→ flat"}
-                      </div>
-                      <div className="bpm-phase-value">{seg.bpm}</div>
-                      {paceStr && <div style={{ fontSize: "0.6rem", color: "var(--stone-400)", marginTop: "2px" }}>{paceStr}/km</div>}
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="control-label" style={{ marginTop: "20px", marginBottom: "12px" }}>
+                            <div className="control-label" style={{ marginTop: "20px", marginBottom: "12px" }}>
                 Tracks ({generatedPlaylist.tracks.length})
               </div>
               <div className="tracks-list">
@@ -5767,47 +5677,445 @@
               {/* Run Drop Card */}
               <RunDropCard playlist={generatedPlaylist} trail={currentTrail} baseBpm={baseBpm} />
 
-              {spotifyToken && (
+              {/* Interactive Elevation Map — song by song */}
+              <PlaylistElevationMap
+                profile={trailElevProfile}
+                segments={generatedPlaylist.segments}
+                tracks={generatedPlaylist.tracks}
+                racePlanSegs={racePlan ? racePlan.segments : []}
+              />
+
+
+              {/* One button to save */}
+              <button
+                className="btn btn-primary"
+                style={{ width: "100%", padding: "14px", marginTop: "20px", fontSize: "1rem", borderRadius: "12px", fontWeight: 700 }}
+                onClick={() => {
+                  if (spotifyToken) { savePlaylistToSpotify(); }
+                  if (cantoUser) { handleSavePlaylistToCloud(); }
+                  if (!spotifyToken && !cantoUser) { setShowAuthModal(true); setAuthMode("register"); }
+                }}
+                disabled={loading || savingPlaylist}
+              >
+                {loading || savingPlaylist ? "Saving..." : spotifyToken ? "Save to Spotify" : cantoUser ? "Save to My Account" : "Save Playlist"}
+              </button>
+            </div>
+          )}
+
+
+          {/* ── Make it personal ── */}
+          <div style={{ display: "flex", alignItems: "center", gap: "16px", margin: "32px 0 24px", padding: "0 4px" }}>
+            <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, var(--stone-200), transparent)" }} />
+            <span style={{ fontSize: "0.72rem", color: "var(--stone-400)", fontWeight: 500, letterSpacing: "0.5px", whiteSpace: "nowrap" }}>Make it personal</span>
+            <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, var(--stone-200), transparent)" }} />
+          </div>
+
+          {/* Connections Bar — Spotify + Strava + Garmin */}
+          <div style={{
+            display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap",
+            marginBottom: "24px", padding: "10px 16px",
+            background: "rgba(255,255,255,0.04)", borderRadius: "10px",
+            border: "1px solid rgba(255,255,255,0.06)",
+            boxShadow: "0 1px 4px rgba(255,255,255,0.04)",
+          }}>
+            {/* Spotify */}
+            {spotifyToken ? (
+              <div style={{
+                display: "flex", alignItems: "center", gap: "6px",
+                padding: "6px 12px", borderRadius: "6px",
+                background: "rgba(30,215,96,0.08)", fontSize: "0.75rem", fontWeight: 600,
+                color: "#1DB954",
+              }}>
+                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#1DB954", display: "inline-block" }} />
+                {spotifyUser?.display_name || "Spotify"}
+                <button onClick={() => {
+                  localStorage.removeItem("spotifyAccessToken");
+                  localStorage.removeItem("spotifyRefreshToken");
+                  localStorage.removeItem("spotifyCodeVerifier");
+                  setSpotifyToken(null); setSpotifyUser(null); setTopSeeds(null); setGeneratedPlaylist(null);
+                }} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--stone-400)", fontSize: "0.7rem", marginLeft: "4px" }}>×</button>
+              </div>
+            ) : (
+              <button onClick={startSpotifyAuth} style={{
+                display: "flex", alignItems: "center", gap: "6px",
+                padding: "6px 12px", borderRadius: "6px",
+                background: "rgba(255,255,255,0.03)", border: "1px solid var(--stone-200)",
+                fontSize: "0.75rem", fontWeight: 600, cursor: "pointer",
+                color: "var(--stone-500)", transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#1DB954"; e.currentTarget.style.color = "#1DB954"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--stone-200)"; e.currentTarget.style.color = "var(--stone-500)"; }}
+              >
+                <span>🎵</span> Spotify
+              </button>
+            )}
+
+            {/* Strava */}
+            {stravaApiConnected ? (
+              <div style={{
+                display: "flex", alignItems: "center", gap: "6px",
+                padding: "6px 12px", borderRadius: "6px",
+                background: "rgba(252,76,2,0.08)", fontSize: "0.75rem", fontWeight: 600,
+                color: "var(--strava)",
+              }}>
+                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--strava)", display: "inline-block" }} />
+                Strava
+                <button onClick={() => {
+                  localStorage.removeItem("stravaAccessToken");
+                  setStravaApiConnected(false);
+                }} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--stone-400)", fontSize: "0.7rem", marginLeft: "4px" }}>×</button>
+              </div>
+            ) : (
+              <button onClick={() => setShowStravaModal(true)} style={{
+                display: "flex", alignItems: "center", gap: "6px",
+                padding: "6px 12px", borderRadius: "6px",
+                background: "rgba(255,255,255,0.03)", border: "1px solid var(--stone-200)",
+                fontSize: "0.75rem", fontWeight: 600, cursor: "pointer",
+                color: "var(--stone-500)", transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--strava)"; e.currentTarget.style.color = "var(--strava)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--stone-200)"; e.currentTarget.style.color = "var(--stone-500)"; }}
+              >
+                <span>🏃</span> Strava
+              </button>
+            )}
+
+            {/* Garmin */}
+            {garminConnected ? (
+              <div style={{
+                display: "flex", alignItems: "center", gap: "6px",
+                padding: "6px 12px", borderRadius: "6px",
+                background: "rgba(0,124,195,0.08)", fontSize: "0.75rem", fontWeight: 600,
+                color: "var(--garmin)",
+              }}>
+                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--garmin)", display: "inline-block" }} />
+                Garmin
+                <button onClick={() => {
+                  localStorage.removeItem("garminAccessToken");
+                  setGarminConnected(false);
+                }} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--stone-400)", fontSize: "0.7rem", marginLeft: "4px" }}>×</button>
+              </div>
+            ) : (
+              <button onClick={() => setShowGarminModal(true)} style={{
+                display: "flex", alignItems: "center", gap: "6px",
+                padding: "6px 12px", borderRadius: "6px",
+                background: "rgba(255,255,255,0.03)", border: "1px solid var(--stone-200)",
+                fontSize: "0.75rem", fontWeight: 600, cursor: "pointer",
+                color: "var(--stone-500)", transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--garmin)"; e.currentTarget.style.color = "var(--garmin)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--stone-200)"; e.currentTarget.style.color = "var(--stone-500)"; }}
+              >
+                <span>⌚</span> Garmin
+              </button>
+            )}
+
+                      </div>
+
+
+          {/* Compact Model Stats — replaces old Running Profile section */}
+          {personalModel && (
+            <div style={{
+              display: "flex", alignItems: "center", gap: "12px", padding: "12px 16px",
+              background: "rgba(255,255,255,0.04)", borderRadius: "12px", marginBottom: "16px",
+              border: "1px solid rgba(255,255,255,0.06)", flexWrap: "wrap",
+            }}>
+              <div style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: "var(--stone-400)", whiteSpace: "nowrap" }}>Your model</div>
+              {[
+                { v: PerformanceLab.formatPace(personalModel.basePace), l: "/km" },
+                { v: personalModel.baseCadence, l: "spm" },
+                { v: personalModel.avgHR, l: "bpm" },
+                { v: personalModel.gradeCoeff > 0 ? `+${Math.round(personalModel.gradeCoeff / 10)}` : Math.round(personalModel.gradeCoeff / 10), l: "s/km/%" },
+              ].map((s, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "baseline", gap: "3px" }}>
+                  <span style={{ fontWeight: 800, fontSize: "0.88rem", color: "var(--ridge)" }}>{s.v}</span>
+                  <span style={{ fontSize: "0.6rem", color: "var(--stone-400)" }}>{s.l}</span>
+                </div>
+              ))}
+              <div style={{ marginLeft: "auto", display: "flex", gap: "6px", alignItems: "center" }}>
+                <span style={{ fontSize: "0.65rem", color: "var(--stone-400)" }}>{personalModel.totalRuns} runs</span>
                 <button
-                  className="btn btn-primary"
-                  style={{ width: "100%", padding: "14px", marginTop: "20px", fontSize: "1rem" }}
-                  onClick={savePlaylistToSpotify}
-                  disabled={loading}
-                >
-                  {loading ? "Saving..." : "Save to Spotify"}
-                </button>
-              )}
-              {/* Save to Canto Cloud */}
-              {cantoUser ? (
-                <button
-                  className="btn"
-                  style={{
-                    width: "100%", padding: "14px", marginTop: "8px", fontSize: "1rem",
-                    background: "linear-gradient(135deg, #2d3436, #636e72)",
-                    color: "white", border: "none", borderRadius: "10px", cursor: "pointer",
-                    opacity: savingPlaylist ? 0.6 : 1,
-                  }}
-                  onClick={handleSavePlaylistToCloud}
-                  disabled={savingPlaylist}
-                >
-                  {savingPlaylist ? "Saving..." : "Save to My Account"}
-                </button>
+                  style={{ background: "none", border: "1px solid var(--stone-200)", borderRadius: "5px", padding: "3px 8px", fontSize: "0.62rem", cursor: "pointer", color: "var(--stone-400)" }}
+                  onClick={() => document.getElementById("tcx-input").click()}
+                >+</button>
+              </div>
+            </div>
+          )}
+          <input id="tcx-input" type="file" accept=".tcx,.fit" multiple style={{ display: "none" }}
+            onChange={(e) => {
+              const files = Array.from(e.target.files);
+              if (files.length > 0) { handleTCXFiles(files); setImportSources(prev => [...new Set([...prev, "file"])]); }
+              e.target.value = "";
+            }}
+          />
+
+          {/* ══════ CANTO V2: RUN TIMELINE & INTELLIGENCE ══════ */}
+
+          {/* Run Timeline — always visible */}
+          {(
+            <div className="section">
+              <div id="section-past" className="section-title">
+                <span className="section-icon">🏃</span>
+                Your Runs
+                {stravaActivities && <span style={{ marginLeft: "8px", fontSize: "0.72rem", fontWeight: 400, color: "var(--stone-400)" }}>{stravaActivities.length} analyzed</span>}
+              </div>
+
+              {(!stravaActivities || stravaActivities.length === 0) ? (
+                <div className="onboarding-box">
+                  <h3>Start with your data</h3>
+                  <p>Connect Strava or import your runs. Every new run refines your analysis.</p>
+                  <div className="onboarding-actions">
+                    <button onClick={() => setShowStravaModal(true)} style={{ background: "var(--strava)", color: "white" }}>Connect Strava</button>
+                    <button onClick={() => setShowGarminModal(true)} style={{ background: "var(--garmin)", color: "white" }}>Import Garmin</button>
+                    <button onClick={() => {
+                      setStravaActivities(DEMO_STRAVA_ACTIVITIES);
+                      const model = PerformanceLab.buildPersonalModel(DEMO_STRAVA_ACTIVITIES);
+                      setPersonalModel(model);
+                      setStravaConnected(true);
+                      setMessage({ type: "success", text: "Demo data loaded. Connect Strava to use your real runs." });
+                    }} style={{ background: "var(--stone-700)", color: "white" }}>Try with demo data</button>
+                  </div>
+                </div>
               ) : (
-                <button
-                  className="btn"
-                  style={{
-                    width: "100%", padding: "14px", marginTop: "8px", fontSize: "0.9rem",
-                    background: "transparent", color: "var(--ember)", border: "1px solid var(--ember)",
-                    borderRadius: "10px", cursor: "pointer",
-                  }}
-                  onClick={() => { setShowAuthModal(true); setAuthMode("register"); }}
-                >
-                  Sign up to save playlists
-                </button>
+                <div className="run-timeline">
+                  {stravaActivities.filter(a => a.splits && a.splits.length > 1).map(run => {
+                    const distKm = (run.distance / 1000).toFixed(1);
+                    const avgPace = run.moving_time / (run.distance / 1000);
+                    const paceStr = `${Math.floor(avgPace/60)}:${String(Math.round(avgPace%60)).padStart(2,"0")}`;
+                    const date = run.start_date ? new Date(run.start_date) : null;
+                    const dayStr = date ? date.getDate() : "";
+                    const monthStr = date ? date.toLocaleDateString(lang === "fr" ? "fr-FR" : "en-US", { month: "short" }) : "";
+                    const pacing = RunIntelligence.classifyPacing(run.splits);
+                    const consistency = RunIntelligence.consistencyScore(run.splits);
+                    const score = RunIntelligence.runScore(consistency, pacing, RunIntelligence.hrDrift(run.splits));
+                    const isSelected = selectedRunForIntel?.id === run.id;
+
+                    return (
+                      <div key={run.id}>
+                        <div
+                          className={`run-timeline-item ${isSelected ? "selected" : ""}`}
+                          onClick={() => setSelectedRunForIntel(isSelected ? null : run)}
+                        >
+                          <div className="run-timeline-date">
+                            <span className="day">{dayStr}</span>
+                            {monthStr}
+                          </div>
+                          <div className="run-timeline-info">
+                            <h4>{run.name}</h4>
+                            <div className="run-meta-line">
+                              <span>{distKm} km</span>
+                              <span>{paceStr}/km</span>
+                              {run.total_elevation_gain > 0 && <span>+{Math.round(run.total_elevation_gain)}m</span>}
+                              {run.average_heartrate > 0 && <span>{Math.round(run.average_heartrate)} bpm</span>}
+                            </div>
+                          </div>
+                          <div className="run-timeline-score">
+                            <div className="run-score-circle" style={{ background: RunIntelligence.scoreColor(score) }}>{score}</div>
+                            <div className="run-score-label">{pacing.label}</div>
+                          </div>
+                        </div>
+
+                        {/* Run Intelligence Panel */}
+                        {isSelected && (() => {
+                          const effortData = RunIntelligence.effortAdjustedPace(run.splits);
+                          const hrDriftData = RunIntelligence.hrDrift(run.splits);
+                          const blowUpKm = RunIntelligence.findBlowUpKm(run.splits);
+                          const comparison = RunIntelligence.compareToSimilar(run, stravaActivities);
+                          const verdictLines = RunIntelligence.generateVerdict(run, run.splits, pacing, consistency, hrDriftData, blowUpKm, comparison);
+                          const maxPace = Math.max(...effortData.map(e => e.rawPace));
+                          const minPace = Math.min(...effortData.map(e => e.rawPace));
+                          const avgRunPace = run.moving_time / (run.distance / 1000);
+
+                          return (
+                            <div className="ri-panel">
+                              {/* Key Insights */}
+                              <div className="ri-insights">
+                                <div className="ri-insight">
+                                  <div className="label">Avg Pace</div>
+                                  <div className="value" style={{ color: "var(--ridge)" }}>{paceStr}/km</div>
+                                </div>
+                                <div className="ri-insight">
+                                  <div className="label">Consistency</div>
+                                  <div className="value" style={{ color: RunIntelligence.scoreColor(consistency) }}>{consistency}%</div>
+                                </div>
+                                <div className="ri-insight">
+                                  <div className="label">Strategy</div>
+                                  <div className="value" style={{ color: pacing.color }}>{pacing.label}</div>
+                                  <div className="detail">{pacing.desc}</div>
+                                </div>
+                                {hrDriftData && (
+                                  <div className="ri-insight">
+                                    <div className="label">HR Drift</div>
+                                    <div className="value" style={{ color: hrDriftData.drift > 8 ? "var(--ember)" : "var(--glacier)" }}>
+                                      {hrDriftData.drift > 0 ? "+" : ""}{hrDriftData.drift}%
+                                    </div>
+                                    <div className="detail">{hrDriftData.avgFirst} &rarr; {hrDriftData.avgSecond} bpm</div>
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* Pace Chart */}
+                              <div style={{ fontSize: "0.72rem", color: "var(--stone-400)", fontWeight: 600, marginBottom: "6px" }}>PACE BY KM</div>
+                              <div className="pace-chart">
+                                {effortData.map((d, i) => {
+                                  const paceRange = maxPace - minPace || 1;
+                                  const height = 20 + ((d.rawPace - minPace) / paceRange) * 60;
+                                  const isFast = d.rawPace < avgRunPace * 0.95;
+                                  const isSlow = d.rawPace > avgRunPace * 1.05;
+                                  const barColor = isFast ? "var(--ember)" : isSlow ? "var(--gold)" : "var(--glacier)";
+                                  const kmPaceStr = `${Math.floor(d.rawPace/60)}:${String(Math.round(d.rawPace%60)).padStart(2,"0")}`;
+                                  return (
+                                    <div key={i} className="pace-bar" style={{ height: `${height}%`, background: barColor }}>
+                                      <div className="bar-tooltip">Km {d.km}: {kmPaceStr}/km{d.elev !== 0 ? ` (${d.elev > 0 ? "+" : ""}${d.elev}m)` : ""}</div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.6rem", color: "var(--stone-400)", marginBottom: "16px" }}>
+                                <span>Km 1</span><span>Km {effortData.length}</span>
+                              </div>
+
+                              {/* Verdict */}
+                              {verdictLines.length > 0 && (
+                                <div className="ri-verdict-box">
+                                  <div className="verdict-title">Analysis</div>
+                                  {verdictLines.map((line, i) => <p key={i} style={{ marginBottom: i < verdictLines.length - 1 ? "8px" : 0 }}>{line}</p>)}
+                                </div>
+                              )}
+
+                              {/* Cross-run comparison */}
+                              {comparison && (
+                                <div className="ri-trend">
+                                  <span className="trend-arrow">{comparison.isFaster ? "\u2197" : "\u2198"}</span>
+                                  <span className="trend-text">
+                                    {comparison.isBest
+                                      ? `Personal best! Faster than all ${comparison.comparedTo} similar runs.`
+                                      : comparison.isFaster
+                                      ? `${Math.abs(comparison.diffPercent)}% faster than your average on ${comparison.comparedTo} similar runs.`
+                                      : `${comparison.diffPercent}% slower than your average on ${comparison.comparedTo} similar runs.`
+                                    }
+                                  </span>
+                                </div>
+                              )}
+
+                              {/* Split Table */}
+                              <div style={{ overflowX: "auto", marginTop: "16px" }}>
+                                <table className="split-table">
+                                  <thead>
+                                    <tr>
+                                      <th>Km</th><th>Pace</th><th>Effort*</th><th>Elev</th>
+                                      {run.splits[0]?.average_heartrate > 0 && <th>HR</th>}
+                                      <th>Status</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {effortData.map((d, i) => {
+                                      const rawStr = `${Math.floor(d.rawPace/60)}:${String(Math.round(d.rawPace%60)).padStart(2,"0")}`;
+                                      const adjStr = `${Math.floor(d.adjustedPace/60)}:${String(Math.round(d.adjustedPace%60)).padStart(2,"0")}`;
+                                      const isFast = d.rawPace < avgRunPace * 0.95;
+                                      const isSlow = d.rawPace > avgRunPace * 1.05;
+                                      return (
+                                        <tr key={i}>
+                                          <td style={{ fontWeight: 700 }}>{d.km}</td>
+                                          <td style={{ fontWeight: 600 }}>{rawStr}</td>
+                                          <td style={{ color: "var(--stone-400)" }}>{adjStr}</td>
+                                          <td style={{ color: d.elev > 0 ? "var(--ember)" : d.elev < 0 ? "var(--glacier)" : "var(--stone-400)" }}>
+                                            {d.elev > 0 ? "+" : ""}{d.elev}m
+                                          </td>
+                                          {d.hr > 0 && <td>{Math.round(d.hr)}</td>}
+                                          <td>
+                                            <span className={`pace-verdict ${isFast ? "too-fast" : isSlow ? "too-slow" : "good"}`}>
+                                              {isFast ? "Fast" : isSlow ? "Slow" : "Good"}
+                                            </span>
+                                          </td>
+                                        </tr>
+                                      );
+                                    })}
+                                  </tbody>
+                                </table>
+                                <div style={{ fontSize: "0.65rem", color: "var(--stone-400)", marginTop: "6px" }}>
+                                </div>
+                              </div>
+
+                              {/* Action Buttons — two playlist modes */}
+                              <div style={{ marginTop: "20px" }}>
+                                <div style={{ fontSize: "0.72rem", color: "var(--stone-400)", fontWeight: 600, marginBottom: "10px", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                                  What do you want to do with this run?
+                                </div>
+                                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+
+                                  {/* Playlist for THIS run (as it happened) */}
+                                  <button className="btn-optimize" style={{ width: "100%", display: "flex", alignItems: "center", gap: "12px", padding: "14px 16px", textAlign: "left" }} onClick={() => {
+                                    const runDist = run.distance / 1000;
+                                    const elevProfile = [0];
+                                    run.splits.forEach(sp => { elevProfile.push(elevProfile[elevProfile.length-1] + (sp.elevation_difference || 0)); });
+                                    const rerunTrail = {
+                                      id: `actual-${run.id}`, name: run.name,
+                                      location: "Replay your run", distance: Math.round(runDist * 10) / 10,
+                                      elevGain: run.total_elevation_gain || 0, difficulty: "Medium",
+                                      profile: elevProfile, type: "trail",
+                                    };
+                                    // Use actual paces as target (replay mode)
+                                    const actualPace = run.moving_time / (run.distance / 1000) / 60;
+                                    setSelectedTrail(rerunTrail);
+                                    setFlatRunActive(false);
+                                    setGpxTrail(null);
+                                    setTargetPace(Math.round(actualPace * 10) / 10);
+                                    setTargetMode("pace");
+                                    setMessage({ type: "info", text: `Generating a playlist that matches your actual run. Scroll down to generate.` });
+                                    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+                                  }}>
+                                    <div style={{ fontSize: "1.2rem" }}>&#127925;</div>
+                                    <div>
+                                      <div style={{ fontWeight: 700, fontSize: "0.85rem" }}>Playlist for this run</div>
+                                      <div style={{ fontWeight: 400, fontSize: "0.72rem", opacity: 0.8, marginTop: "2px" }}>Music that matches what you actually did — same pace, same terrain</div>
+                                    </div>
+                                  </button>
+
+                                  {/* Optimized plan + playlist */}
+                                  <button style={{
+                                    width: "100%", display: "flex", alignItems: "center", gap: "12px",
+                                    padding: "14px 16px", textAlign: "left", borderRadius: "10px",
+                                    border: "2px solid var(--ember)", background: "rgba(224,78,42,0.04)",
+                                    cursor: "pointer", transition: "all 0.2s", color: "var(--ridge)",
+                                  }} onClick={() => {
+                                    const runDist = run.distance / 1000;
+                                    const elevProfile = [0];
+                                    run.splits.forEach(sp => { elevProfile.push(elevProfile[elevProfile.length-1] + (sp.elevation_difference || 0)); });
+                                    const rerunTrail = {
+                                      id: `optimized-${run.id}`, name: `Optimized: ${run.name}`,
+                                      location: "Your ideal version", distance: Math.round(runDist * 10) / 10,
+                                      elevGain: run.total_elevation_gain || 0, difficulty: "Medium",
+                                      profile: elevProfile, type: "trail",
+                                    };
+                                    setSelectedTrail(rerunTrail);
+                                    setFlatRunActive(false);
+                                    setGpxTrail(null);
+                                    setMessage({ type: "success", text: `Optimized plan loaded. Your race plan below shows the ideal pacing. Generate a playlist matched to this plan.` });
+                                    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+                                  }}>
+                                    <div style={{ fontSize: "1.2rem" }}>&#9889;</div>
+                                    <div>
+                                      <div style={{ fontWeight: 700, fontSize: "0.85rem", color: "var(--ember)" }}>Optimize &amp; build playlist</div>
+                                      <div style={{ fontWeight: 400, fontSize: "0.72rem", color: "var(--stone-500)", marginTop: "2px" }}>Corrected pacing based on your analysis — the run you could have done</div>
+                                    </div>
+                                  </button>
+
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    );
+                  })}
+                </div>
               )}
             </div>
           )}
 
+
+          
           {loading && !generatedPlaylist && (
             <div className="loading">
               <div className="spinner"></div>
@@ -5815,155 +6123,30 @@
             </div>
           )}
 
-          {/* FAQ Section */}
-          <div className="section">
-            <div className="section-title" style={{ cursor: "pointer" }} onClick={() => setShowFaq(!showFaq)}>
-              <span className="section-icon">💡</span>
-              How It Works
-              <span style={{ marginLeft: "auto", fontSize: "0.8rem", color: "var(--stone-400)", fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>
-                {showFaq ? "Hide" : "Show"}
-              </span>
-            </div>
-
-            {showFaq && (
-              <div className="faq-section">
-                {[
-                  {
-                    q: "How does Canto match music to terrain?",
-                    a: "Each segment of your route is analyzed for gradient. On climbs, your cadence naturally drops and effort rises — so Canto selects lower-BPM, high-energy tracks. On flats and descents, it shifts to faster-tempo music that matches your stride frequency. Research on auditory-motor synchronization shows that runners naturally lock their cadence to musical tempo, improving economy by 1–3%."
-                  },
-                  {
-                    q: "What is the 'constant effort' race strategy?",
-                    a: "Instead of running even splits (same pace everywhere), Canto distributes your target time proportionally to each segment's energy cost — based on the Minetti et al. (2002) metabolic cost polynomial. You slow down on steep climbs and speed up on descents, but your physiological effort stays even. This is the strategy elite ultra-runners use on mountain courses like UTMB."
-                  },
-                  {
-                    q: "How does the personal model work?",
-                    a: "When you import your training data, Canto builds a linear regression model of how your pace and cadence change with gradient. It also calculates your heart rate drift across runs (a proxy for fatigue) and your base aerobic capacity. These personal coefficients replace generic assumptions — so your race plan and playlist are calibrated to how you actually run, not an average runner."
-                  },
-                  {
-                    q: "What is the emotional arc in the playlist?",
-                    a: "Sports psychology research identifies three phases in endurance performance. The first 30% is 'controlled' — music is steady, helping you settle into rhythm. The middle 40% is 'dissociative' — varied tracks help your mind drift, reducing perceived effort. The final 30% is 'motivational' — high-energy, familiar tracks push you through fatigue. Canto maps this arc onto your route automatically."
-                  },
-                  {
-                    q: "How does track scoring work?",
-                    a: "Each candidate track is scored 0–100 on four signals: BPM proximity to your target cadence (30 points), affinity to your listening history (40 points — direct matches score highest, familiar artists score proportionally), Spotify popularity (20 points), and an artist variety penalty (up to −10 points to avoid repeats). The best-scoring unique track wins each segment."
-                  },
-                  {
-                    q: "Why connect Strava or Garmin?",
-                    a: "Your training history contains the data Canto needs to personalize everything — your pace response to gradient, your natural cadence range, your heart rate patterns. The more runs you import, the more accurate the model. Duplicate runs from multiple sources are automatically detected and merged, so you can safely connect both."
-                  },
-                  {
-                    q: "What's the science behind BPM and running cadence?",
-                    a: "Studies by Karageorghis et al. (2009) and Terry et al. (2012) show that synchronizing music tempo to movement cadence reduces oxygen consumption, delays fatigue, and increases endurance by up to 15%. The effect is strongest when the tempo is within ±2% of natural stride rate — which is why Canto calculates your personal cadence per gradient rather than using a fixed BPM."
-                  },
-                ].map((item, idx) => (
-                  <div key={idx} className="faq-item">
-                    <button className="faq-question" onClick={() => setOpenFaqIdx(openFaqIdx === idx ? null : idx)}>
-                      {item.q}
-                      <span className={`faq-chevron ${openFaqIdx === idx ? "open" : ""}`}>▼</span>
-                    </button>
-                    {openFaqIdx === idx && (
-                      <div className="faq-answer">{item.a}</div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Trail Running Hero — Embedded SVG Mountain Scene */}
-          <div className="trail-hero">
-            <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#1E3A5F" />
-                  <stop offset="40%" stopColor="#2A1B3D" />
-                  <stop offset="100%" stopColor="#0F0F13" />
-                </linearGradient>
-                <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#F06840" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#E6A817" stopOpacity="0.6" />
-                </linearGradient>
-                <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#F06840" stopOpacity="0.4" />
-                  <stop offset="60%" stopColor="#E6A817" stopOpacity="0.1" />
-                  <stop offset="100%" stopColor="transparent" stopOpacity="0" />
-                </radialGradient>
-                <linearGradient id="mtn1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#2A2A35" />
-                  <stop offset="100%" stopColor="#16161C" />
-                </linearGradient>
-                <linearGradient id="mtn2" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#1F1F28" />
-                  <stop offset="100%" stopColor="#0F0F13" />
-                </linearGradient>
-                <linearGradient id="mtn3" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#18181F" />
-                  <stop offset="100%" stopColor="#0A0A0E" />
-                </linearGradient>
-                <linearGradient id="trailLine" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#E04E2A" stopOpacity="0" />
-                  <stop offset="20%" stopColor="#E04E2A" stopOpacity="0.8" />
-                  <stop offset="80%" stopColor="#E6A817" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#E6A817" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              {/* Sky */}
-              <rect width="1200" height="500" fill="url(#skyGrad)" />
-              {/* Sun / Golden Hour Glow */}
-              <circle cx="900" cy="160" r="120" fill="url(#sunGlow)" />
-              <circle cx="900" cy="160" r="35" fill="url(#sunGrad)" opacity="0.9" />
-              {/* Stars */}
-              <circle cx="150" cy="60" r="1.5" fill="white" opacity="0.5" />
-              <circle cx="350" cy="40" r="1" fill="white" opacity="0.4" />
-              <circle cx="550" cy="80" r="1.2" fill="white" opacity="0.3" />
-              <circle cx="750" cy="30" r="1" fill="white" opacity="0.4" />
-              <circle cx="1050" cy="70" r="1.3" fill="white" opacity="0.35" />
-              <circle cx="200" cy="110" r="0.8" fill="white" opacity="0.25" />
-              <circle cx="480" cy="45" r="1.1" fill="white" opacity="0.3" />
-              {/* Far mountain range (back) */}
-              <path d="M0 500 L0 240 L80 210 L150 180 L220 200 L300 150 L380 170 L450 120 L520 145 L600 110 L680 135 L750 95 L830 125 L900 160 L980 130 L1060 155 L1120 140 L1200 170 L1200 500Z" fill="url(#mtn1)" opacity="0.7" />
-              {/* Snow caps on far peaks */}
-              <path d="M445 120 L450 120 L455 123 L450 122Z" fill="white" opacity="0.15" />
-              <path d="M595 110 L600 110 L608 116 L600 114Z" fill="white" opacity="0.15" />
-              <path d="M745 95 L750 95 L758 102 L750 100Z" fill="white" opacity="0.2" />
-              {/* Mid mountain range */}
-              <path d="M0 500 L0 300 L100 270 L200 290 L320 240 L420 260 L500 210 L580 240 L660 200 L740 230 L840 190 L920 220 L1000 250 L1080 220 L1140 240 L1200 260 L1200 500Z" fill="url(#mtn2)" opacity="0.85" />
-              {/* Near mountain range (foreground) */}
-              <path d="M0 500 L0 360 L80 340 L180 360 L280 320 L380 345 L460 300 L540 330 L640 290 L720 320 L820 280 L900 310 L1000 330 L1080 300 L1160 340 L1200 320 L1200 500Z" fill="url(#mtn3)" />
-              {/* Trail path winding through mountains */}
-              <path d="M100 380 Q200 350 300 365 Q400 380 500 340 Q600 300 700 320 Q800 340 900 310 Q1000 280 1100 300" fill="none" stroke="url(#trailLine)" strokeWidth="2.5" strokeDasharray="8 4" opacity="0.7" />
-              {/* Runner silhouette on trail */}
-              <g transform="translate(580, 310) scale(0.5)" opacity="0.85">
-                {/* Head */}
-                <circle cx="0" cy="-28" r="6" fill="#E04E2A" />
-                {/* Body */}
-                <line x1="0" y1="-22" x2="-2" y2="-4" stroke="#E04E2A" strokeWidth="3" strokeLinecap="round" />
-                {/* Front leg (stride) */}
-                <line x1="-2" y1="-4" x2="10" y2="12" stroke="#E04E2A" strokeWidth="2.5" strokeLinecap="round" />
-                {/* Back leg */}
-                <line x1="-2" y1="-4" x2="-14" y2="8" stroke="#E04E2A" strokeWidth="2.5" strokeLinecap="round" />
-                {/* Front arm */}
-                <line x1="0" y1="-18" x2="-12" y2="-8" stroke="#E04E2A" strokeWidth="2" strokeLinecap="round" />
-                {/* Back arm */}
-                <line x1="0" y1="-18" x2="10" y2="-10" stroke="#E04E2A" strokeWidth="2" strokeLinecap="round" />
-              </g>
-              {/* Atmospheric haze */}
-              <rect x="0" y="350" width="1200" height="150" fill="url(#mtn3)" opacity="0.3" />
-            </svg>
-            <div className="trail-hero-overlay">
-              <div className="trail-hero-title">Every Beat Knows The Trail</div>
-              <div className="trail-hero-sub">Intelligence in the run</div>
-            </div>
-          </div>
-
-          <footer>
+                              <footer>
             <p>
               Canto · Every trail has a song
             </p>
           </footer>
 
-          {/* ═══ STRAVA CONNECTION MODAL ═══ */}
+          
+          {/* Bottom Nav — Past / Future / Play */}
+          <div className="step-nav">
+            <button className={"step-nav-item" + (appScreen === "past" ? " active" : " reached")} onClick={() => scrollTo("section-past", "past")}>
+              <div className="step-nav-dot" />
+              <span className="step-nav-label">Race</span>
+            </button>
+            <button className={"step-nav-item" + (appScreen === "future" ? " active" : currentTrail ? " reached" : " locked")} onClick={() => { if (currentTrail) scrollTo("section-future", "future"); }}>
+              <div className="step-nav-dot" />
+              <span className="step-nav-label">Music</span>
+            </button>
+            <button className={"step-nav-item" + (appScreen === "play" ? " active" : generatedPlaylist ? " reached" : " locked")} onClick={() => { if (generatedPlaylist) scrollTo("section-play", "play"); }}>
+              <div className="step-nav-dot" />
+              <span className="step-nav-label">Data</span>
+            </button>
+          </div>
+
+{/* ═══ STRAVA CONNECTION MODAL ═══ */}
           {showStravaModal && (
             <div style={{
               position: "fixed", inset: 0, zIndex: 9999,
@@ -5995,7 +6178,7 @@
                 </div>
 
                 <div style={{
-                  background: "white", borderRadius: "12px", padding: "20px",
+                  background: "rgba(255,255,255,0.04)", borderRadius: "12px", padding: "20px",
                   border: "1px solid var(--stone-100)", marginBottom: "16px",
                 }}>
                   <p style={{ margin: "0 0 12px 0", fontSize: "0.82rem", color: "var(--stone-500)", lineHeight: 1.5 }}>
@@ -6105,7 +6288,7 @@
                 </div>
 
                 <div style={{
-                  background: "white", borderRadius: "12px", padding: "16px",
+                  background: "rgba(255,255,255,0.04)", borderRadius: "12px", padding: "16px",
                   border: "1px solid var(--stone-100)", marginBottom: "16px",
                 }}>
                   <p style={{ margin: "0 0 12px 0", fontSize: "0.78rem", color: "var(--ridge)", fontWeight: 600 }}>
